@@ -1,0 +1,2 @@
+CREATE TABLE "public"."resume" ("id" uuid NOT NULL DEFAULT gen_random_uuid(), "user_id" uuid NOT NULL, "file_path" text NOT NULL, "file_name" text NOT NULL, "upload_date" timestamptz NOT NULL DEFAULT now(), "status" text DEFAULT '"PENDING"', "extracted_skills" jsonb, PRIMARY KEY ("id") , FOREIGN KEY ("user_id") REFERENCES "public"."user"("id") ON UPDATE restrict ON DELETE cascade);
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
