@@ -1,6 +1,6 @@
 import type { Request, Response, NextFunction } from 'express';
 
-export function CORSHandler(req: Request, res: Response, next: NextFunction) {
+export default function CORSHandler(req: Request, res: Response, next: NextFunction) {
   // restrict cross origin requests here
   res.header("Access-Control-Allow-Origin", req.header("origin"));
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");

@@ -1,0 +1,38 @@
+version: '3.6'
+services:
+  # 1. PostgreSQL Database Service
+  postgres:
+    image: ankane/pgvector:latest
+    restart: always
+    volumes:
+      # Persistent storage for database files
+      - db_data:/var/lib/postgresql/data
+      - ./init-db:/docker-entrypoint-initdb.d
+    environment:
+      # Crucial variables for initial database setup (auto-initializes on first run)
+      POSTGRES_DB: chat_app_db
+      POSTGRES_USER: chat_user
+      POSTGRES_PASSWORD: changethispassword
+    ports:
+      - "5500:5432" # Map internal 5432 to external 5500 (avoid conflicts)
+
+  # 2. Hasura GraphQL Engine Service
+  graphql-engine:
+    image: hasura/graphql-engine:v2.24.0
+    ports:
+      - "8080:8080" # Hasura Console access
+    depends_on:
+      - postgres
+    restart: always
+    environment:
+      # Connection to the PostgreSQL database using the credentials defined above
+      HASURA_GRAPHQL_DATABASE_URL: postgres://chat_user:changethispassword@postgres:5432/chat_app_db
+      # Admin secret key for accessing the console (change this for production)
+      HASURA_GRAPHQL_ADMIN_SECRET: myadminsecretkey
+      # IMPORTANT: Allows unauthenticated requests to use the 'anonymous' role.
+      HASURA_GRAPHQL_UNAUTHORIZED_ROLE: anonymous
+      HASURA_GRAPHQL_ENABLE_CONSOLE: "true"
+      HASURA_GRAPHQL_JWT_SECRET: '{ "type": "HS256", "key": "pEdoXw44SkzMnZ+D7B0PRY9sqI6t1bgDPY87OickAgg=", "issuer": "my-chat-app" }'
+
+volumes:
+  db_data:

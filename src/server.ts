@@ -1,72 +1,51 @@
-import express from 'express';
+import express from "express";
 import http from "http";
 
-import { LoggingHandler } from "./middleware/LoggingHandler.ts";
-import { CORSHandler } from "./middleware/CORSHandler.ts";
-import { routeNotFound } from "./middleware/routeNotFound.ts";
-import { SERVER } from "./config/config.ts";
-import { DB } from "./config/config.ts";
-import { Client } from "pg";
+import handleLogging from "./middleware/LoggingRequests.ts";
+import { displayLog } from "./middleware/LoggingRequests.ts";
+import CORSHandler from "./middleware/CORSHandler.ts";
+import { SERVER, PG, HASURA } from "./config/config.ts";
+import { displayPartsToString } from "typescript";
 import { connectDB, handleDatabaseError } from "./db/connection.ts";
+import { registrationController } from "./controllers/registrationController.ts";
+import { loginController } from "./controllers/loginController.ts";
 
 export const app = express();
 export let HTTPServer: ReturnType<typeof http.createServer>;
 
 export const main = async () => {
-  console.info("-----------");
-  console.info("Init API");
-  console.info("-----------");
-
   app.use(express.urlencoded({ extended: true }));
-  app.use(express.json());
+  app.use(express.json())
 
-  console.info("-----------");
-  console.info("Logging & Config");
-  console.info("-----------");
-
-  app.use(LoggingHandler);
-
-  console.info("-----------");
-  console.info("CORS Protocol");
-  console.info("-----------");
+  app.use(handleLogging);
 
   app.use(CORSHandler);
 
-  console.info("-----------");
-  console.info("Define Routing");
-  console.info("-----------");
-
-  const client = await connectDB(DB);
+  const client = await connectDB(PG);
   if (!client) {
-    console.info("-----------");
-    console.info("DB Connection Failed");
-    console.info("-----------");
-    return new Promise<null>((res, rej) => rej());
+    displayLog("DB Connection Failed", "WAR");
+    return new Promise<null>((res, rej) => res());
   }
   client.on("error", handleDatabaseError);
-  console.info("-----------");
-  console.info("DB Connection Succesful");
-  console.info("-----------");
+  displayLog("DB Connection Successful", "LOG");
 
-  app.get("/main/healthcheck", async (req, res) => {
-    const answer = await client.query("SELECT NOW()");
-    res.status(200).json({ "running": "true", "now()": answer });
+
+  app.get("/", async (req, res) => {
+    let answer = await client.query("SELECT NOW()");
+    res.status(200).json({ "running": "true", "now():": answer });
   });
 
-  app.use(routeNotFound);
+  app.post("/user/register/", registrationController);
+
+  app.post("/user/login/", loginController);
 
   HTTPServer = http.createServer(app);
   HTTPServer.listen(SERVER.PORT, () => {
-    console.info("-----------");
-    console.info("Server Started at " + SERVER.HOSTNAME + ":" + SERVER.PORT);
-    console.info("-----------");
+    displayLog("Server started at: " + SERVER.PORT, "LOG");
   });
 };
 
 main()
   .catch((err: Error) => {
-    console.log('===================================');
-    console.log("err: " + err);
-    console.log('===================================');
+    displayLog(err.name, "ERR");
   });
-

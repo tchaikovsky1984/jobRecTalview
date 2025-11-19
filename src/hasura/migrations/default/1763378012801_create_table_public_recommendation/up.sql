@@ -1,2 +1,0 @@
-CREATE TABLE "public"."recommendation" ("id" uuid NOT NULL DEFAULT gen_random_uuid(), "res_id" uuid NOT NULL, "job_id" uuid NOT NULL, "similarity" float8 NOT NULL DEFAULT 0, "skills_match" jsonb NOT NULL, "analysis_date" timestamptz NOT NULL DEFAULT now(), PRIMARY KEY ("id") , FOREIGN KEY ("job_id") REFERENCES "public"."job"("id") ON UPDATE cascade ON DELETE cascade, FOREIGN KEY ("res_id") REFERENCES "public"."resume"("id") ON UPDATE restrict ON DELETE cascade, UNIQUE ("id"));
-CREATE EXTENSION IF NOT EXISTS pgcrypto;

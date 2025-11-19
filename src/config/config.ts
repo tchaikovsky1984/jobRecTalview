@@ -1,31 +1,34 @@
-import dotenv from "dotenv"
-
-import type { DatabaseConfig } from "./types.ts";
+import dotenv from "dotenv";
 
 dotenv.config();
 
-const PORT = process.env.PORT ? Number(process.env.PORT) : 5050;
-const HOSTNAME = process.env.HOSTNAME || 'localhost';
+const HOSTNAME: string = process.env.HOSTNAME || "localhost";
+const PORT: Number = Number(process.env.PORT) || 7171;
 
-const DB_HOSTNAME: string = process.env.DB_HOSTNAME || "localhost";
-const DB_PORT: number = Number(process.env.DB_PORT) || 5432;
-const DB_USR: string = process.env.DB_USR || "postgresql";
-const DB_PWD: string = process.env.DB_PWD || "password";
-const DB_NAME: string = process.env.DB_NAME || "node_express_dev";
-
-
-export const DEV = process.env.NODE_ENV === "dev";
-export const TEST = process.env.NODE_ENV === "test";
+const HASURA_URL: string = process.env.HASURA_URL || "http://localhost:8080";
+const HASURA_ADMIN_SECRET = process.env.HASURA_SECRET;
+const PG_NAME = process.env.PG_NAME || "chat_app_db";
+const PG_URL = process.env.PG_URL || "localhost";
+const PG_USER = process.env.PG_USER || "chat_user";
+const PG_SECRET = process.env.PG_SECRET || "changethispassword";
+const PG_PORT = 5500;
 
 export const SERVER = {
   HOSTNAME,
   PORT
 };
 
-export const DB: DatabaseConfig = {
-  DB_HOSTNAME,
-  DB_PORT,
-  DB_NAME,
-  DB_USR,
-  DB_PWD
+export const HASURA = {
+  HASURA_URL,
+  HASURA_ADMIN_SECRET
 };
+
+export const PG = {
+  PG_URL,
+  PG_PORT,
+  PG_NAME,
+  PG_USER,
+  PG_SECRET,
+};
+
+export const JWT_SECRET: string = process.env.JWT_SECRET || "wrong-key";
