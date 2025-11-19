@@ -1,0 +1,23 @@
+meta {
+  name: loginUser
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:7171/user/login
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "username": "",
+    "password": ""
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -19,10 +19,10 @@ export async function registrationController(req: Request<{}, {}, RegisterReques
       return;
     }
 
-    const sameUser = await client.query("SELECT * FROM \"user\" WHERE username = $1", [username]);
+    const sameUser = await client.query("SELECT * FROM \"user\" WHERE username = $1 OR email = $2", [username, email]);
 
     if (sameUser.rows.length > 0) {
-      res.status(400).json({ "message": "user exists with username" });
+      res.status(400).json({ "message": "user exists with username or email" });
       return;
     }
 
