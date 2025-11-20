@@ -1,0 +1,16 @@
+# ml-worker/requirements.txt
+# Temporal SDK
+temporalio[dev]
+
+# Core ML/NLP Libraries
+# Example for sentence embeddings - choose your preferred model/library
+sentence-transformers
+# Data manipulation and similarity
+scikit-learn
+
+# Data Handling & Persistence
+# Used for parsing and connecting to the DB temporarily, or just managing the workflow payload
+pydantic
+psycopg2-binary # Necessary for some Python DB operations, though we'll primarily use TS for final save.
+requests        # For basic web scraping/API calls
+beautifulsoup4  # For HTML parsing/scraping
