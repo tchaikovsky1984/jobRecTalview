@@ -14,7 +14,10 @@ class JobSearchCriteria(BaseModel):
     title: Optional[str] = Field(default=None)
     pref_country: Optional[str] = Field(default=None)
     pref_area: Optional[str] = Field(default=None)
-    num: int = Field(default=100) # Number of job outputs / search domain
+    num: int = Field(default=20) # Number of job outputs / search domain
+
+    def __str__(self) -> str:
+        return f"\t title: {self.title},\n\tpref_country: {self.pref_country},\n\tpref_area: {self.pref_area},\n\tnum: {self.num}\n"
 
     @property
     def valid_countries(self):
