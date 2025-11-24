@@ -8,6 +8,8 @@ from concurrent.futures import ThreadPoolExecutor
 
 from src.workflows import ScrapingJobsWorkflow
 from src.activities import scraper
+from src.activities import embedder
+from src.activities import storer
 
 async def main():
     act_exec = ThreadPoolExecutor(max_workers=2)
@@ -19,7 +21,7 @@ async def main():
     worker = Worker(client, 
                     task_queue="scrape-queue", 
                     workflows=[ScrapingJobsWorkflow], 
-                    activities=[scraper],
+                    activities=[scraper, embedder, storer],
                     activity_executor=act_exec
                     )
 

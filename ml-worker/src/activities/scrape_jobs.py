@@ -7,7 +7,7 @@ from src.shared import JobSearchCriteria
 
 @activity.defn
 def scraper(job_search_criteria: JobSearchCriteria) -> str: 
-    print("============ACTIVITY STARTED================")
+    print("============SCRAPING ACTIVITY STARTED================")
     jobtitle = job_search_criteria.title
     pref_country = job_search_criteria.pref_country
     pref_area = job_search_criteria.pref_area
@@ -71,7 +71,7 @@ def scraper(job_search_criteria: JobSearchCriteria) -> str:
                         )
         else:
             if pref_area==None:
-                print("job title pref country and pref_area")
+                print("job title pref country")
                 jobs = scrape_jobs(
                         site_name=["indeed", "linkedin", "zip_recruiter", "glassdoor", "google"],
                         search_term=jobtitle,
@@ -81,7 +81,7 @@ def scraper(job_search_criteria: JobSearchCriteria) -> str:
                         country_indeed=pref_country
                         )
             else:
-                print("job title and pref country") 
+                print("job title pref area and pref country") 
                 jobs = scrape_jobs(
                         site_name=["indeed", "linkedin", "zip_recruiter", "glassdoor", "google"],
                         search_term=jobtitle,

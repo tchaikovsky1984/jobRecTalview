@@ -1,0 +1,1319 @@
+id,site,job_url,job_url_direct,title,company,location,job_type,salary_source,interval,min_amount,max_amount,currency,is_remote,job_level,job_function,listing_type,emails,description,company_industry,company_url,company_logo,company_url_direct,company_addresses,company_num_employees,company_revenue,company_description,skills,experience_range,company_rating,company_reviews_count,vacancy_count,work_from_home_type
+gd-1009947503983,glassdoor,https://www.glassdoor.co.in/job-listing/j?jl=1009947503983,,AI/LLM Engineer (remote),Safe Sign Technologies,"Cambridge, MA",,direct_data,yearly,150000.0,150000.0,USD,False,,,organic,,"Join Safe Sign Technologies, a cutting\-edge legal technology start\-up founded at the University of Cambridge. Safe Sign aims to democratise the law for all people, equipping consumers and SMEs with robust and reliable tools to navigate legal complexity. As an **AI/LLM Engineer**, you will work alongside a world\-leading team, innovating and delivering best\-in\-class technologies, often in demanding conditions and against challenging deadlines. Independent working, subject matter excellence and proactiveness are essential.
+
+ **Responsibilities**
+
+
+* LLM prompt engineering (Instruction Tuning, Chain\-of\-thought, automated prompt Engineering)
+* LLM training \& fine\-tuning (Parameter Efficient, Few\-medium shot, )
+* Experimentation
+* Analysis and presenting results
+* Active study and keeping up with research literature
+* Ability to work independently
+* Ability to work towards an agreed goal and meet demanding deadlines
+
+**Qualifications and experience**
+
+* Bachelor's degree in Computer Science, Engineering, Mathematics or related fields
+* Ability to implement and verify state\-of\-the\-art algorithms
+* Experience running and managing experiments, analysing results and creating insights
+* Proficiency in software development (Python, Github, Jupyer Notebooks, etc.)
+* Proficiency with deep learning packages (such as PyTorch, Jax, or TensorFlow)
+* Experience with ML / LLM Software packages (e.g. HuggingFace, wandb, numpy, matplotlib, NLTK, etc.)
+* Good problem\-solving and communication skills
+* Ability to work in a dynamic and fast\-paced environment
+* Ability to demonstrate passion and knowledge in terms of relevant research topics
+* Experience solving complex technical problems
+
+**Qualifications and experience (preferred)**
+
+* Master's or PhD in NLP or Machine Learning
+* First author/lead author publications at leading AI and NLP conferences (such as EMNLP, ACL, ICLR, ICML, NeuRIPS)
+* Demonstrated projects where relevant expertise has been used for real problems
+* Several years of experience working in this field
+
+**Salary \& Benefits**
+
+* Up to $150k/year salary
+* Real ability to shape technical agenda and have a deep impact
+* Mentorship and advice from top ML scientists (ex\- or current DeepMind, Cambridge, UCL, Harvard)
+* Fully remote working",,https://www.glassdoor.co.in/Overview/W-EI_IE9387560.htm,,,,,,,,,,,,
+gd-1009947502490,glassdoor,https://www.glassdoor.co.in/job-listing/j?jl=1009947502490,,Python Developer: Real-Time Intelligent Communication Systems,Entratus,"Orlando, FL",,,,,,,False,,,organic,,"Candidates in the following states are encouraged to apply: **FLORIDA**
+
+  
+
+
+
+Company Overview
+
+
+
+Join our innovative technology team, developing cutting\-edge solutions for agentic, context\-aware intelligent conversations. We specialize in building platforms and products that deliver conversational agents pulling real\-time data for advanced, interactive experiences.
+
+  
+
+
+
+Job Summary
+
+
+
+We are seeking a Python Developer to join our dynamic team working on a real\-time distributed communication framework. You will contribute to our Python\-based back\-end services, collaborating with Senior Developers and the Product Owner to build and optimize features.
+
+  
+
+This position offers an excellent opportunity to learn from experienced engineers, develop skills in asynchronous programming, containerization, and distributed systems, and contribute to the next generation of AI\-powered applications.
+
+  
+
+
+
+Key Responsibilities
+
+
+
+* Python Development
+	+ Contribute to backend services and APIs using Python, with a focus on asynchronous frameworks (e.g., FastAPI, Asyncio, Uvicorn, Aiohttp).
+	+ Write clean, maintainable, and efficient Python code that aligns with team standards and best practices.
+* Real\-Time Communication Systems
+	+ Assist in maintaining and optimizing the existing distributed communication framework.
+	+ Support the integration and troubleshooting of real\-time data pipelines, ensuring low\-latency and high\-availability.
+* Data Processing \& Integration
+	+ Use libraries like Pandas, Openpyxl, and Python Dateutil for data manipulation and transformation.
+	+ Work with SQLAlchemy, Psycopg2, and Pgvector to manage database interactions and data storage.
+* AI \& Machine Learning Exposure
+	+ Collaborate with Senior Developers to integrate or optimize ML/NLP components (LangChain, Tiktoken, Litellm, Semantic Router) into the communication platform.
+	+ Participate in code reviews and brainstorming sessions for AI\-related features.
+* Configuration \& Testing
+	+ Help manage environment settings.
+	+ Write and maintain Pytest test cases to ensure code quality and reliability.
+	+ Implement error monitoring and logging.
+* Collaboration \& Learning
+	+ Work closely with senior team members to understand product requirements, implement solutions, and refine features.
+	+ Participate in agile ceremonies (stand\-ups, sprint planning, retrospectives), providing updates and feedback.
+	+ Seek out opportunities for personal and professional growth, actively engaging in mentorship and knowledge sharing.
+
+  
+
+
+Required Qualifications
+
+
+* 2\+ year of experience in Python development.
+* Basic understanding of asynchronous programming and/or multi\-threading concepts.
+* Familiarity with data manipulation libraries (e.g., Pandas, Openpyxl, Numexpr, Tqdm).
+* Understanding of RESTful API design and web frameworks (e.g., FastAPI, Flask, or similar).
+* Exposure to database technologies (SQL or NoSQL) and libraries like SQLAlchemy.
+* Excellent communication skills and a willingness to learn from senior engineers and collaborate with the team.
+* Bachelor’s degree in Computer Science, Engineering, or a related field (or equivalent experience).
+* Experience with version control systems (Git, GitHub, or similar).
+
+  
+
+
+
+Preferred Qualifications
+
+
+* Experience with in\-memory data stores.
+* Familiarity with Node.js or willingness to learn for integrations.
+* Exposure to Docker or other containerization tools.
+* Basic understanding of cloud services (e.g., Azure Storage Blob, AWS, or similar).
+* Interest or prior experience in AI/ML or NLP libraries.
+* Understanding of CI/CD processes and DevOps best practices.
+
+  
+
+
+
+Why Join Us?
+
+
+* Mentorship \& Growth: Work alongside senior developers committed to your professional development.
+* Cutting\-Edge Technologies: Gain exposure to real\-time communication frameworks, containerization, and AI/ML tools.
+* Innovative Culture: Collaborate in a forward\-thinking environment shaping the future of intelligent conversation systems.
+* Hybrid Opportunity: Enjoy flexibility in a mostly remote setting, occasional visits to main offices required.
+
+  
+
+
+
+Location: Remote with some travel for meetings and to offices in Orlando or Deerfield Beach may be required.
+
+  
+
+
+
+Compensation: Competitive salary, along with benefits and opportunities for professional development.
+
+  
+
+
+
+If you’re passionate about learning and contributing to scalable, real\-time Python applications in an AI\-driven environment, we’d love to hear from you. Apply today and start your journey with us!",,,,,,,,,,,,,,
+gd-1009947106417,glassdoor,https://www.glassdoor.co.in/job-listing/j?jl=1009947106417,,Software Engineer I (entry),Jerry,"Palo Alto, CA",,direct_data,yearly,70000.0,110000.0,USD,False,,,organic,recruiting@jerry.ai,"Hi there! If you're looking to make a real\-world impact fast while leveling up your skills in a high\-growth startup, we might be the right place for you!**Why join Jerry?**
+
+
+We’re Jerry, and we’re building the first AI\-powered AllCar™ app to completely rethink what it means to own a car. Car insurance, maintenance, repairs, financing—we’re simplifying it all into one seamless mobile experience. Our users already save over $1,000/year with us, and we’ve grown revenue 60x in the last 5 years.
+
+
+Now we’re scaling from 5M to 50M users, and we need sharp, curious engineers located in the SF area to help us get there.
+
+
+**Here’s what you’ll get:**
+
+
+✅ Impact from Day One — you’ll be writing production code within your first few weeks.
+
+
+✅ Backed and booming — we’ve raised $240M\+ and are cash\-flow positive.
+
+
+✅ Modern tech stack — React, Node, Python, AWS, TypeScript, and more.
+
+
+✅ Mentorship \+ learning — work with top engineers from companies like Nvidia, TikTok, and Cepton.
+
+
+✅ Merit\-based growth — no seniority theater here. You grow fast if you deliver and learn fast.
+
+
+**What you’ll be working on**
+
+
+You’ll join one of our engineering pods (core app, retention, automation) depending on your interests and skills. Every team ships regularly, works closely with product, and contributes to a mission that matters.
+
+
+We don’t expect you to know everything on day one, but we do expect:
+
+* A love for learning
+* Comfort with ambiguity
+* Hustle and curiosity
+* Pride in building high\-quality, user\-first software
+
+**Our stack:**
+
+* Frontend: React, React Native
+* Backend: NodeJS \+ TypeScript
+* Infra: AWS, Go, Python, Docker, CI/CD
+* Data: Redis, Postgres, DynamoDB, Clickhouse
+* AI/ML: Python pipelines, LLM integrations, internal models
+
+
+You don’t need to know it all—but if some of that excites you, let’s talk.
+
+
+**What we’re looking for:**
+
+* Bachelor’s degree in Computer Science, Engineering, or a related field
+* Internship, co\-op, or side project experience is a plus—but not required
+* Eagerness to learn, build, and grow
+
+*While we appreciate your interest and application, only applicants under consideration will be contacted.*
+
+*Jerry.ai is proud to be an Equal Employment Opportunity employer. We prohibit discrimination based on race, religion, color, national origin, sex, pregnancy, reproductive health decisions or related medical conditions, sexual orientation, gender identity, gender expression, age, veteran status, disability, genetic information, or other characteristics protected by applicable local, state or federal laws.*
+
+*Jerry.ai is committed to providing reasonable accommodations for individuals with disabilities in our job application process. If you need assistance or an accommodation due to a disability, please contact us at* *recruiting@jerry.ai*
+
+*The successful candidate’s starting pay will fall within the pay range listed on this job posting, determined based on job\-related factors including, but not limited to, skills, experience, qualifications, work location, and market conditions. Ranges are market\-dependent and may be modified in the future. In addition to base salary, the compensation may include opportunities for equity grants.*
+
+*We offer a comprehensive benefits package to regular employees, including health, dental, and vision coverage, paid time off, paid parental leave, 401(K) plan with employer matching, and wellness benefits, among others. Equity opportunities may also be part of your total rewards package. Part\-time, contract, or freelance roles may not be eligible for certain benefits.*
+
+**About Jerry.ai:**
+
+
+Jerry.ai is America’s first and only super app to radically simplify car ownership. We are redefining how people manage owning a car, one of their most expensive and time\-consuming assets.
+
+
+Backed by artificial intelligence and machine learning, Jerry.ai simplifies and automates owning and maintaining a car while providing personalized services for all car owners' needs. We spend every day innovating and improving our AI\-powered app to provide the best possible experience for our customers. From car insurance and financing to maintenance and safety, Jerry.ai does it all.
+
+
+We are the \#1 rated and most downloaded app in our category with a 4\.7 star rating in the App Store. We have more than 5 million customers — and we’re just getting started.
+
+
+Jerry.ai was founded in 2017 by serial entrepreneurs and has raised more than $240 million in financing.
+
+
+Join our team and work with passionate, curious and egoless people who love solving real\-world problems. Help us build a revolutionary product that’s disrupting a massive market.",,https://www.glassdoor.co.in/Overview/W-EI_IE3856415.htm,https://media.glassdoor.com/sql/3856415/jerry-squareLogo-1621521925324.png,,,,,,,,,,,
+gd-1009946980533,glassdoor,https://www.glassdoor.co.in/job-listing/j?jl=1009946980533,,Junior Software Engineer,Flueid Software Corporation,"Austin, TX",,direct_data,yearly,90000.0,110000.0,USD,False,,,organic,,"Description:
+
+The Junior Software Engineer (Backend) will contribute to the design, development, and maintenance of backend services and APIs that power our core products. This is a hands\-on engineering role where developers own code quality end\-to\-end — including writing automated tests.
+
+
+The ideal candidate has a strong foundation in computer science, is passionate about cloud\-native engineering on AWS, and is eager to learn modern practices such as agentic coding, where AI\-assisted development is an integrated part of daily engineering workflows.
+
+
+While the focus is backend development (TypeScript/Node.js and C\#), there will be opportunities to contribute to frontend features when needed.
+
+**Duties/Responsibilities:**
+
+* Develop, test, and maintain backend services and APIs using TypeScript and C\#.
+* Follow agentic coding practices, including the use of AI coding assistants, structured prompting, and iterative co\-development workflows.
+* Write and maintain automated unit and integration tests; engineers own the full quality lifecycle.
+* Help design and build scalable, secure cloud\-native components on AWS (Lambda, S3, API Gateway, DynamoDB, etc.).
+* Participate in code reviews and incorporate feedback to continuously improve code quality.
+* Collaborate with engineering leadership to refine requirements, scope work, and deliver features reliably.
+* Troubleshoot production systems, resolve defects, and contribute to improving observability and performance.
+* Document APIs, services, and internal tooling to ensure clarity and alignment across teams.
+* Work on occasional frontend tasks (e.g., React or similar) while maintaining a strong backend focus.
+* Participate in team ceremonies (standups, planning, retrospectives) and contribute to process improvements.
+
+
+Requirements:
+
+Education:
+
+* Bachelor’s degree in Computer Science, Computer Engineering, Software Engineering, Information Systems, or a closely related technical major.
+
+
+Technical Skills:
+
+* Solid foundation in programming concepts, OOP, algorithms, and data structures.
+* Experience with or willingness to adopt agentic coding and AI\-assisted development workflows.
+* Working knowledge of backend development using TypeScript or C\#.
+* Understanding of RESTful APIs or backend service development.
+* Familiarity with cloud concepts and the AWS ecosystem.
+* Experience working with version control (Git) and modern engineering practices.
+* Ability to write clean, maintainable, well\-tested code.
+
+
+Professional Skills:
+
+* Strong problem\-solving abilities and eagerness to learn from mentors and teammates.
+* Clear communication skills, especially in a remote\-first environment.
+* Highly organized and able to manage time, tasks, and priorities in a fast\-paced setting.
+* Collaborative mindset with a willingness to ask questions, learn new technologies, and share knowledge.
+
+**Physical Demands:**
+
+* Ability to safely and successfully perform the essential functions consistent with the ADA, FMLA and other federal, state, and local standards, including meeting qualitative and or quantitative productivity standards.
+* Ability to maintain regular, punctual attendance consistent with the ADA, FMLA, and other federal, state and local standards.
+* Regularly required to sit; use hands and fingers to grab, handle, or feel; reach with hands and arms; and communicate or listen. The employee is occasionally required to stand; walk; and stoop, kneel, crouch, or crawl.
+* Constantly operates a computer and other office productivity machinery, such as a calculator, copy machine, and computer printer.
+* The employee may occasionally lift and/or move up to 25 pounds.
+* Specific vision abilities required by this job include close vision, distance vision, and ability to adjust focus.
+* Must be able to talk, listen and speak clearly on the telephone.
+
+  
+
+
+
+**Benefits**
+
+
+As a Junior Software Engineer, you will be eligible for a comprehensive benefits package including:
+
+* Competitive salary
+* Health, dental, and vision insurance – 100% employee coverage
+* Short Term Disability, Long Term Disability and a 50K Term Life policy– employer paid
+* Voluntary Life, Accident Indemnity, Hospital Indemnity and Pet coverage available at a reduced rate
+* Domestic Partner health benefits coverage available
+* 401(k) plan
+* Employer HSA contribution of $600 annually
+* FSA for Dependent Care available
+* Lifestyle Spending Account $30 monthly
+* Flexible Time Off and Sick Time Off (paid)
+* Professional development opportunities
+* Team\-building events and activities
+* Casual dress code and comfortable work environment
+* Remote and in\-office options available
+* We are committed to providing our employees with a work\-life balance, opportunities for growth, and a supportive work environment. Our benefits package reflects this commitment and is designed to meet the diverse needs of our employees.
+
+**About Flueid**
+
+
+At our core, we are a team of experienced professionals who understand the complexities of the real estate industry. We know that every transaction is unique and requires a personalized approach to ensure its success. Our technology platform is designed to help real estate professionals and their clients manage and track every step of the transaction process with ease.
+
+
+Our team is made up of experts in real estate, technology, and customer service, who work tirelessly to provide the best possible experience for our clients. We are constantly updating our platform to ensure that it remains at the cutting edge of the industry and meets the evolving needs of our clients.
+
+
+We are proud to have helped thousands of real estate professionals and their clients achieve their goals through our platform. Whether you are a real estate agent, broker, or investor, we are here to help you navigate the complex world of real estate transactions and achieve success.",,https://www.glassdoor.co.in/Overview/W-EI_IE5913373.htm,https://media.glassdoor.com/sql/5913373/flueid-software-corporation-squarelogo-1646731578478.png,,,,,,,,,,,
+gd-1009947250839,glassdoor,https://www.glassdoor.co.in/job-listing/j?jl=1009947250839,,CIVIL ENGINEERING EXPERT,Handshake AI,,,direct_data,hourly,105.0,105.0,USD,True,,,organic,,"As part of the program, you will contribute to refining and evaluating the capabilities of Large Language Models (LLMs) for high\-stakes business contexts. The Handshake AI Fellowship program operates year\-round, with projects varying by domain.",,https://www.glassdoor.co.in/Overview/W-EI_IE1262074.htm,https://media.glassdoor.com/sql/1262074/handshake-squareLogo-1661805736433.png,,,,,,,,,,,
+gd-1009946270996,glassdoor,https://www.glassdoor.co.in/job-listing/j?jl=1009946270996,,"Full Stack Staff Software Engineer (React/TypeScript, Python)",CVS Health,"Boston, MA",,direct_data,yearly,106605.0,284280.0,USD,False,,,organic,,"At CVS Health, we’re building a world of health around every consumer and surrounding ourselves with dedicated colleagues who are passionate about transforming health care.
+
+
+As the nation’s leading health solutions company, we reach millions of Americans through our local presence, digital channels and more than 300,000 purpose\-driven colleagues – caring for people where, when and how they choose in a way that is uniquely more connected, more convenient and more compassionate. And we do it all with heart, each and every day.
+
+**Position Summary**
+
+
+We are hiring a Full Stack Staff Software Engineer with strong React and Python experience to join our Data Engineering team. You will take a lead role in the end\-to\-end development of a new, critical internal self\-service application. Your work on this software solution will be instrumental in our initiative to modernize how data is accessed and managed, enabling teams across the company to easily work with their own data through the user\-friendly tools you build. This project involves a shift from traditional data handling processes, with your primary focus being creating a robust application that empowers this new approach to data accessibility and decentralized ownership.
+
+**About this Role:**
+
+
+This is a high\-impact, high\-autonomous role is suited for a detail\-oriented and collaborative individual who thrives on ownership, knows how to apply best practices, and can independently design, build, and maintain production\-grade software. While you'll be leveraging your core software engineering expertise, you'll also be at the forefront of our data modernization, gaining deep insights into modern data architectures and practices by building the tools that enable them. You will have access to AI tooling to assist in all aspects of the SDLC.
+
+
+You will build a solution that will provide:
+
+* ***Self\-Service Data Ingestion*** \- You'll empower application teams to register new Kafka topics, update schemas, and ingest data through a UI, reducing lead times from weeks to minutes.
+* ***Automated Monitoring \& Incident Management*** \- You will integrate standardized logging, alerting, and escalation to improve issue resolution and system reliability.
+* ***Data Preview Capabilities*** \- You will enable application engineers to preview how their data will appear in the warehouse during design and before production, allowing for on\-the\-fly redesign if needed.
+
+ **About the Project**: The Data Self\-Service Platform  
+
+The Data Self\-Service Platform initiative addresses critical challenges in our current data operations. Today, data ingestion is often manual and ticket\-driven, leading to delays and limiting self\-service for our application teams. You’ll help build a platform that empowers data owners to ingest, transform, and serve their data — giving them full control and accountability for data quality. This platform will enable data producers and consumers to collaborate efficiently, address issues directly, and streamline testing changes.
+
+
+Key Responsibilities:
+
+
+* Design, develop, and maintain a full\-stack application using React (TypeScript) and Python.
+* Build out frontend interfaces and backend services — including data models, APIs, caching, and observability.
+* Integrate with Kafka\-driven pipelines and the Snowflake data platform.
+* Own the full lifecycle of the application — from architecture and implementation to CI/CD and monitoring.
+* Apply best practices for testing, logging, error handling, and scalability.
+* Contribute to infrastructure automation with Terraform.
+* Leverage Cursor AI, MCPs and other AI tooling for assisted development and code reuse.
+* Mentoring other developers.
+
+ **Required Qualifications**
+
+* 8\+ years’ experience designing and delivering production\-grade full\-stack applications.
+* 6\+ years’ hands\-on experience in React and TypeScript or JavaScript.
+* 5\+ years’ experience programming in Python.
+* 3\+ years’ experience with Kafka or similar event\-streaming platforms.
+* 3\+ years’ experience with containerized development using Docker and deploying through CI/CD pipelines (Azure DevOps/GitHub).
+* 3\+ years’ experience working with relational databases and/or data platforms (Snowflake, SQL Server, Postgres).
+* 2\+ years’ experience working with REST and API development.
+* 2\+ years testing experience — including unit, integration, and mocking frameworks.
+
+ **Preferred Qualifications**
+
+* Experience working with Cursor AI, AI\-enhanced development environments, or modular automation tools like MCPs.
+* Familiarity with Terraform for infrastructure\-as\-code.
+* Exposure to CQRS, Domain\-Driven Design, and MediatR.
+* Knowledge of structured logging, retry policies, and health check integrations.
+* Understanding of security concepts like JWT, Okta, and policy\-based auth.
+* Experience with DBT (Data Build Tool).
+
+ **Education**
+
+* Bachelor of Science in Computer Science or a related field.
+
+**Pay Range**
+
+
+The typical pay range for this role is:
+
+
+$106,605\.00 \- $284,280\.00  
+
+This pay range represents the base hourly rate or base annual full\-time salary for all positions in the job grade within which this position falls. The actual base salary offer will depend on a variety of factors including experience, education, geography and other relevant factors. This position is eligible for a CVS Health bonus, commission or short\-term incentive program in addition to the base pay range listed above. This position also includes an award target in the company’s equity award program.
+
+  
+
+Our people fuel our future. Our teams reflect the customers, patients, members and communities we serve and we are committed to fostering a workplace where every colleague feels valued and that they belong.
+
+**Great benefits for great people**
+
+
+We take pride in our comprehensive and competitive mix of pay and benefits – investing in the physical, emotional and financial wellness of our colleagues and their families to help them be the healthiest they can be. In addition to our competitive wages, our great benefits include:
+
+* **Affordable medical plan options,** a **401(k) plan** (including matching company contributions), and an **employee stock purchase plan**.
+* **No\-cost programs for all colleagues** including wellness screenings, tobacco cessation and weight management programs, confidential counseling and financial coaching.
+* **Benefit solutions that address the different needs and preferences of our colleagues** including paid time off, flexible work schedules, family leave, dependent care resources, colleague assistance programs, tuition assistance, retiree medical access and many other benefits depending on eligibility.
+
+
+For more information, visit https://jobs.cvshealth.com/us/en/benefits
+
+
+We anticipate the application window for this opening will close on: 12/15/2025
+Qualified applicants with arrest or conviction records will be considered for employment in accordance with all federal, state and local laws.",,https://www.glassdoor.co.in/Overview/W-EI_IE437.htm,https://media.glassdoor.com/sql/437/cvs-health-squareLogo-1613508257835.png,,,,,,,,,,,
+gd-1009946671279,glassdoor,https://www.glassdoor.co.in/job-listing/j?jl=1009946671279,,AI Audio Engineer (DiffSinger / Singing Synthesis),Turing Opera Workshop,,,direct_data,hourly,80.0,150.0,USD,True,,,organic,,"**The Role**  
+Cantai is developing a high\-fidelity **DiffSinger** engine. We need an end\-to\-end AI Audio Specialist to take raw vocal recordings and turn them into production\-ready singing voice models.
+
+You will be responsible for **executing the full technical pipeline**—from data strategy to final acoustic model inference—ensuring state\-of\-the\-art output.
+
+**Core Responsibilities**
+
+* **End\-to\-End Pipeline Execution:** Independently manage the full workflow: Data Prep →→ Training →→ Inference.
+* **Advanced Data Engineering:** Implement\[2] and refine automated alignment tools (e.g., Montreal Forced Aligner) to label phonemes, pitch, and duration. Note: This role requires hands\-on verification of data accuracy.
+* **Model Training:** Train and fine\-tune **DiffSinger** acoustic models and variance adaptors for specific target voices.
+* **Vocoder Integration:** Train or adapt neural vocoders (HiFi\-GAN, NSF, etc.) for maximum audio fidelity.
+* **Optimization:** Troubleshoot common synthesis issues (slurring, robotic pitch, metallic artifacts) and iterate on hyperparameters to fix them.
+
+**Requirements**
+
+* **Proven DiffSinger Experience:** You must have successfully trained DiffSinger (or very similar SVS architectures) before.
+* **Data Processing Mastery:** Expert proficiency with Python, MFA (Montreal Forced Aligner), Praat, and phoneme dictionaries.
+* **Deep Learning Stack:** Strong grasp of PyTorch and GPU environment management.
+* **Audio Domain Knowledge:** You understand DSP basics (spectrograms, mel\-bands, F0 estimation) and musical concepts (pitch, vibrato, timing).
+
+**Bonus Points**
+
+* Experience with OpenVPI, NNSVS, or Fish Diffusion.
+* Background in music theory or vocal pedagogy.
+* Experience exporting models for production (ONNX/C\+\+).
+
+Job Types: Full\-time, Contract
+
+Pay: $80\.00 \- $150\.00 per hour
+
+Expected hours: 30 – 40 per week
+
+Benefits:
+
+* Flexible schedule
+* Professional development assistance
+
+Work Location: Remote",,,,,,,,,,,,,,
+gd-1009946598083,glassdoor,https://www.glassdoor.co.in/job-listing/j?jl=1009946598083,,Senior AI Engineer,Nexxa.AI,"Sunnyvale, CA",,direct_data,yearly,130680.0,193034.0,USD,False,,,organic,,"**About Us:** Nexxa.AI specializes in automating industrial operations through advanced Agentic AI solutions. Our mission is to revolutionize heavy industries by providing cognitive, resilient, and end\-to\-end automation that seamlessly integrates with existing technologies. By addressing challenges such as legacy system dependencies, workforce transitions, and rising operational costs, we empower businesses to achieve immediate efficiency and profitability.
+
+**About the Role**
+
+
+We are seeking a highly skilled **Senior Generative AI Engineer** with deep expertise in **computer vision**, **foundation models**, and **applied machine learning**. In this role, you will architect, build, and deploy advanced GenAI and CV solutions for real\-world customer problems—spanning multimodal perception, image/video generation, fine\-tuning vision\-language models, and building scalable inference pipelines.
+
+
+You will work cross\-functionally with product, engineering, and customer\-facing teams to deliver technically sound, production\-grade AI systems. This role is ideal for someone who thrives in fast\-moving environments, loves solving ambiguous problems end\-to\-end, and is passionate about pushing the boundaries of modern AI.
+
+**Key Responsibilities**
+
+* Design, develop, and deploy **Generative AI** models and pipelines for computer vision tasks (e.g., image/video generation, diffusion models, VLMs, image retrieval, scene understanding).
+* Build and optimize **large\-scale ML training workflows** including data pipelines, augmentation strategies, evaluation tooling, and model optimization.
+* Fine\-tune and adapt **vision, multimodal, or foundation models**
+* Develop scalable **inference systems** for real\-time or high\-throughput computer vision applications.
+* Collaborate with product, solutions, and engineering teams to translate ambiguous customer requirements into robust technical solutions.
+* Conduct rapid prototyping for proof\-of\-concept and customer demos; iterate quickly with an eye for production implementations.
+* Own the end\-to\-end lifecycle of GenAI/CV features: ideation, architecture, implementation, evaluation, deployment, and monitoring.
+* Stay current with cutting\-edge research in generative modeling, representation learning, and multimodal systems; evaluate adoption into the roadmap.
+* Provide mentorship and technical leadership to junior ML engineers and cross\-functional contributors.
+
+**Required Qualifications**
+
+* 5–8\+ years of industry experience in **machine learning**, with **specialization in computer vision**.
+* Strong expertise with **Generative AI techniques**, such as:
+
+
+	+ Diffusion models
+	+ GANs
+	+ Vision Transformers
+	+ Multimodal (vision\-language) architectures
+* Hands\-on experience with **fine\-tuning and training large vision or multimodal models** using PyTorch, JAX, or TensorFlow.
+* Advanced skills in **Python**, ML frameworks (PyTorch preferred), and modern model training toolchains (e.g., Ray, Lightning, DeepSpeed, HuggingFace).
+* Proven experience building and shipping **production ML/CV systems** at scale.
+* Strong understanding of:
+
+
+	+ Computer vision algorithms
+	+ Representation learning
+	+ Training optimization
+	+ Retrieval/embedding systems
+	+ Data curation and labeling strategies
+* Experience working in customer\-facing or solution\-oriented environments (e.g., consulting, forward\-deployed engineering, technical pre\-sales, applied research).
+* Excellent communication and cross\-functional collaboration skills.
+
+**Preferred Qualifications**
+
+* Experience deploying CV/GenAI workloads on **cloud platforms** (AWS/Azure/GCP) or edge devices.
+* Familiarity with **MLOps practices**, including monitoring, evaluation, CI/CD for ML, and model governance.
+* Background in **applied research**, publications, or contributions to open\-source projects in AI/ML.
+* Experience optimizing models for latency, throughput, or resource\-constrained environments (quantization, distillation, pruning).
+
+**Why Join** **Nexxa.AI****?**
+
+* **Innovative Environment:** Play a critical role in transforming heavy industries through groundbreaking AI and automation technologies.
+* **Collaborative Culture:** Be part of a team that values innovation, discipline, and continuous improvement.
+* **Professional Growth:** Benefit from significant opportunities for career development and advancement.
+* **Competitive Compensation:** Enjoy a comprehensive salary and equity package reflective of your expertise and contributions.
+
+**If you're passionate about development and eager to shape the infrastructure powering advanced AI solutions, we'd love to connect.**",,https://www.glassdoor.co.in/Overview/W-EI_IE9097410.htm,https://media.glassdoor.com/sql/9097410/nexxa-squarelogo-1707905013829.png,,,,,,,,,,,
+gd-1009947102942,glassdoor,https://www.glassdoor.co.in/job-listing/j?jl=1009947102942,,IT Systems Engineer - East,Omada Health,United States,,direct_data,yearly,105600.0,138000.0,USD,False,,,organic,,"**Candidates must reside on the East Coast in the U.S.**
+
+
+
+Omada Health is on a mission to inspire and engage people in lifelong health, one step at a time.
+
+
+**Job Overview:**
+-----------------
+
+
+
+As an IT Systems Engineer, you will play a critical role in supporting and improving the day\-to\-day technology experience for Omadans. You will contribute to the planning, implementation, and operation of systems that enable secure, efficient, and user\-friendly internal workflows across the company. Your remit includes hands\-on support for endpoints, SaaS applications, systems automation, and compliance\-aligned IT processes.
+
+
+
+This role is ideal for someone who is energized by problem\-solving, thrives in a fast\-paced environment, and takes initiative to improve how things work. You'll leverage a deep understanding of endpoint and SaaS management tools to streamline support operations, ensure compliance, and enhance employee experience. You'll also bring a user\-first mindset and contribute to ongoing automation and standardization efforts to support scale.
+
+
+
+You will work closely with IT Support, Infrastructure, Security, Compliance, and cross\-functional teams to continuously improve how IT enables productivity at Omada.
+
+  
+
+
+**IT Support \& Operations:**
+-----------------------------
+
+
+* Provide high\-quality autonomous technical support across macOS, Windows, and SaaS environments, meeting or exceeding established SLAs and CSAT expectations, leveraging complete knowledge and specialization in our core systems.
+* Independently process and manage tickets through their lifecycle, including triage, resolution, documentation, and escalation, while adhering to established internal SLAs.
+* Execute new hire end\-to\-end onboarding and offboarding processes, including hardware provisioning, account setup, understanding our established Tines automation workflows, Zero Touch deployment using JAMF Pro and Workspace ONE, and setting high expectations for new hire experiences at their start.
+* Support and manage a fleet of devices, understanding policies, configuration profiles, and administrative managed actions through MDM tools such as JAMF, Workspace ONE, and Meraki MDM.
+* Manage user access and licensing for SaaS applications including Google Workspace, Okta, Slack, Zoom, O365, Zendesk, Asana, Adobe, 8x8, and others.
+* Support and manage physical inventory, on\-location, 1\-2 times a week, helping to facilitate ongoing inventory reconciliation as well as pre\-hire machine builds if necessary.
+* Perform endpoint and asset lifecycle management in Oomnitza—ensuring real\-time data accuracy and process compliance, while adhering to established procedures and producing status\-based metrics on a cadenced reporting schedule to retain a high level of accuracy.
+* Oversee the complete lifecycle of maintaining deployable machine inventory, including asset inventory reporting, procurement of computers, receival processing, and ensuring the orderly organization and cleanliness of our Oyster Point office to maintain a functional and efficient workspace for deployment.
+* Creating, updating, and maintaining clear, comprehensive, and accessible technical documentation that promotes self\-service, supports compliance requirements, enables team members, while independently identifying improvements to existing documentation practices.
+* Support audit\-readiness activities by following proper IT operational processes and contributing to internal controls (e.g., access reviews, hardware tracking, license usage reviews).
+* Identify opportunities for automation, leveraging deep technical knowledge and analytical skills to evaluate existing workflows, identify inefficiencies, and contribute to Tines\-based automation solutions that enhance scalability and promote streamlining repetitive tasks.
+* Collaborate with peers and cross\-functional partners to actively support operational initiatives, effectively communicate shared objectives, and promote system enhancements, fostering trust and driving towards aligned interests.
+* Contribute to team projects, learning and iterating with technical proficiency and minimal oversight.
+* Participate in cross\-functional onboarding efforts with HR, Recruiting, and Departmental Leads for large\-scale hiring events (e.g., Health Coach waves), ensuring seamless Day 1 experience
+
+**What Great Looks Like:**
+--------------------------
+
+
+* Consistently delivers high\-quality IT support by applying deep knowledge of endpoint management, access provisioning, and SaaS administration.
+* Demonstrates ownership by proactively identifying and solving user issues with empathy, timeliness, and clarity.
+* Plays a key role in onboarding initiatives by coordinating closely with Recruiting and P\&C to ensure new hires are set up for success from Day 1, leveraging established processes.
+* Contributes meaningfully to audit\-aligned practices, such as accurate asset tracking, access control hygiene, and compliance documentation.
+* Takes ownership of the asset inventory management platform, leveraging established processes to maintain a high level of accuracy and maintaining a structured, tidy, and detailed space, both physically and digitally, to track the entirety of supported computing equipment.
+* Drives improvements to IT workflows through an understanding of automation (e.g., Tines, Oomnitza Workflows, Zendesk automations) and process refinement.
+* Collaborates cross\-functionally with our Security, HR, Recruiting, and Infrastructure teams, communicating clearly with technical and non\-technical stakeholders.
+* Balances day\-to\-day support work with small project execution and proactive system maintenance.
+* Demonstrates a growth mindset, continuously learning new tools and technologies while sharing knowledge with peers.
+* Applies an AI\-first mindset to explore opportunities for efficiency and enhanced user support experiences.
+
+**Candidate Requirements:**
+---------------------------
+
+
+* 5\+ years of relevant IT experience with a strong track record of delivering hands\-on support and systems management in a modern, fast\-paced environment.
+* Deep expertise with macOS and Windows endpoint administration using JAMF Pro and Workspace ONE (or equivalent).
+* Strong experience supporting SaaS applications such as Google Workspace, Okta, Slack, Zoom, Office 365, and Zendesk.
+* Familiarity with IT asset management platforms (e.g., Oomnitza) and best practices for hardware lifecycle tracking and reconciliation.
+* Experience with identity and access management principles, including account provisioning/deprovisioning and audit\-aligned access reviews.
+* Solid understanding of network fundamentals and the ability to troubleshoot basic LAN/WAN/WiFi issues (Meraki experience is a plus).
+* Demonstrated ability to contribute to IT documentation, process improvements, and knowledge\-sharing within a team environment.
+* Proven experience working with or supporting IT automation tools (e.g., Tines, scripting, or RPA platforms) to drive operational efficiencies.
+* Experience working in or supporting compliance\-driven environments (e.g., HIPAA, SOC 2, HITRUST, or SOX).
+* Strong communication and interpersonal skills; able to explain complex technical concepts to non\-technical stakeholders with clarity.
+* Detail\-oriented, organized, and self\-motivated, with a strong sense of ownership and follow\-through.
+* Comfortable navigating ambiguity and solving problems independently using analytical thinking and sound judgment.
+* Bachelor's degree in Information Technology or a related field, or equivalent experience.
+
+
+**Benefits:**
+
+  
+
+* Competitive salary with generous annual cash bonus
+* Equity Grants
+* Remote first work from home culture
+* Flexible vacation to help you rest, recharge, and connect with loved ones
+* Generous parental leave
+* Health, dental, and vision insurance (and above market employer contributions)
+* 401k retirement savings plan
+* Lifestyle Spending Account (LSA)
+* Mental Health Support Solutions
+* ...and more!
+
+
+It takes a village to change health care. As we build together toward our mission, we strive to embody the following values in our day\-to\-day work. We hope these hold meaning for you as well as you consider Omada!
+
+
+* **Cultivate Trust.** We actively cultivate trust through attentive listening and supporting one another. We respectfully provide and are open to receiving candid feedback.
+* **Seek Context.** We ask to understand and we build connections. We do our research up front to move faster down the road.
+* **Act Boldly.** We innovate daily to solve problems, improve processes, and find new opportunities for our members and customers.
+* **Deliver Results.** We reward impact above output. We set a high bar, we're not afraid to fail, and we take pride in our work.
+* **Succeed Together.** We prioritize Omada's progress above team or individual. We have fun as we get stuff done, and we celebrate together.
+* **Remember Why We're Here.** We push through the challenges of changing health care because we know the destination is worth it.
+  
+
+
+**About Omada Health:** Omada Health is a between\-visit healthcare provider that addresses lifestyle and behavior change elements for individuals managing chronic conditions. Omada's multi\-condition platform treats diabetes, hypertension, prediabetes, musculoskeletal, and GLP\-1 management. With insights from connected devices and AI\-supported tools, Omada care teams deliver care that is rooted in evidence and unique to every member, unlocking results at scale. With more than a decade of experience and data, and 29 peer\-reviewed publications showcasing clinical and economic proof points, Omada's approach is designed to improve health outcomes and contain costs. Our customers include health plans, pharmacy benefit managers, health systems, and employers ranging from small businesses to Fortune 500s. At Omada, we aim to inspire and empower people to make lasting health changes on their own terms. For more information, visit: https://www.omadahealth.com/
+
+
+
+Omada is thrilled to share that we've been certified as a Great Place to Work! Please click here for more information.
+
+
+
+We carefully hire the best talent we can find, which means actively seeking diversity of beliefs, backgrounds, education, and ways of thinking. We strive to build an inclusive culture where differences are celebrated and leveraged to inform better design and business decisions. Omada is proud to be an equal opportunity workplace and affirmative action employer. We are committed to equal opportunity regardless of race, color, religion, sex, gender identity, national origin, ancestry, citizenship, age, physical or mental disability, legally protected medical condition, family care status, military or veteran status, marital status, domestic partner status, sexual orientation, or any other basis protected by local, state, or federal laws.
+
+
+
+Below is a summary of salary ranges for this role in the following geographies:
+
+
+
+California, New York State and Washington State Base Compensation Ranges: $110,400 \- $138,000\*, Colorado Base Compensation Ranges: $105,600 \- $132,000\*. Other states may vary.
+
+
+
+This role is also eligible for participation in annual cash bonus and equity grants.
+
+
+* The actual offer, including the compensation package, is determined based on multiple factors, such as the candidate's skills and experience, and other business considerations.
+
+
+
+Please click here for more information on our Candidate Privacy Notice.",,https://www.glassdoor.co.in/Overview/W-EI_IE816614.htm,https://media.glassdoor.com/sql/816614/omada-health-squareLogo-1703781004783.png,,,,,,,,,,,
+gd-1009946850039,glassdoor,https://www.glassdoor.co.in/job-listing/j?jl=1009946850039,,Automation Engineer,GoodLeap,,,direct_data,yearly,121000.0,141000.0,USD,True,,,organic,,"About GoodLeap:
+GoodLeap is a technology company delivering best\-in\-class financing and software products for sustainable solutions, from solar panels and batteries to energy\-efficient HVAC, heat pumps, roofing, windows, and more. Over 1 million homeowners have benefited from our simple, fast, and frictionless technology that makes the adoption of these products more affordable, accessible, and easier to understand. Thousands of professionals deploying home efficiency and solar solutions rely on GoodLeap’s proprietary, AI\-powered applications and developer tools to drive more transparent customer communication, deeper business intelligence, and streamlined payment and operations. Our platform has led to more than $30 billion in financing for sustainable solutions since 2018\.
+
+GoodLeap is also proud to support our award\-winning nonprofit, GivePower, which is building and deploying life\-saving water and clean electricity systems, changing the lives of more than 1\.6 million people across Africa, Asia, and South America.  
+
+We are looking for a passionate and detail\-oriented Software Engineer with experience in AI\-powered automation to help streamline operations across various teams at Goodleap. In this role, you will design, build, and maintain automation workflows that leverage cutting\-edge tools and services such as Zapier, N8N, Atlassian JSM, Slack and Zoom automation, AWS services, and more. You’ll bring efficiency and intelligence into day\-to\-day processes by applying modern automation practices and integrating AI\-driven features provided by these platforms.  
+
+The ideal candidate will have a strong foundation in scripting and software systems, hands\-on experience with automation tools, and a mindset for continuous improvement. You will collaborate closely with cross\-functional stakeholders to identify opportunities, design robust solutions, and implement automation that reduces manual effort and enhances productivity.### **Essential Job Duties and Responsibilities**
+
+* Design, develop, and maintain automation workflows using tools like Zapier, N8N, Atlassian JSM, Slack and Zoom apps, and AWS Lambda.
+* Evaluate and integrate AI\-powered features of automation platforms to intelligently route, prioritize, and respond to workflows.
+* Partner with internal teams (engineering, operations, support, product) to identify repetitive processes and implement scalable, reliable automation solutions.
+* Build and maintain dashboards or monitoring solutions to track automation performance and health.
+* Write custom scripts using JavaScript, Python, or other suitable languages to extend automation capabilities.
+* Contribute to the documentation and best practices of automation strategies at Goodleap.
+* Collaborate with security and infrastructure teams to ensure automations comply with enterprise standards.
+
+### **Required Skills, Knowledge, and Abilities**
+
+* 3\+ years of software engineering or technical automation experience.
+* Proficiency in scripting (e.g., JavaScript, Python, TypeScript).
+* Hands\-on experience with one or more automation platforms such as Zapier, N8N, Workato, or similar.
+* Familiarity with cloud platforms like AWS (especially Lambda, S3, Step Functions).
+* Experience integrating APIs and webhooks for automation purposes.
+* Strong understanding of system design, modular architecture, and debugging.
+* Effective communicator with strong collaboration and problem\-solving skills.
+
+  
+
+Bonus Points* Certifications in relevant platforms (e.g., Zapier Expert, AWS Certified Developer).
+* Experience automating tasks in Slack, Zoom, Atlassian tools, or Salesforce.
+* Exposure to AI/ML\-based automation tools or low\-code platforms with AI integrations.
+* Experience working in fintech, SaaS, or highly regulated industries.
+* Familiarity with Git\-based workflows and CI/CD pipelines.
+
+  
+
+In addition to the above salary, this role may be eligible for a bonus.**Additional Information Regarding Job Duties and Job Descriptions:**  
+
+Job duties include additional responsibilities as assigned by one's supervisor or other managers related to the position/department. This job description is meant to describe the general nature and level of work being performed; it is not intended to be construed as an exhaustive list of all responsibilities, duties and other skills required for the position. The Company reserves the right at any time with or without notice to alter or change job responsibilities, reassign or transfer job position or assign additional job responsibilities, subject to applicable law. The Company shall provide reasonable accommodations of known disabilities to enable a qualified applicant or employee to apply for employment, perform the essential functions of the job, or enjoy the benefits and privileges of employment as required by the law. **If you are an extraordinary professional who thrives in a collaborative work culture and values a rewarding career, then we want to work with you! Apply today!**  
+
+We are committed to protecting your privacy. To learn more about how we collect, use, and safeguard your personal information during the application process, please review our **Employment Privacy Policy** and **Recruiting Policy on AI**.
+
+We may use artificial intelligence (AI) tools to support parts of the hiring process, such as reviewing applications, analyzing resumes, or assessing responses. These tools assist our recruitment team but do not replace human judgment. Final hiring decisions are ultimately made by humans. If you would like more information about how your data is processed, please contact us.",,https://www.glassdoor.co.in/Overview/W-EI_IE1643687.htm,https://media.glassdoor.com/sql/1643687/loanpal-squareLogo-1622639065079.png,,,,,,,,,,,
+in-3fa0672b5bd787c4,indeed,https://in.indeed.com/viewjob?jk=3fa0672b5bd787c4,http://in.indeed.com/job/lead-aiml-developer-3fa0672b5bd787c4,Lead AI/ML Developer,Sarvavyapt Technology,"Remote, IN",fulltime,,,,,,True,,,,,"Lead ML Engineer
+
+Experience – 7\+ Years
+
+Work Mode \- Remote
+
+Core responsibilities
+
+· Team leadership: Lead and mentor a team of ML engineers, providing technical guidance and fostering a culture of excellence.
+
+· Architecture and strategy: Design and implement scalable, high\-throughput ML architectures. Develop and drive the technical strategy and roadmap for AI initiatives.
+
+· Model development and deployment: Oversee the development and deployment of ML models into production, transforming data science prototypes into robust, scalable applications.
+
+· Production and operations: Ensure the reliable operation of ML systems in production. This includes setting up infrastructure, managing monitoring, and implementing retraining strategies.
+
+· Cross\-functional collaboration: Work closely with data scientists, product managers, and other engineers to align ML solutions with business goals.
+
+· Innovation and best practices: Drive research and innovation, stay current with the latest developments in ML/AI, and establish best practices for model development, deployment, and governance.
+
+· Technical guidance: Provide technical leadership on complex projects and help resolve technical challenges for the team.
+
+Required skills and qualifications
+
+· Technical proficiency: Strong hands\-on experience with ML frameworks (e.g., TensorFlow, PyTorch), software engineering, and building production\-level systems.
+
+· Programming skills: Proficiency in one or more programming languages like Python, Java, C\+\+, or Go.
+
+· Cloud and MLOps: Experience with cloud platforms, distributed systems, and MLOps tools (e.g., Docker, Kubernetes).
+
+· Data and architecture: Deep understanding of data pipelines, feature engineering, and enterprise\-scale ML architecture.
+
+2 / 2
+
+· Leadership and communication: Ability to lead technical teams, mentor junior engineers, and communicate complex concepts to both technical and non\-technical stakeholders.
+
+· Problem\-solving: Strong analytical and problem\-solving skills to tackle complex technical challenges.
+
+Job Type: Full\-time
+
+Pay: ₹80,000\.00 \- ₹95,000\.00 per month
+
+Experience:
+
+* Machine learning: 7 years (Required)
+
+Work Location: Remote",,https://in.indeed.com/cmp/Sarvavyapt-Technology,,,,,,,,,,,,
+in-987baaea657c3a95,indeed,https://in.indeed.com/viewjob?jk=987baaea657c3a95,http://in.indeed.com/job/full-stack-web-developer-lead-987baaea657c3a95,Full Stack Web Developer Lead,Arrivago,"KL, IN",fulltime,,,,,,False,,,,,"The Full Stack Lead will be responsible for leading end\-to\-end development of complex applications across E\-commerce, SaaS, CRM, CMS platforms, and other custom\-built applications. This role demands strong ownership, hands\-on development capabilities, leadership skills, and the ability to work closely with Project Managers, UI/UX teams, and cloud/DevOps teams to deliver scalable, high\-performance solutions.
+
+The ideal candidate is a highly skilled engineer who can think architecture\-first, write clean and optimized code, guide junior developers, and ensure timely, high\-quality project delivery.
+
+⸻
+
+Key Responsibilities
+
+1\. Full Stack Development \& Leadership
+
+* Lead the development of scalable and high\-performance applications using ReactJS, NextJS, NodeJS, ExpressJS, NestJS, and related frameworks.
+* Build advanced UI components, reusable modules, and custom libraries.
+* Design, build, and integrate backend services, microservices, and secure APIs.
+* Provide architectural guidance and design review for complex modules.
+* Own end\-to\-end technical delivery—coding, debugging, testing, and optimization.
+
+2\. Application Architecture \& Logic Building
+
+* Architect solutions across E\-commerce, SaaS products, CRM systems, CMS websites (Strapi), workflow automation, and custom platforms.
+* Define coding standards, best practices, and development workflows.
+* Troubleshoot performance issues and ensure a bug\-free, scalable delivery.
+* Build advanced application logic, workflows, and integrations as required.
+
+3\. Cloud, DevOps \& Integrations
+
+* Work closely with the Cloud \& Infrastructure team for deployments on AWS / Azure / GCP / OCI.
+* Hands\-on in writing deployment scripts, environment setup, and version control.
+* Understanding of CI/CD pipelines, containers, and microservices is preferred.
+* Collaborate to ensure applications are optimized for security, cost, and performance.
+
+4\. API Development, Scripting \& AI Integration
+
+* Build and consume REST APIs, perform API versioning, and optimize endpoints.
+* Write automation scripts using Python for data processing, tasks, or backend integrations.
+* Integrate AI tools, APIs, and third\-party services (OpenAI, cloud AI services, vector DBs, etc.).
+* Ensure smooth data flow between client, server, and cloud environments.
+
+5\. Database Design \& Management
+
+* Hands\-on experience in MySQL, PostgreSQL, MongoDB, and ORM frameworks.
+* Create optimized schemas, stored procedures, indexing, and query optimization.
+* Manage data migrations, database versioning, and performance tuning.
+
+6\. Team Collaboration \& Project Execution
+
+* Lead a small to medium\-sized development team, mentor junior engineers.
+* Work closely with Project Managers to plan sprints, track progress, and meet timelines.
+* Conduct code reviews, resolve blockers, and ensure quality delivery.
+* Coordinate with QA teams to ensure efficient testing and defect resolution.
+
+Required Technical Skills
+
+Frontend
+
+* ReactJS, NextJS, Redux/Context API, Material UI/TailwindCSS
+* Strong knowledge of responsive UI development
+* Familiarity with 3JS or WebGL for 3D elements is an added advantage
+
+Backend
+
+* NodeJS, ExpressJS, NestJS, REST APIs
+* Experience building secure, scalable, modular backend services
+
+Frameworks \& Tools
+
+* Strapi CMS, E\-commerce frameworks, integrations
+* Python scripting and AI/ML tools (preferred)
+
+Databases
+
+* MySQL, PostgreSQL, MongoDB (mandatory)
+
+Cloud \& DevOps (Preferred)
+
+* AWS / Azure / GCP / OCI exposure
+* CI/CD, Docker, Kubernetes (good to have)
+
+Key Soft Skills
+
+* Strong analytical and problem\-solving ability
+* Excellent communication and stakeholder management
+* Ability to handle pressure, manage multiple projects, and deliver on tight timelines
+* Leadership mindset with the ability to mentor and guide a team
+* Sense of ownership, accountability, and quality orientation
+
+Experience \& Qualification
+
+* 5–10 years of hands\-on full stack development experience
+* 2\+ years of leading a development team or working as a technical lead
+* Proven experience working on E\-commerce, CRM, SaaS, and CMS platforms
+* Bachelor’s or Master’s in Computer Science, IT, Engineering, or a related discipline
+
+**Experience Requirement** We are seeking candidates with a **minimum of 6 years of hands\-on experience in full stack development**, including at least 2 years in a leadership role. This position requires deep technical expertise and practical exposure across the stack. **If you meet these criteria, we encourage you to apply.**
+
+Job Type: Full\-time
+
+Pay: ₹100,000\.00 \- ₹150,000\.00 per month
+
+Work Location: In person",,https://in.indeed.com/cmp/Arrivago,,,,,,,,,,,,
+in-7392bd1c63faa31f,indeed,https://in.indeed.com/viewjob?jk=7392bd1c63faa31f,http://in.indeed.com/job/gen-ai-engineer4yearspune-7392bd1c63faa31f,Gen AI Engineer/4+years/Pune,SAPLING INFOSYSTEMS,"MH, IN",fulltime,,,,,,False,,,,,"**Job Description – Gen AI Engineer**
+
+**Must Have:**
+
+Overall 4\+ years of experience in **AI/ML solution** development, including hands\-on work on at least one production\-grade **Gen AI** use case.
+
+Strong practical experience in **Gen AI solution** development, particularly in **RAG\-based** or Agentic implementations for global customers.
+
+Exposure to **Agentic AI** concepts and Knowledge of using Agentic frameworks such as LangGraph or others.
+
+Hands\-on experience with open\-source **LLMs** (e.g., Llama, GPT\-OSS) and multimodal models.
+
+Strong understanding of Evaluating and Refining Gen AI Solution performance.
+
+Strong analytical, debugging, and problem\-solving skills
+
+**Good to Have:**
+
+Experience with cloud platforms (AWS, Azure, or GCP) for AI solution deployments.
+
+Familiarity with DevOps, CI/CD for Gen AI solution deployment.
+
+Understanding of various RAG methodologies, Query Transformation, Prompt Optimization techniques.
+
+Awareness of LLM Guardrails, Best practices in enterprise environments.
+
+Job Type: Full\-time
+
+Pay: ₹1,200,000\.00 \- ₹1,400,000\.00 per year
+
+Work Location: In person",,https://in.indeed.com/cmp/Sapling-Infosystems,,,,,,,,,,,,
+in-11a77175967283e5,indeed,https://in.indeed.com/viewjob?jk=11a77175967283e5,http://in.indeed.com/job/senior-aiml-engineer-11a77175967283e5,Senior AI/ML Engineer,Samyak Infotech Pvt. Ltd,"GJ, IN",fulltime,,,,,,False,,,,,"As Machine Learning Engineer, you’ll be applying your expertise to help us develop a world\-leading capability in this exciting and challenging domain. You will be responsible for contributing to the design, development, deployment, testing, maintenance and enhancement of ML software solutions.
+
+**Primary responsibilities:**
+
+1\. Applying machine learning, deep learning, and signal processing on large datasets (Audio, sensors, images, videos, text) to develop models.
+
+2\. Architecting large scale data analytics / modeling systems.
+
+3\. Designing and programming machine learning methods and integrating them into our ML framework / pipeline.
+
+4\. Work closely with data scientists/analyst to collaborate and support the development of ML data pipelines, platforms and infrastructure
+
+5\. Evaluate and validate the analysis with statistical methods. Also presenting this in a lucid form to people not familiar with the domain of data science / computer science.
+
+Creation of microservices and APIs for serving ML models and ML services
+
+7\. Evaluating new machine learning methods and adopting them for our purposes.
+
+8\. Feature engineering to add new features that improve model performance.
+
+**Required skills:**
+
+1\. Background and knowledge of recent advances in machine learning, deep learning, natural language processing, and/or image/signal/video processing with 3\+ years of professional work experience working on real\-world applications.
+
+2\. Strong programming background, e.g. Python, Pytorch, MATLAB, C/C\+\+, Java, and knowledge of software engineering concepts (OOP, design patterns).
+
+3\. Knowledge of machine learning libraries Tensorflow, Keras, scikit\-learn, pyTorch,
+
+4\. Excellent mathematical and skills and background, e.g. accuracy, significance tests, visualization, advanced probability concepts
+
+5\. Architecting and implementing end\-to\-end solutions for accelerating experimentation and model building
+
+6\. Working knowledge of a variety of machine learning techniques (clustering, decision tree learning, artificial neural networks, etc.)
+
+7\. Ability to perform both independent and collaborative research.
+
+8\. Excellent written and spoken communication skills.
+
+**Preferred qualification and experience:** 
+
+B.E.\\B. Tech\\B.S. candidates' entries with 3\+ years of experience in the aforementioned fields will be considered.
+
+M.E.\\M.S.\\M. Tech\\PhD preferably in fields related to Computer Science with experience in machine learning, image and signal processing, or statistics preferred.
+
+Job Types: Full\-time, Permanent
+
+Pay: ₹668,717\.16 \- ₹1,944,863\.46 per year
+
+Benefits:
+
+* Flexible schedule
+* Paid sick time
+* Paid time off
+
+Ability to commute/relocate:
+
+* Naranpura, Ahmedabad, Gujarat: Reliably commute or planning to relocate before starting work (Preferred)
+
+Experience:
+
+* AI/ML: 3 years (Required)
+
+Work Location: In person",,https://in.indeed.com/cmp/Samyak-Infotech-Pvt.-Ltd,https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/a770b113168e5bf242bb88b8ecf50623,,,,,,,,,,,
+in-c0c62f7f93b64b38,indeed,https://in.indeed.com/viewjob?jk=c0c62f7f93b64b38,http://in.indeed.com/job/servicenow-ai-developer-c0c62f7f93b64b38,Servicenow AI Developer,ElementSkill,"Remote, IN",fulltime,,,,,,True,,,,,"We're looking for talented ServiceNow AI Engineers to join our clients' team, a leading global ServiceNow partner known for driving enterprise automation and AI\-powered digital transformation.
+
+If you're passionate about building intelligent workflows, integrating AI capabilities, and working on large\-scale ServiceNow implementations, this could be a great fit for you.
+
+**Skillset: Now Assist, Custom App integrations, Flow Designer, UI Builder and Predictive Intelligence.**
+
+**Key Responsibilities :**
+
+\- Design, develop, and implement AI\-driven workflows and automation within the ServiceNow platform.  
+\- Work across ServiceNow modules such as **ITSM, ITOM, HRSD, or CSM, integrating AI and analytics for improved efficiency.**  
+\- Configure and customize the platform using Business Rules, Client Scripts, **UI Builder**, and Scripted REST APIs.  
+\- Integrate external systems using REST/SOAP APIs, mid servers, and cloud\-to\-cloud connections.  
+\- Implement and optimise Virtual Agent, **Predictive Intelligence**, and Performance Analytics features.  
+\- Collaborate with stakeholders and technical teams to deliver scalable, high\-performance ServiceNow solutions.
+
+**Required Skills :**
+
+\- **3\+ years of hands\-on experience** in ServiceNow development, customisation, and implementation.  
+\- Solid understanding of ServiceNow AI capabilities, Virtual Agent, Predictive Intelligence, Performance Analytics, or **Now Assist**.  
+\- Proficiency in JavaScript, Glide scripting, Flow Designer, and IntegrationHub.  
+\- Experience with REST/SOAP\-based integrations and data migration.  
+\- Strong understanding of ITSM and ITOM processes and configuration.
+
+**Good to Have :**
+
+\- ServiceNow CSA, CAD, or ITIL Foundation certification.  
+\- Exposure to Agentic AI / Now Assist implementations.  
+\- Prior experience working with global clients in an Agile setup.
+
+Job Types: Full\-time, Permanent
+
+Pay: ₹1,700,000\.00 \- ₹2,500,000\.00 per year
+
+Benefits:
+
+* Paid sick time
+* Provident Fund
+* Work from home
+
+Application Question(s):
+
+* What is your total work experience in Servicenow Development?
+* What is your Current CTC?
+* What is your Expected CTC?
+* What is your Notice period?
+
+Experience:
+
+* ServiceNow: 3 years (Required)
+* now Assist: 1 year (Required)
+* Flow Designer: 1 year (Required)
+* Custom App Integration: 1 year (Required)
+* UI Builder: 1 year (Required)
+
+Work Location: Remote",,https://in.indeed.com/cmp/Elementskill,,,,,,,,,,,,
+in-467aa7a93f7f5246,indeed,https://in.indeed.com/viewjob?jk=467aa7a93f7f5246,http://in.indeed.com/job/robotics-engineer-467aa7a93f7f5246,Robotics Engineer,Agnify Technology Pvt Ltd,"UP, IN",fulltime,,,,,,False,,,,,"**Job Summary:**
+
+We are looking for a highly skilled and motivated **Robotics Engineer** to design, develop, test, and implement robotic systems and solutions that advance automation and innovation. The ideal candidate will have strong experience in hardware and software integration, control systems, and machine learning to contribute to high\-impact projects across industrial, consumer, or research domains.
+
+**Key Responsibilities:**
+
+* Design and develop robotic systems and components including mechanical structure, sensors, actuators, and controllers
+* Program, simulate, and test robots using platforms like ROS, MATLAB, or C\+\+/Python
+* Develop and implement control algorithms for path planning, object recognition, and obstacle avoidance
+* Collaborate with cross\-functional teams including mechanical, electrical, and software engineers
+* Troubleshoot and optimize system performance, including diagnostics and field testing
+* Prepare technical documentation, user manuals, and reports for both internal teams and stakeholders
+* Stay updated with latest trends and advancements in robotics, AI, and automation
+
+**Required Qualifications:**
+
+* Bachelor’s or Master’s degree in Robotics, Mechatronics, Electrical Engineering, Computer Science, or related field
+* Proficiency in at least one programming language: C\+\+, Python, or Java
+* Hands\-on experience with robotics platforms (e.g., ROS, Arduino, Raspberry Pi)
+* Strong understanding of kinematics, dynamics, and control theory
+* Familiarity with sensor integration (LiDAR, camera, IMU) and embedded systems
+* Excellent problem\-solving and analytical skills
+* Strong communication and team collaboration abilities
+
+**Preferred Qualifications:**
+
+* Experience in machine learning or computer vision applied to robotics
+* Familiarity with simulation tools (Gazebo, V\-REP, Webots)
+* Knowledge of industrial automation protocols (CAN, Modbus, etc.)
+* Previous experience working on autonomous or mobile robots
+
+**Experience:** 2 years\+
+
+**Location:** Noida (Uttar Pradesh, Pin Code: 201309\)
+
+**Salary:** As per industry standards
+
+**Shift:** Day shift
+
+**Job Type:** Full Employment
+
+Job Type: Full\-time
+
+Pay: ₹17,225\.84 \- ₹59,910\.03 per month
+
+Benefits:
+
+* Health insurance
+* Provident Fund
+
+Work Location: In person",,https://in.indeed.com/cmp/Agnify-Technology-Pvt-Ltd,,,,,,,,,,,,
+in-a94af482f28ba90a,indeed,https://in.indeed.com/viewjob?jk=a94af482f28ba90a,http://in.indeed.com/job/aiml-developer-a94af482f28ba90a,AI/ML Developer,KudoMetrics Technologies Private Limited,"Salem, TN, IN",fulltime,,,,,,False,,,,,"**Company Name :** KudoMetrics Technologies Private Limited
+
+**Job Title :** AI/ML Developer
+
+**Team :** Design \& Development
+
+**Location :** Attur, Salem (Dt), Tamilnadu
+
+**Employment Type:** Full\-Time
+
+**About KudoMetrics:**
+
+* We're a data\-driven AI solutions company specializing in building intelligent systems that solve real\-world business problems.
+* Our team works on cutting\-edge projects involving machine learning, generative AI, and automation.
+* We believe in nurturing fresh talent and providing hands\-on experience with modern AI technologies in a collaborative, research\-driven environment.
+
+**About the Role:**
+
+* We are seeking an enthusiastic AI/ML Developer to join our growing team.
+* This is an excellent opportunity for fresh graduates passionate about artificial intelligence, machine learning, generative AI, and data\-driven problem\-solving.
+* You'll collaborate with experienced data scientists and engineers to build, train, and deploy intelligent models, LLM\-powered applications, and automation systems that drive business value.
+
+**Key Responsibilities:**
+
+* Collaborate with senior team members to design, train, and optimize machine learning models for prediction, classification, and recommendation systems
+* Work with Python and ML frameworks such as TensorFlow, PyTorch, and Scikit\-learn to develop and test prototypes
+* Develop and test AI\-powered applications such as chatbots, text summarizers, content generators, and intelligent assistants
+* Assist in data cleaning, preprocessing, feature engineering, and labeling to prepare datasets for model training
+* Experiment with vector databases, embedding models, and retrieval\-augmented generation (RAG) techniques
+* Support integration of ML/LLM models into production systems and participate in code reviews
+* Explore new technologies in NLP, computer vision, deep learning, and generative AI
+* Document workflows, architectures, experiments, and outcomes
+* Stay informed about emerging AI/ML research, LLM advancements, and industry best practices
+
+**Required Skills:**
+
+* Strong Python programming knowledge (NumPy, Pandas, Matplotlib, data manipulation)
+* Basic understanding of machine learning algorithms (regression, clustering, decision trees, classification)
+* Familiarity with deep learning frameworks (TensorFlow, Keras, or PyTorch)
+* Basic exposure to NLP concepts and text processing fundamentals
+* Hands\-on experience or coursework using LLM APIs (OpenAI, Hugging Face, Anthropic) or open\-source models
+* Understanding of prompt engineering basics for LLM applications
+* Understanding of data visualization, preprocessing, and model evaluation techniques
+* Familiarity with Git and version control systems
+* Jupyter Notebooks experience for experimentation and prototyping
+* Good problem\-solving, analytical, and teamwork skills
+* Strong communication abilities and eagerness to learn
+
+**Preferred Qualifications**
+
+* Bachelor's degree in Computer Science, Data Science, AI, or related field
+* Familiarity with Hugging Face Transformers, LangChain, or LlamaIndex
+* Basic knowledge of SQL, REST APIs, or web services integration
+* Knowledge of cloud platforms (AWS, Azure, GCP) for model deployment
+* Understanding of vector databases (Pinecone, Weaviate, ChromaDB) and RAG architectures
+* Awareness of MLOps or model deployment pipelines
+* Experience with FastAPI or Flask for API development
+* Academic or personal projects demonstrating ML/LLM applications (GitHub portfolio welcome)
+* Understanding of fine\-tuning techniques or model optimization is a plus
+
+**What We Offer**
+
+* Hands\-on industry experience working on real\-world AI/ML and LLM projects
+* Mentorship from experienced professionals including data scientists and AI engineers
+* Exposure to live AI/ML projects and modern tools across the AI ecosystem
+* Continuous learning opportunities and certification support in AI, ML, and GenAI technologies
+* Opportunities for career advancement and specialization in your areas of interest
+* Supportive, innovative, and growth\-oriented workplace culture
+* Collaborative, research\-driven environment with modern development tools
+
+Job Type: Full\-time
+
+Pay: From ₹12,000\.00 per month
+
+Benefits:
+
+* Provident Fund
+
+Work Location: In person",,https://in.indeed.com/cmp/Kudometrics-Technologies-Private-Limited,,,,,,,,,,,,
+in-417f2f5a578ffe59,indeed,https://in.indeed.com/viewjob?jk=417f2f5a578ffe59,https://jobs.smartrecruiters.com/ServiceNow/744000095046545-principal-enterprise-architect-manufacturing,Principal Enterprise Architect - Manufacturing,ServiceNow,"KA, IN",fulltime,,,,,,True,,,,globaltalentss@servicenow.com,"**Company Description**  
+
+It all started in sunny San Diego, California in 2004 when a visionary engineer, Fred Luddy, saw the potential to transform how we work. Fast forward to today — ServiceNow stands as a global market leader, bringing innovative AI\-enhanced technology to over 8,100 customers, including 85% of the Fortune 500®. Our intelligent cloud\-based platform seamlessly connects people, systems, and processes to empower organizations to find smarter, faster, and better ways to work. But this is just the beginning of our journey. Join us as we pursue our purpose to make the world work better for everyone.
+
+ **Job Description**  
+
+ServiceNow is seeking Enterprise Architects to join our Team. The Enterprise Architecture Team is part of our pre\-sales organization focused on building credibility and trust with the technical leaders in our largest customers by developing cross\-functional strategies and solutions. Our team brings technical expertise, real\-world experience, strong executive engagement skills and an inspirational mindset to help our customers understand the opportunities of the “platform of platforms” vision. We act as technical leaders for our customers most complex solutions, designed to ensure that they can realize the value they need. We do this by leveraging best practice and industry standards to build customer trust and architect best in class solutions.
+
+
+While collaborating with customers, partners, and the wider ServiceNow sales team, the right candidate will create and communicate high\-level architectures and strategies that are both written and verbal, to audiences up to and including the CIO/CTO level. The Enterprise Architect will elegantly articulate the advantage of ServiceNow being built on a single cloud platform consisting of a single user interface, one code base and one data model. The Enterprise Architect will also lead and participate in the delivery of workshops, best practice overviews, and educational sessions to existing customers and partners.
+
+**What you get to do in this role:**
+
+* Engage with customer executives to identify pain points and opportunities to deliver value and then translate them into solutions from ServiceNow
+* Work with a wide variety of customers, colleagues and partners to help them understand the power of the Now platform and the potential opportunities of the future of work
+* Lead architecture and design engagements to demonstrate how ServiceNow meets the needs of strategic customers, including; IT Transformation, Digital Products/Services, Platform as a Service, Enterprise Service Management, and the co\-creation of industry specific solutions.
+* Understand the business strategy of the customer and articulate how ServiceNow can enable and deliver value to their organization, seamlessly integrating into their current and future technology landscape
+* Understand the detail behind the ServiceNow and platform of platforms architecture and communicate it at various levels
+* Work with architecture development methods, modelling approaches and architecture patterns for integration
+* Interact at multiple levels within a customer account (Enterprise Architects, Domain Architects, Directors, VPs, and CXOs) and maintain these relationships throughout their customer journey.
+* Provide thought leadership and collaborate with internal ServiceNow business units
+* Identify, lead and contribute to the creation of best practices, white papers, workshops, etc
+
+  
+
+**Qualifications** **To be successful in this role you have:**
+
+* Experience in leveraging or critically thinking about how to integrate AI into work processes, decision\-making, or problem\-solving. This may include using AI\-powered tools, automating workflows, analyzing AI\-driven insights, or exploring AI's potential impact on the function or industry.
+* Passion and energy for building business relationships and is accustomed to driving the simplification of complex concepts into compelling customer proposals
+* Drive for results using out\-of\-the\-box innovative thinking together with excellent problem\-solving skills
+* An intrinsic ability to understand and prioritize work and is willing to make big bets when the time is right, to invest time and energy in the right areas.
+* Willingness to jump\-in and roll\-up their sleeves alongside customers, colleagues and partners to get things done faster and better.
+* 15 or more years of proven success in influencing senior technology leaders to drive change in a pre\-sales, customer, or delivery focused role.
+* Successfully lead diverse teams to reach challenging goals and can leverage organizational networks to get things done.
+* A track record of success in using Human Centered Design techniques to explore the customers current reality and set a vision for the future.
+* Expertise designing, implementing and managing advanced architectures in an application domain and integrating multiple systems or platforms
+* A proven track record of success with Enterprise Architecture or Application Architecture; pre\-sales in a software vendor, in a large Enterprise or professional services environment.
+* Familiarity with common Enterprise and Industry Architecture frameworks such as: TOGAF, Zachman, IT4IT, BIAN, TMForum, etc.
+* Excellent understanding of the architectural principles for cloud\-based platforms that include SaaS, PaaS, multi\-tenancy, and automation
+* Experience and understanding of multiple technical domains \- application, data, DevOps, AI/ML, integration, big data, mobility, analytics, etc.
+* Intrinsically curious and passionate about researching current and emerging technologies and developing innovative solutions
+* Experience presenting architecture concepts, designs, and goals to technology leaders and partners
+
+  
+
+TR21
+
+ **Additional Information** **Work Personas**
+
+
+We approach our distributed world of work with flexibility and trust. Work personas (flexible, remote, or required in office) are categories that are assigned to ServiceNow employees depending on the nature of their work and their assigned work location. Learn more here. To determine eligibility for a work persona, ServiceNow may confirm the distance between your primary residence and the closest ServiceNow office using a third\-party service.
+
+**Equal Opportunity Employer**
+
+
+ServiceNow is an equal opportunity employer. All qualified applicants will receive consideration for employment without regard to race, color, creed, religion, sex, sexual orientation, national origin or nationality, ancestry, age, disability, gender identity or expression, marital status, veteran status, or any other category protected by law. In addition, all qualified applicants with arrest or conviction records will be considered for employment in accordance with legal requirements.
+
+**Accommodations**
+
+
+We strive to create an accessible and inclusive experience for all candidates. If you require a reasonable accommodation to complete any part of the application process, or are unable to use this online application and need an alternative method to apply, please contact globaltalentss@servicenow.com for assistance.
+
+**Export Control Regulations**
+
+
+For positions requiring access to controlled technology subject to export control regulations, including the U.S. Export Administration Regulations (EAR), ServiceNow may be required to obtain export control approval from government authorities for certain individuals. All employment is contingent upon ServiceNow obtaining any export license or other approval that may be required by relevant export control authorities.
+
+
+From Fortune. ©2025 Fortune Media IP Limited. All rights reserved. Used under license.",,https://in.indeed.com/cmp/Servicenow,https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/f10e3d4d3e3233af34536c97f7d487b9,http://www.servicenow.com,"Santa Clara, CA","10,000+",more than $10B (USD),"At ServiceNow, our technology makes the world work for everyone, and our people make it possible.",,,,,,
+in-d857933ac91f14ba,indeed,https://in.indeed.com/viewjob?jk=d857933ac91f14ba,https://jobs.smartrecruiters.com/ServiceNow/744000095046874-associate-enterprise-account-exec,Associate Enterprise Account Exec,ServiceNow,"MH, IN",fulltime,,,,,,True,,,,globaltalentss@servicenow.com,"**Company Description**  
+
+It all started in sunny San Diego, California in 2004 when a visionary engineer, Fred Luddy, saw the potential to transform how we work. Fast forward to today — ServiceNow stands as a global market leader, bringing innovative AI\-enhanced technology to over 8,100 customers, including 85% of the Fortune 500®. Our intelligent cloud\-based platform seamlessly connects people, systems, and processes to empower organizations to find smarter, faster, and better ways to work. But this is just the beginning of our journey. Join us as we pursue our purpose to make the world work better for everyone.
+
+ **Job Description**  
+
+You will produce new business sales revenue from a SaaS license model. You will accomplish this through account planning, territory planning, researching prospect customers, using business development strategies and completing field\-based sales activities within a defined set of prospects, territory or vertical.
+
+**What you get to do in this role:**
+
+* Develop relationships with multiple C\-suite personas (e.g., CFO, CIO, COO, CDO) across all product sales
+* Oversee client relationship mapping to the account team, orchestrating an account strategy across a broad virtual team (Solutions Consultants, Solutions Specialist, Success resources, Partners and Marketing, etc.)
+* Be a trusted advisor to your customers by understanding their business and advising on how ServiceNow can help help their IT roadmap
+* Identify the right specialist/ support resources to bring into a deal, at the right time
+
+  
+
+**Qualifications** **To be successful in this role you have:**
+
+* Experience in leveraging or critically thinking about how to integrate AI into work processes, decision\-making, or problem\-solving. This may include using AI\-powered tools, automating workflows, analyzing AI\-driven insights, or exploring AI's potential impact on the function or industry.
+* 5\+ years of sales experience within software OR solutions sales organization
+* Experience establishing trusted relationships with current and prospective clients and other teams
+* Experience producing new business, negotiate deals, and maintain healthy C\-Level relationships
+* Experience achieving sales targets
+* The ability to understand the ""bigger picture"" and our plans around IT
+* Experience promoting a customer success focus in a ""win as a team"" environment
+* Willingness to travel up to 50%
+
+
+FD21
+
+ **Additional Information** **Work Personas**
+
+
+We approach our distributed world of work with flexibility and trust. Work personas (flexible, remote, or required in office) are categories that are assigned to ServiceNow employees depending on the nature of their work and their assigned work location. Learn more here. To determine eligibility for a work persona, ServiceNow may confirm the distance between your primary residence and the closest ServiceNow office using a third\-party service.
+
+**Equal Opportunity Employer**
+
+
+ServiceNow is an equal opportunity employer. All qualified applicants will receive consideration for employment without regard to race, color, creed, religion, sex, sexual orientation, national origin or nationality, ancestry, age, disability, gender identity or expression, marital status, veteran status, or any other category protected by law. In addition, all qualified applicants with arrest or conviction records will be considered for employment in accordance with legal requirements.
+
+**Accommodations**
+
+
+We strive to create an accessible and inclusive experience for all candidates. If you require a reasonable accommodation to complete any part of the application process, or are unable to use this online application and need an alternative method to apply, please contact globaltalentss@servicenow.com for assistance.
+
+**Export Control Regulations**
+
+
+For positions requiring access to controlled technology subject to export control regulations, including the U.S. Export Administration Regulations (EAR), ServiceNow may be required to obtain export control approval from government authorities for certain individuals. All employment is contingent upon ServiceNow obtaining any export license or other approval that may be required by relevant export control authorities.
+
+
+From Fortune. ©2025 Fortune Media IP Limited. All rights reserved. Used under license.",,https://in.indeed.com/cmp/Servicenow,https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/f10e3d4d3e3233af34536c97f7d487b9,http://www.servicenow.com,"Santa Clara, CA","10,000+",more than $10B (USD),"At ServiceNow, our technology makes the world work for everyone, and our people make it possible.",,,,,,
+in-cdf3f2b323056e9f,indeed,https://in.indeed.com/viewjob?jk=cdf3f2b323056e9f,https://jobs.smartrecruiters.com/ServiceNow/744000095046814-mgr-sales,"Mgr, Sales",ServiceNow,"KA, IN",fulltime,,,,,,True,,,,globaltalentss@servicenow.com,"**Company Description**  
+
+It all started in sunny San Diego, California in 2004 when a visionary engineer, Fred Luddy, saw the potential to transform how we work. Fast forward to today — ServiceNow stands as a global market leader, bringing innovative AI\-enhanced technology to over 8,100 customers, including 85% of the Fortune 500®. Our intelligent cloud\-based platform seamlessly connects people, systems, and processes to empower organizations to find smarter, faster, and better ways to work. But this is just the beginning of our journey. Join us as we pursue our purpose to make the world work better for everyone.
+
+ **Job Description**  
+
+ServiceNow is looking for a high\-achieving professional sales leader with excellent management experience exceeding quota. We ask that you are knowledgeable about Enterprise Service Management, will have integrity and matrix\-management skills, and a passion for winning.
+
+**What you get to do in this role:**
+
+
+You will manage a team of Sales Executives, driving business into our customer accounts. This will be achieved through leading the team of Salespeople throughout Sales cycles.
+
+* You will lead a team of field\-based sales representatives in a matrixed sales organization. Whose goals are to: exceed quota, build territory revenue, and prospect and close named accounts against established competition through individual initiative.
+* Assign and manage your team's territories or accounts.
+* Manage a group of field sales representatives. Inspire and provide recommendations on growth opportunities and target accounts.
+* Establish relationships with all levels of customer organizations and sales departments and partners.
+* Implement account strategies and coordinate team\-selling efforts with the core selling team for a portfolio to close business on a quarterly and annual basis.
+* Manage all ServiceNow opportunities, maintaining accurate forecasting and communication.
+
+  
+
+**Qualifications** **To be successful in this role you have:**
+
+* Experience in leveraging or critically thinking about how to integrate AI into work processes, decision\-making, or problem\-solving. This may include using AI\-powered tools, automating workflows, analyzing AI\-driven insights, or exploring AI's potential impact on the function or industry.
+* 2\+ years of managing a team of field\-based sales representatives
+* 5\+ years experience selling enterprise software
+* Experience building C\-Level relationships
+* Experience driving a customer success focus and influence in a ""win as a team"" environment
+* Strategic account planning experience; history of creation and ongoing management of detailed account plans for a portfolio
+* Previous sales experience in IT Service Management, HR, Security Operations, Customer Service or IT Operations Management (within software or IT sales organizations)
+* Experience exceeding quota while maintaining customer loyalty and required product margins
+* Knowledge of the computer industry, especially cloud platforms, SaaS, PaaS, security and SaaS contracts
+* Willingness to travel
+
+  
+
+FD21
+
+ **Additional Information** **Work Personas**
+
+
+We approach our distributed world of work with flexibility and trust. Work personas (flexible, remote, or required in office) are categories that are assigned to ServiceNow employees depending on the nature of their work and their assigned work location. Learn more here. To determine eligibility for a work persona, ServiceNow may confirm the distance between your primary residence and the closest ServiceNow office using a third\-party service.
+
+**Equal Opportunity Employer**
+
+
+ServiceNow is an equal opportunity employer. All qualified applicants will receive consideration for employment without regard to race, color, creed, religion, sex, sexual orientation, national origin or nationality, ancestry, age, disability, gender identity or expression, marital status, veteran status, or any other category protected by law. In addition, all qualified applicants with arrest or conviction records will be considered for employment in accordance with legal requirements.
+
+**Accommodations**
+
+
+We strive to create an accessible and inclusive experience for all candidates. If you require a reasonable accommodation to complete any part of the application process, or are unable to use this online application and need an alternative method to apply, please contact globaltalentss@servicenow.com for assistance.
+
+**Export Control Regulations**
+
+
+For positions requiring access to controlled technology subject to export control regulations, including the U.S. Export Administration Regulations (EAR), ServiceNow may be required to obtain export control approval from government authorities for certain individuals. All employment is contingent upon ServiceNow obtaining any export license or other approval that may be required by relevant export control authorities.
+
+
+From Fortune. ©2025 Fortune Media IP Limited. All rights reserved. Used under license.",,https://in.indeed.com/cmp/Servicenow,https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/f10e3d4d3e3233af34536c97f7d487b9,http://www.servicenow.com,"Santa Clara, CA","10,000+",more than $10B (USD),"At ServiceNow, our technology makes the world work for everyone, and our people make it possible.",,,,,,
+li-4310741174,linkedin,https://www.linkedin.com/jobs/view/4310741174,,Machine Learning Engineer,FanDuel,"New York, NY",,,,,,,False,,,,,,,https://www.linkedin.com/company/fanduel,,,,,,,,,,,,
+li-4310740201,linkedin,https://www.linkedin.com/jobs/view/4310740201,,Machine Learning Engineer,FanDuel,"Atlanta, GA",,,,,,,False,,,,,,,https://www.linkedin.com/company/fanduel,,,,,,,,,,,,
+li-4324101939,linkedin,https://www.linkedin.com/jobs/view/4324101939,,AI Engineer,Layerup,"San Francisco, CA",,,,,,,False,,,,,,,https://www.linkedin.com/company/layerupai,,,,,,,,,,,,
+li-4192772885,linkedin,https://www.linkedin.com/jobs/view/4192772885,,Machine Learning Engineer,Upstart,,,,,,,,False,,,,,,,https://www.linkedin.com/company/upstart-network,,,,,,,,,,,,
+li-4323750983,linkedin,https://www.linkedin.com/jobs/view/4323750983,,Machine Learning Engineer Intern,Tinder,"Palo Alto, CA",,,,,,,False,,,,,,,https://www.linkedin.com/company/tinder-incorporated,,,,,,,,,,,,
+li-4323761210,linkedin,https://www.linkedin.com/jobs/view/4323761210,,Data Scientist Intern,Tinder,"Los Angeles, CA",,,,,,,False,,,,,,,https://www.linkedin.com/company/tinder-incorporated,,,,,,,,,,,,
+li-4309998941,linkedin,https://www.linkedin.com/jobs/view/4309998941,,Machine Learning Engineer 5 - Platform Forecasting & Optimization,Netflix,,,,,,,,False,,,,,,,https://www.linkedin.com/company/netflix,,,,,,,,,,,,
+li-4338576167,linkedin,https://www.linkedin.com/jobs/view/4338576167,,Artificial Intelligence/ Machine Learning Developer,Unissant,"Ashburn, VA",,,,,,,False,,,,,,,https://www.linkedin.com/company/unissant,,,,,,,,,,,,
+li-4118298061,linkedin,https://www.linkedin.com/jobs/view/4118298061,,"ML Software Engineer L4/L5, AI for Member Systems",Netflix,,,,,,,,False,,,,,,,https://www.linkedin.com/company/netflix,,,,,,,,,,,,
+li-4195257196,linkedin,https://www.linkedin.com/jobs/view/4195257196,,"Software Engineer, Machine Learning",Glean,,,,,,,,False,,,,,,,https://www.linkedin.com/company/gleanwork,,,,,,,,,,,,

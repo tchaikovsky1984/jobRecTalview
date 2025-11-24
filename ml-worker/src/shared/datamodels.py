@@ -1,6 +1,6 @@
 """
-This module defines class JobSearchCritera, which is used to pass data to 
-activity scrapeJobsActivity in a single object
+This module defines various datamodels used to pass data through to
+temporal workflows.
 """
 
 from pydantic import BaseModel, Field
@@ -31,3 +31,18 @@ class JobSearchCriteria(BaseModel):
         # Ensure title/area are None if empty string was passed
         if self.title == "": self.title = None
         if self.pref_area == "": self.pref_area = None
+
+class DBInsertData(BaseModel):
+    """
+    Defines the datamodel to insert into the resume table of the database.
+    """
+    title: str = Field(default= "")
+    company: str = Field(default= "")
+    site: str = Field(default= "")
+    url: str = Field(default= "")
+    location: Optional[str] = Field(default= "")
+    description: Optional[str] = Field(default= "")
+    search_title: str = Field(default= "")
+    search_pref_country: str = Field(default= "")
+    search_pref_area: str = Field(default= "")
+

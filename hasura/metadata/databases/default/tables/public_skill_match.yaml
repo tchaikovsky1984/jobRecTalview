@@ -1,0 +1,3 @@
+table:
+  name: skill_match
+  schema: public
