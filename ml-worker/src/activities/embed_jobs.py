@@ -4,11 +4,13 @@ import uuid
 from temporalio import activity
 
 from src.shared.local_embedding_utils import local_embedder
+from .summarise_jobs import SummariserActivity
+
+summarise_jobs = SummariserActivity()
 
 @activity.defn
 def embedder(path: str) -> str:
     print("============EMBEDDING ACTIVITY STARTED================")
-    
     if path.startswith("~"):
         path = os.path.expanduser(path)
 
@@ -16,26 +18,32 @@ def embedder(path: str) -> str:
         df = pd.read_csv(path)
         print(f"csv read: {len(df)} rows")
 
-        # Added context labels to help the AI understand the text better
         df['combined_text'] = (
             "Title: " + df['title'].fillna("Unknown") + 
             "; Company: " + df["company"].fillna("Unknown") + 
             "; Description: " + df["description"].fillna("")
-        ).str.slice(0, 500) # <-- Take FIRST 500 chars
+        ).str.slice(0, 15000)
 
         embeddings = []
+        extracted_text = []
 
         # Loop with explicit error checking per row
         for i, text in enumerate(df["combined_text"]):
             try:
+                print(f"Summarising row {i}")
+                summary = summarise_jobs.summariser(text)
+                extracted_text.append(summary)
+                if summary == "":
+                    summary = text 
                 print(f"Embedding row {i}") # Uncomment if stuck
-                vector = local_embedder.embed_text(text)
+                vector = local_embedder.embed_text(summary)
                 embeddings.append(vector)
             except Exception as e:
                 print(f"CRITICAL ERROR on row {i}: {e}")
-                raise e # Stop here, don't return empty file
+                raise e 
 
         df['embedding'] = embeddings
+        df['summary'] = extracted_text
 
         df = df.drop(columns=["combined_text"])
 
@@ -47,7 +55,6 @@ def embedder(path: str) -> str:
         
         df.to_csv(new_path, index=False)
         print(f"stored at: {new_path}")
-        df.info()
 
         return new_path
 

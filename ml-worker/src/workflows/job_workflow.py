@@ -16,7 +16,7 @@ class ScrapingJobsWorkflow:
     @workflow.run
     async def findJobs(self) -> bool: 
 
-        job_criteria = JobSearchCriteria(title="AI Engineer", pref_country="India", num=50)
+        job_criteria = JobSearchCriteria(title="Sales Executive", pref_country="India", num=10)
 
         file_path = await workflow.execute_activity(
                 scraper,
@@ -28,7 +28,7 @@ class ScrapingJobsWorkflow:
         embed_file_path = await workflow.execute_activity(
                 embedder,
                 file_path,
-                schedule_to_close_timeout=timedelta(seconds=600),
+                schedule_to_close_timeout=timedelta(seconds=1200),
                 retry_policy=RetryPolicy(maximum_attempts=1)
                 )
 

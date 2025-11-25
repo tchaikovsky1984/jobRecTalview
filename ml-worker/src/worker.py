@@ -1,6 +1,5 @@
 import asyncio
 
-from temporalio import activity
 from temporalio.client import Client
 from temporalio.worker import Worker
 from temporalio.contrib.pydantic import pydantic_data_converter

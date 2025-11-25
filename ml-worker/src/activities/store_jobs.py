@@ -22,7 +22,13 @@ def storer(insert_info: DBInsertData) -> bool:
         df = df.replace({np.nan: None})
 
         db_info = loading_vars()
-        conn = psycopg2.connect(database=db_info["pg_name"], user=db_info["pg_user"], host=db_info["pg_url"], port=db_info["pg_port"], password=db_info["pg_pass"])
+        conn = psycopg2.connect(
+                database=db_info["pg_name"], 
+                user=db_info["pg_user"], 
+                host=db_info["pg_url"], 
+                port=db_info["pg_port"], 
+                password=db_info["pg_pass"]
+                )
         cursor = conn.cursor() 
 
         records = df.to_dict("records")
