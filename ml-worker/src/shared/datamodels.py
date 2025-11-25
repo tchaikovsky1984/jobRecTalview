@@ -36,12 +36,7 @@ class DBInsertData(BaseModel):
     """
     Defines the datamodel to insert into the resume table of the database.
     """
-    title: str = Field(default= "")
-    company: str = Field(default= "")
-    site: str = Field(default= "")
-    url: str = Field(default= "")
-    location: Optional[str] = Field(default= "")
-    description: Optional[str] = Field(default= "")
+    file_path: str = Field(default= "")
     search_title: str = Field(default= "")
     search_pref_country: str = Field(default= "")
     search_pref_area: str = Field(default= "")

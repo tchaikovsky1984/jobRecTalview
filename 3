@@ -1,6 +1,7 @@
 import json
 import pandas as pd
 import os
+from pandas.io.sql import execute
 import psycopg2
 import numpy as np
 from psycopg2.extras import execute_values
@@ -29,18 +30,15 @@ def storer(insert_info: DBInsertData) -> bool:
 
         l = []
         for row in records:
-            l.append((row["title"], row["company"], row["description"] if row["description"] is not None else "", row["location"], row["embedding"], row["job_url"], insert_info.search_title, insert_info.search_pref_country, insert_info.search_pref_area))
+            l.append((row["title"], row["company"], row["description"] if row["description"] is not None else "", row["location"], row["embedding"], row["url"], insert_info.search_title, insert_info.search_pref_country, insert_info.search_pref_area))
 
         execute_values(
                 cursor,
-                "INSERT INTO job (title, company, description, location, embedding, url, search_title, search_pref_country, search_pref_area) VALUES %s ON CONFLICT (url) DO NOTHING",
+                "INSERT INTO job (title, company, description, location, embedding, url, search_title, search_pref_country, search_pref_area) VALUES %s",
                 l
                 )
 
-        inserted_row_count = cursor.rowcount
-
-        print(f"inserted {(inserted_row_count)} rows")
-        print(f"skipped {len(records) - inserted_row_count} due to conflict")
+        print(f"inserted {len(records)} rows")
 
         conn.commit()
         cursor.close()

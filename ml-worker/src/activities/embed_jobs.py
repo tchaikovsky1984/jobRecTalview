@@ -47,6 +47,7 @@ def embedder(path: str) -> str:
         
         df.to_csv(new_path, index=False)
         print(f"stored at: {new_path}")
+        df.info()
 
         return new_path
 
