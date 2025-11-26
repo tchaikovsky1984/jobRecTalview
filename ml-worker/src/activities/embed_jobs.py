@@ -3,10 +3,13 @@ import os
 import uuid
 from temporalio import activity
 
-from src.shared.local_embedding_utils import local_embedder
-from .summarise_jobs import SummariserActivity
+from .summarise_jobs import SummariseActivity
 
-summarise_jobs = SummariserActivity()
+from src.shared.local_embedding_utils import local_embedder
+from src.shared import SummariserInput
+from src.shared import SummaryType
+
+summarise_jobs = SummariseActivity()
 
 @activity.defn
 def embedder(path: str) -> str:
@@ -26,24 +29,35 @@ def embedder(path: str) -> str:
 
         embeddings = []
         extracted_text = []
+        skills_list = []
 
         # Loop with explicit error checking per row
         for i, text in enumerate(df["combined_text"]):
             try:
                 print(f"Summarising row {i}")
-                summary = summarise_jobs.summariser(text)
-                extracted_text.append(summary)
+                print("returned text----------------------")
+                response = summarise_jobs.summariser(SummariserInput(text = text, sum_type = SummaryType.JOB))
+
+                summary = response.get("summary", "")
+                skills = response.get("skills", [])
+
                 if summary == "":
                     summary = text 
-                print(f"Embedding row {i}") # Uncomment if stuck
+
+                print(f"Embedding row {i}-----------------") # Uncomment if stuck
                 vector = local_embedder.embed_text(summary)
+
                 embeddings.append(vector)
+                extracted_text.append(summary)
+                skills_list.append(skills)
+
             except Exception as e:
                 print(f"CRITICAL ERROR on row {i}: {e}")
                 raise e 
 
         df['embedding'] = embeddings
         df['summary'] = extracted_text
+        df['skills_list'] = skills_list
 
         df = df.drop(columns=["combined_text"])
 

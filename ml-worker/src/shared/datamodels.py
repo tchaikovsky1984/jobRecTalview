@@ -4,7 +4,10 @@ temporal workflows.
 """
 
 from pydantic import BaseModel, Field
-from typing import Optional
+from typing import Optional, List
+from enum import Enum
+
+from pydantic_core.core_schema import field_after_validator_function
 
 class JobSearchCriteria(BaseModel):
     """
@@ -40,4 +43,32 @@ class DBInsertData(BaseModel):
     search_title: str = Field(default= "")
     search_pref_country: str = Field(default= "")
     search_pref_area: str = Field(default= "")
+
+class SummaryType(Enum):
+    JOB = 0
+    RESUME = 1
+
+
+class SummariserInput(BaseModel):
+    """
+    Defines the input to the Summariser activity.
+    """
+    text: str = Field(default="")
+    sum_type: SummaryType = Field(default=SummaryType.JOB)
+
+class ResumeWorkflowInput(BaseModel):
+    """
+    Defines the input to the resume_workflow
+    """
+    res_id: int = Field(default=-1)
+    user_id: int = Field(default=-1)
+    filepath: str = Field(default="")
+
+class ResumeStorerInput(BaseModel):
+    """
+    Defines the input to the resume storer activity 
+    """
+    res_id: int = Field(default=-1)
+    user_id: int = Field(default=-1)
+    embedding: List[float] = Field(default=[0]*384)
 

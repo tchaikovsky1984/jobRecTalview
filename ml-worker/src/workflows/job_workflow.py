@@ -8,7 +8,10 @@ with workflow.unsafe.imports_passed_through():
     from src.activities import embedder
     from src.activities import storer
 
-from src.shared import JobSearchCriteria, DBInsertData
+from src.shared import JobSearchCriteria
+from src.shared import DBInsertData
+from src.shared import SummariserInput
+from src.shared import SummaryType
 
 @workflow.defn
 class ScrapingJobsWorkflow:
@@ -16,7 +19,11 @@ class ScrapingJobsWorkflow:
     @workflow.run
     async def findJobs(self) -> bool: 
 
-        job_criteria = JobSearchCriteria(title="Sales Executive", pref_country="India", num=10)
+        job_criteria = JobSearchCriteria(
+                title="Backend Developer", 
+                pref_country="India", 
+                num=10
+                )
 
         file_path = await workflow.execute_activity(
                 scraper,
@@ -32,7 +39,12 @@ class ScrapingJobsWorkflow:
                 retry_policy=RetryPolicy(maximum_attempts=1)
                 )
 
-        insert_info = DBInsertData(file_path=embed_file_path, search_title=job_criteria.title or "", search_pref_country=job_criteria.pref_country or "", search_pref_area=job_criteria.pref_area or "")
+        insert_info = DBInsertData(
+                file_path=embed_file_path, 
+                search_title=job_criteria.title or "", 
+                search_pref_country=job_criteria.pref_country or "", 
+                search_pref_area=job_criteria.pref_area or ""
+                )
 
         final = await workflow.execute_activity(
                 storer,

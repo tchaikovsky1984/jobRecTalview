@@ -6,6 +6,10 @@ from src.activities.summarise_jobs import SummariserActivity
 
 load_dotenv()
 
+RESUME_TEXT_1 = """
+
+"""
+
 RESUME_TEXT_2 = """
 DARREN
 JONES
@@ -28,8 +32,7 @@ Microsoft Excel, Word,
 Powerpoint
 Paid Ads (Facebook, Google,
 LinkedIn, Instagram)
-A/B testing, audience
-segmentation
+A/B testing, audience segmentation
 Google Analytics
 SEO
 WORK EXPERIENCE
@@ -124,7 +127,7 @@ def test_matching():
     
     print("Summarizing Resume...")
     summarizer = SummariserActivity()
-    clean_resume = summarizer.summariser(RESUME_TEXT_3) 
+    clean_resume = summarizer.summariser(RESUME_TEXT_3).get("summary", "")
     print(f"Summary: {clean_resume[:100]}...")
 
     print("Vectorizing...")
