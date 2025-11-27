@@ -1,6 +1,13 @@
 import dotenv from "dotenv";
+import path from "path";
 
-dotenv.config();
+const project_root_dir = path.join(import.meta.dirname, "../../../.env");
+const result = dotenv.config({ path: project_root_dir });
+
+if (result.error) {
+  console.log(result.error);
+  console.log(project_root_dir)
+}
 
 const HOSTNAME: string = process.env.HOSTNAME || "localhost";
 const PORT: Number = Number(process.env.PORT) || 7171;

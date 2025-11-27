@@ -1,3 +1,5 @@
+import { JwtPayload } from "jsonwebtoken";
+
 export type LogType = "LOG" | "ERR" | "WAR";
 
 export type DatabaseConfig = {

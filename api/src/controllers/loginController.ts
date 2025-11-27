@@ -11,6 +11,8 @@ export async function loginController(req: Request<{}, {}, LoginRequestBody>, re
 
   const { username, password } = req.body;
 
+  displayLog(JWT_SECRET, "LOG");
+
   try {
     const client = getDBClient();
     if (client instanceof Error) {

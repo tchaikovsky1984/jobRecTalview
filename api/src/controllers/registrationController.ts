@@ -4,8 +4,7 @@ import bcrypt from "bcrypt";
 import type { RegisterRequestBody } from "../config/types.ts"
 import { getDBClient } from "../db/connection.ts";
 
-export async function registrationController(req: Request<{}, {}, RegisterRequestBody>, res: Response)
-  : Promise<void> {
+export async function registrationController(req: Request<{}, {}, RegisterRequestBody>, res: Response): Promise<void> {
 
   const { username, email, name, password } = req.body;
   const saltRounds: number = 10;

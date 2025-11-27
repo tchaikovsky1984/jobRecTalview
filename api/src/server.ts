@@ -5,10 +5,12 @@ import handleLogging from "./middleware/LoggingRequests.ts";
 import { displayLog } from "./middleware/LoggingRequests.ts";
 import CORSHandler from "./middleware/CORSHandler.ts";
 import { SERVER, PG, HASURA } from "./config/config.ts";
-import { displayPartsToString } from "typescript";
 import { connectDB, handleDatabaseError } from "./db/connection.ts";
 import { registrationController } from "./controllers/registrationController.ts";
 import { loginController } from "./controllers/loginController.ts";
+import { resumeUploadController } from "./controllers/resumeUploadController.ts";
+import { upload } from "./middleware/UploadMiddleware.ts";
+import { authenticateToken } from "./middleware/AuthenticateToken.ts";
 
 export const app = express();
 export let HTTPServer: ReturnType<typeof http.createServer>;
@@ -38,6 +40,8 @@ export const main = async () => {
   app.post("/user/register/", registrationController);
 
   app.post("/user/login/", loginController);
+
+  app.post("/resume/upload", authenticateToken, upload.single("resume"), resumeUploadController);
 
   HTTPServer = http.createServer(app);
   HTTPServer.listen(SERVER.PORT, () => {
