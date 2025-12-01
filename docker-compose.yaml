@@ -7,7 +7,7 @@ services:
     volumes:
       # Persistent storage for database files
       - db_data:/var/lib/postgresql/data
-      - ./init-db:/docker-entrypoint-initdb.d
+      - ./init_db:/docker-entrypoint-initdb.d
     environment:
       # Crucial variables for initial database setup (auto-initializes on first run)
       POSTGRES_DB: chat_app_db

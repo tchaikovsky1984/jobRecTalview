@@ -8,6 +8,29 @@ export async function registrationController(req: Request<{}, {}, RegisterReques
 
   const { username, email, name, password } = req.body;
   const saltRounds: number = 10;
+  const emailRegex: RegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+  if (!username || username.length < 1) {
+    res.status(400).json({ "error": "username not provided" });
+    return;
+  }
+  if (!email || email.length < 1) {
+    res.status(400).json({ "error": "email not provided" });
+    return;
+  }
+  if (!email.match(emailRegex)) {
+    res.status(400).json({ "error": "invalid email" })
+  }
+  if (!password || password.length < 1) {
+    res.status(400).json({ "error": "password not provided" });
+    return;
+  }
+  if (!name || name.length < 1) {
+    res.status(400).json({ "error": "name not provided" });
+  }
+  if (password.length < 8 || password.length > 20) {
+    res.status(400).json({ "error": `invalid password ${password.length < 8 ? "(at least 8 chars)" : "(at most 20 chars)"}` });
+  }
 
   try {
     const hashed_pwd: string = await bcrypt.hash(password, saltRounds);
@@ -22,6 +45,7 @@ export async function registrationController(req: Request<{}, {}, RegisterReques
 
     if (sameUser.rows.length > 0) {
       res.status(400).json({ "message": "user exists with username or email" });
+      console.log(sameUser);
       return;
     }
 

@@ -41,8 +41,8 @@ export const resumeAnalysisController: RequestHandler<ResumeAnalysisParam> = asy
       filepath: resumePath
     });
 
-    if (workflowStarted) {
-      res.status(200).json({ message: "Analysis started successfully" });
+    if (workflowStarted.status) {
+      res.status(200).json({ message: "Analysis started successfully", workflowID: workflowStarted.id });
     } else {
       res.status(500).json({ message: "Failed to start workflow" });
     }
@@ -57,7 +57,7 @@ export const resumeAnalysisController: RequestHandler<ResumeAnalysisParam> = asy
 
 }
 
-async function startResumeWorkflow(resInfo: ResumeWorkflowInput): Promise<boolean> {
+async function startResumeWorkflow(resInfo: ResumeWorkflowInput): Promise<{ status: boolean, id?: string }> {
   try {
     const con = await Connection.connect({ address: "localhost:7233" });
     const temporalClient = new Client({ con });
@@ -71,10 +71,10 @@ async function startResumeWorkflow(resInfo: ResumeWorkflowInput): Promise<boolea
 
     console.log(`Started workflow with id: ${handle.workflowId}`);
 
-    return true;
+    return { status: true, id: handle.workflowId };
   }
   catch (e) {
     displayLog(String(e), "ERR");
-    return false;
+    return { status: false };
   }
 }

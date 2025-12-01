@@ -1,0 +1,20 @@
+meta {
+  name: analyseResume
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseURL}}resume/analyse/:id
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 4
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

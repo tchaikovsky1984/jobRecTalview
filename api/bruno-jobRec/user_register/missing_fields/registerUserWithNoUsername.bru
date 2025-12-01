@@ -1,0 +1,31 @@
+meta {
+  name: registerUserWithNoUsername
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseURL}}user/register
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "username": "",
+    "email": "aja@janfja.com",
+    "name": "ACD",
+    "password": "passowrd"
+  }
+}
+
+assert {
+  res.status: eq 400
+  res.body.error: eq "username not provided"
+  req.url: eq http://localhost:7171/user/register
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

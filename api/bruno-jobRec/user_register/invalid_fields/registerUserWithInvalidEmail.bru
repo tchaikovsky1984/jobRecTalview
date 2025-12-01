@@ -1,0 +1,30 @@
+meta {
+  name: registerUserWithInvalidEmail
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseURL}}user/register
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "username": "anshul",
+    "email": "not an email",
+    "password": "password",
+    "name": "Name"
+  }
+}
+
+assert {
+  res.status: eq 400
+  res.body.error: eq "invalid email"
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

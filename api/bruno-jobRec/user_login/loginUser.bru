@@ -1,0 +1,30 @@
+meta {
+  name: loginUser
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseURL}}user/login
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "username": "anshuldev",
+    "password": "abcde"
+  }
+}
+
+script:post-response {
+  if(res.status === 200){
+    bru.setVar("LoggedInUser", res.body);
+    console.log("done");
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

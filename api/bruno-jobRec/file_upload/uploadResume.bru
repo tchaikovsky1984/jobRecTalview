@@ -1,0 +1,20 @@
+meta {
+  name: uploadResume
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseURL}}resume/upload
+  body: multipartForm
+  auth: inherit
+}
+
+body:multipart-form {
+  resume: @file(/home/anshul/documents/Professional/AnsulResumeDevOps.pdf)
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
