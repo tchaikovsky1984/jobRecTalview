@@ -4,30 +4,28 @@ from numpy import maximum
 from temporalio import workflow
 from temporalio.common import RetryPolicy
 
-from shared.datamodels import ResumeStorerInput, ResumeWorkflowInput, SummariserInput, SummaryType
 from src.activities import readPDF
 from src.activities import SummariseActivity
 from src.activities import res_embedder
 from src.activities import res_storer
 
-from src.shared SummariserInput
-from src.shared SummaryType
-from src.shared ResumeWorkflowInput
-from src.shared ResumeStorerInput
+from src.shared import SummariserInput
+from src.shared import SummaryType
+from src.shared import ResumeWorkflowInput
+from src.shared import ResumeStorerInput
 
 @workflow.defn
 class ResumeProcessingWorkflow:
 
     @workflow.run
-    async def processResume(self, resumeInput: ResumeWorkflowInput | None = None) -> bool:
-        # emulating input
-        user_id = 1
-        res_id = 1
-        filepath = "~/dev/jobRecTalview/samples/uploads/resume1.pdf"
+    async def processResume(self, resumeInput: ResumeWorkflowInput) -> bool:
+
+        if(not resumeInput.filepath or not resumeInput.res_id or not resumeInput.user_id):
+            raise ValueError("Missing Input")
 
         resume_text = await workflow.execute_activity(
                 readPDF,
-                "~/dev/jobRecTalview/samples/uploads/resume1.pdf",
+                resumeInput.filepath,
                 schedule_to_close_timeout=timedelta(seconds=20),
                 retry_policy=RetryPolicy(maximum_attempts=5)
                 )
@@ -54,7 +52,7 @@ class ResumeProcessingWorkflow:
 
         result = await workflow.execute_activity(
                 res_storer,
-                ResumeStorerInput(embedding = embedding, user_id = user_id, res_id = res_id),
+                ResumeStorerInput(embedding = embedding, user_id = resumeInput.user_id, res_id = resumeInput.res_id, skills = skills),
                 schedule_to_close_timeout = timedelta(seconds = 20),
                 retry_policy = RetryPolicy(maximum_attempts= 5)
                 )

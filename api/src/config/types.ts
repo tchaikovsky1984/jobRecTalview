@@ -1,5 +1,3 @@
-import { JwtPayload } from "jsonwebtoken";
-
 export type LogType = "LOG" | "ERR" | "WAR";
 
 export type DatabaseConfig = {
@@ -26,4 +24,14 @@ export type LoginResponseBody = {
   access_token: string;
   user_id: string;
   message: string;
-}
+};
+
+export type ResumeAnalysisParam = {
+  id: number;
+};
+
+export type ResumeWorkflowInput = {
+  res_id: number;
+  user_id: number;
+  filepath: string;
+};

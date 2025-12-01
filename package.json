@@ -3,6 +3,7 @@
     "@types/multer": "^2.0.0"
   },
   "dependencies": {
+    "@temporalio/client": "^1.13.2",
     "@types/uuid": "^10.0.0",
     "uuid": "^13.0.0"
   }

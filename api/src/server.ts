@@ -11,6 +11,7 @@ import { loginController } from "./controllers/loginController.ts";
 import { resumeUploadController } from "./controllers/resumeUploadController.ts";
 import { upload } from "./middleware/UploadMiddleware.ts";
 import { authenticateToken } from "./middleware/AuthenticateToken.ts";
+import { resumeAnalysisController } from "./controllers/resumeAnalysisContoller.ts";
 
 export const app = express();
 export let HTTPServer: ReturnType<typeof http.createServer>;
@@ -42,6 +43,8 @@ export const main = async () => {
   app.post("/user/login/", loginController);
 
   app.post("/resume/upload", authenticateToken, upload.single("resume"), resumeUploadController);
+
+  app.post("/resume/analyse/:id", authenticateToken, resumeAnalysisController);
 
   HTTPServer = http.createServer(app);
   HTTPServer.listen(SERVER.PORT, () => {
