@@ -35,3 +35,11 @@ export type ResumeWorkflowInput = {
   user_id: number;
   filepath: string;
 };
+
+export type RankingWorkflowInput = {
+  user_id: number;
+  resume_id: number;
+  title?: string;
+  location?: string;
+};
+

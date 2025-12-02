@@ -21,10 +21,24 @@ export type Jobs = {
   description?: string;
   skills?: string[];
   experience?: number;
-  ref_date: Date;
   embedding: number[];
   url: string;
   search_title?: string;
   search_pref_country?: string;
   search_pref_area?: string;
 };
+
+export type matchSkillsInput = {
+  jobs: Jobs[];
+  resume_skills: string[];
+};
+
+export type JobsWithSkills = Jobs & {
+  matching_skills: string[];
+  missing_skills: string[];
+};
+
+export type LLMInput = {
+  job: JobsWithSkills[];
+  resume: RankingWorkflowInput;
+}

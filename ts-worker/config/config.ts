@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 import path from "path";
 
-const project_root_dir = path.join(import.meta.dirname, "../../../.env");
+const project_root_dir = path.join(__dirname, "../../.env");
 const result = dotenv.config({ path: project_root_dir });
 
 if (result.error) {
@@ -39,3 +39,5 @@ export const PG = {
 };
 
 export const JWT_SECRET: string = process.env.JWT_SECRET || "wrong-key";
+
+export const GEMINI_API_KEY: string = process.env.GEMINI_API_KEY || "wrong-key";
