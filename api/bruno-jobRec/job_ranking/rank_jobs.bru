@@ -5,9 +5,13 @@ meta {
 }
 
 get {
-  url: {{baseURL}}resume/rank/3
+  url: {{baseURL}}resume/rank/:id
   body: none
   auth: inherit
+}
+
+params:path {
+  id: 3
 }
 
 settings {
