@@ -55,6 +55,8 @@ export type LLMOutputSingleton = {
   job_id: number;
   score: number;
   reasoning: string;
+  matching_skills: string[];
+  missing_skills: string[];
 }
 
 export type LLMOutput = {

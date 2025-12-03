@@ -23,7 +23,7 @@ export async function getJobsActivity(rankingInput: RankingWorkflowInput): Promi
                                embedding, url, search_title , search_pref_country, search_pref_area
                         FROM job
                         ORDER BY embedding <=> $1
-                        LIMIT 50;
+                        LIMIT 10;
                        `;
   const top50Result = await client.query(top50Queries, [embedding]);
   const jobs = top50Result.rows;

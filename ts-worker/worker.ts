@@ -3,6 +3,7 @@ import { Worker } from '@temporalio/worker';
 import { getJobsActivity } from "./activities/getJobsActivity.ts";
 import { llmRankingActivity } from "./activities/llmRankingActivity.ts";
 import { matchSkillsActivity } from "./activities/matchSkillsActivity.ts";
+import { storeRankingActivity } from './activities/storeRankingActivity.ts';
 import { PG } from "./config/config.ts";
 import { connectDB } from "./config/db.ts";
 
@@ -19,7 +20,7 @@ async function run() {
   const worker = await Worker.create({
     workflowsPath: require.resolve('./workflows/rankingWorkflow.ts'),
     taskQueue: 'ranking-queue',
-    activities: { getJobsActivity, llmRankingActivity, matchSkillsActivity },
+    activities: { getJobsActivity, llmRankingActivity, matchSkillsActivity, storeRankingActivity },
   });
 
   await worker.run();

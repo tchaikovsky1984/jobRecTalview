@@ -63,6 +63,11 @@ export async function llmRankingActivity(llmInput: LLMInput): Promise<LLMOutput>
   `;
 
     try {
+      if (i > 0) {
+        console.log("Throttling for 4 seconds to respect API limits...");
+        await new Promise(resolve => setTimeout(resolve, 4100));
+      }
+
       const llmResponse = await genai.models.generateContent({
         model: "gemini-2.5-flash-lite",
         contents: prompt,
@@ -70,13 +75,25 @@ export async function llmRankingActivity(llmInput: LLMInput): Promise<LLMOutput>
           responseMimeType: "application/json",
         }
       });
+
       const rawText = llmResponse.candidates?.[0]?.content?.parts?.[0]?.text || "[]";
       const cleanText = rawText.replace(/```json|```/g, "").trim();
-      // 5. FIX: Type as Array[], not Singleton
-      const llmResult: LLMOutputSingleton[] = JSON.parse(cleanText);
+      const llmRawResult = JSON.parse(cleanText);
+      console.log("batch length: " + llmRawResult.length);
 
-      if (Array.isArray(llmResult)) {
-        llmAccumulated = llmAccumulated.concat(llmResult);
+      if (Array.isArray(llmRawResult)) {
+        const mergedResult: LLMOutputSingleton[] = llmRawResult.map((scoredJob: any) => {
+          const originalJobData = jobs.find(j => j.id === scoredJob.job_id);
+          return {
+            job_id: scoredJob.job_id,
+            score: scoredJob.score,
+            reasoning: scoredJob.reasoning,
+            matching_skills: originalJobData?.matching_skills || [],
+            missing_skills: originalJobData?.missing_skills || []
+          };
+        });
+        llmAccumulated = llmAccumulated.concat(mergedResult);
+        console.log("accumulated length: " + llmAccumulated.length);
       }
 
     }

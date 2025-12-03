@@ -4,13 +4,14 @@ import type { ActivityOptions } from "@temporalio/workflow";
 import * as gettingJobsActivities from "../activities/getJobsActivity";
 import * as matchingSkillsActivities from "../activities/matchSkillsActivity.ts";
 import * as llmActivities from "../activities/llmRankingActivity.ts";
+import * as storageActivities from "../activities/storeRankingActivity.ts";
 import { JobsWithSkills, LLMInput } from "../config/types.ts";
 import { GetJobsOutput } from "../config/types.ts";
 import { matchSkillsInput } from "../config/types.ts"
 import { RankingWorkflowInput } from "../config/types";
 import { LLMOutput } from "../config/types.ts";
 
-export async function RankingWorkflow(rankingInput: RankingWorkflowInput) {
+export async function RankingWorkflow(rankingInput: RankingWorkflowInput): Promise<boolean> {
   // ensuring that persistent client is avaiable.
 
   const getJobsOptions: ActivityOptions = {
@@ -39,6 +40,15 @@ export async function RankingWorkflow(rankingInput: RankingWorkflowInput) {
   };
   const { llmRankingActivity } = proxyActivities<typeof llmActivities>(llmRankingOptions);
 
+  const storeRankingOptions: ActivityOptions = {
+    startToCloseTimeout: '1 minute',
+    retry: {
+      maximumAttempts: 1,
+      initialInterval: 2000
+    }
+  }
+  const { storeRankingActivity } = proxyActivities<typeof storageActivities>(storeRankingOptions);
+
   const getJobsOutput: GetJobsOutput = await getJobsActivity(rankingInput);
   const matchingInput: matchSkillsInput = { jobs: getJobsOutput.jobs, resume_skills: getJobsOutput.resume_skills };
 
@@ -50,6 +60,7 @@ export async function RankingWorkflow(rankingInput: RankingWorkflowInput) {
 
   console.log(llmOutput.llmOuput.length);
 
+  const workflowResult: boolean = await storeRankingActivity(llmOutput);
 
-
+  return workflowResult;
 }
