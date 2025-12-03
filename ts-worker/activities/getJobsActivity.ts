@@ -1,7 +1,5 @@
 import { matchSkillsInput, RankingWorkflowInput } from "../config/types";
 import { getDBClient } from "../config/db";
-import { connectDB } from "../config/db";
-import { PG } from "../config/config.ts";
 
 export async function getJobsActivity(rankingInput: RankingWorkflowInput): Promise<matchSkillsInput> {
   let client = getDBClient();

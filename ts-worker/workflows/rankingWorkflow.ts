@@ -6,8 +6,16 @@ import * as matchingSkillsActivities from "../activities/matchSkillsActivity.ts"
 import * as llmActivities from "../activities/llmRankingActivity.ts";
 import { JobsWithSkills, matchSkillsInput } from "../config/types.ts"
 import { RankingWorkflowInput } from "../config/types";
+import { connectDB } from "../config/db";
+import { PG } from "../config/config.ts";
 
 export async function RankingWorkflow(rankingInput: RankingWorkflowInput) {
+  // ensuring that persistent client is avaiable.
+  if (!connectDB(PG)) {
+    console.log("Could not get DB");
+    throw Error("Could not get DB");
+  }
+
   const getJobsOptions: ActivityOptions = {
     startToCloseTimeout: '1 minute',
     retry: {
