@@ -1,3 +1,21 @@
 table:
   name: job
   schema: public
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - id
+        - title
+        - company
+        - description
+        - skills
+        - location
+        - experience
+        - ref_date
+        - embedding
+        - url
+        - search_title
+        - search_pref_country
+        - search_pref_area
+      filter: {}
