@@ -22,10 +22,17 @@ export type Jobs = {
   skills?: string[];
   experience?: number;
   embedding: number[];
+  location: string;
   url: string;
   search_title?: string;
   search_pref_country?: string;
   search_pref_area?: string;
+};
+
+export type GetJobsOutput = {
+  jobs: Jobs[];
+  resume_skills: string[];
+  summary: string;
 };
 
 export type matchSkillsInput = {
@@ -40,5 +47,17 @@ export type JobsWithSkills = Jobs & {
 
 export type LLMInput = {
   job: JobsWithSkills[];
+  resume: RankingWorkflowInput;
+  summary: string;
+}
+
+export type LLMOutputSingleton = {
+  job_id: number;
+  score: number;
+  reasoning: string;
+}
+
+export type LLMOutput = {
+  llmOuput: LLMOutputSingleton[];
   resume: RankingWorkflowInput;
 }

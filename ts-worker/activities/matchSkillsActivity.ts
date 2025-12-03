@@ -15,7 +15,7 @@ export async function matchSkillsActivity(matchingInput: matchSkillsInput): Prom
     }
 
     else {
-      for (const skill of job.skills) {
+      for (const skill of job.skills.map(s => s.toLowerCase())) {
         if (resume_skills.has(skill)) {
           matching_skills.push(skill);
         }

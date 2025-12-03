@@ -1,3 +1,37 @@
 table:
   name: recommendation
   schema: public
+object_relationships:
+  - name: resume 
+    using:
+      manual_configuration:
+        remote_table:
+          schema: public
+          name: resume
+        column_mapping:
+          res_id: id
+  - name: job 
+    using:
+      manual_configuration:
+        remote_table:
+          schema: public
+          name: job
+        column_mapping:
+          job_id: id
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - id
+        - res_id
+        - job_id
+        - score
+        - analysis_date
+        - reasoning
+        - rank
+        - skill_matches
+        - skill_misses
+      filter:
+        resume:
+          user_id:
+            _eq: X-Hasura-User-Id

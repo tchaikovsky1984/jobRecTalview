@@ -52,7 +52,13 @@ class ResumeProcessingWorkflow:
 
         result = await workflow.execute_activity(
                 res_storer,
-                ResumeStorerInput(embedding = embedding, user_id = resumeInput.user_id, res_id = resumeInput.res_id, skills = skills),
+                ResumeStorerInput(
+                    embedding = embedding, 
+                    user_id = resumeInput.user_id, 
+                    res_id = resumeInput.res_id, 
+                    skills = skills, 
+                    summary = summary
+                ),
                 schedule_to_close_timeout = timedelta(seconds = 20),
                 retry_policy = RetryPolicy(maximum_attempts= 5)
                 )

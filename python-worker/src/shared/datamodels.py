@@ -71,5 +71,6 @@ class ResumeStorerInput(BaseModel):
     res_id: int = Field(default=-1)
     user_id: int = Field(default=-1)
     embedding: List[float] = Field(default=[0]*384)
+    summary: str = Field(default ="")
     skills: List[str] = Field(default=[])
 

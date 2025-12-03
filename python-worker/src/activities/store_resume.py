@@ -19,11 +19,11 @@ def res_storer(resInfo: ResumeStorerInput) -> bool:
             )
         cursor = conn.cursor()
 
-        payload = (json.dumps(resInfo.embedding), resInfo.skills, resInfo.res_id, resInfo.user_id)
+        payload = (json.dumps(resInfo.embedding), resInfo.summary, resInfo.skills, resInfo.res_id, resInfo.user_id)
 
         query = f"""
             UPDATE resume
-            SET embedding = %s, extracted_skills = %s
+            SET embedding = %s, summary = %s, extracted_skills = %s
             WHERE id = %s AND user_id = %s 
             """
         cursor.execute(query, payload) 

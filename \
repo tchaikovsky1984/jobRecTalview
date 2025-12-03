@@ -4,8 +4,7 @@ import type { ActivityOptions } from "@temporalio/workflow";
 import * as gettingJobsActivities from "../activities/getJobsActivity";
 import * as matchingSkillsActivities from "../activities/matchSkillsActivity.ts";
 import * as llmActivities from "../activities/llmRankingActivity.ts";
-import { JobsWithSkills, LLMInput } from "../config/types.ts";
-import { GetJobsOutput } from "../config/types.ts";
+import { getJobsOuput, JobsWithSkills } from "../config/types.ts";
 import { matchSkillsInput } from "../config/types.ts"
 import { RankingWorkflowInput } from "../config/types";
 import { LLMOutput } from "../config/types.ts";
@@ -39,17 +38,14 @@ export async function RankingWorkflow(rankingInput: RankingWorkflowInput) {
   };
   const { llmRankingActivity } = proxyActivities<typeof llmActivities>(llmRankingOptions);
 
-  const getJobsOutput: GetJobsOutput = await getJobsActivity(rankingInput);
-  const matchingInput: matchSkillsInput = { jobs: getJobsOutput.jobs, resume_skills: getJobsOutput.resume_skills };
+  const getJobsOutput = await getJobsActivity(rankingInput);
+  const matchingInput = { jobs: getJobsOutput.jobs, resume_skills: getJobsOuput.resume_skills }
 
   const matchingOutput: JobsWithSkills[] = await matchSkillsActivity(matchingInput);
   console.log(matchingOutput.length);
 
-  const llmInput: LLMInput = { job: matchingOutput, resume: rankingInput, summary: getJobsOutput.summary };
-  const llmOutput: LLMOutput = await llmRankingActivity(llmInput);
-
+  const llmOutput: LLMOutput = await llmRankingActivity(matchingOutput);
   console.log(llmOutput.llmOuput.length);
-
 
 
 }
