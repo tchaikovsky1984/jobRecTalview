@@ -4,12 +4,25 @@ import { v4 as uuidv4 } from "uuid";
 
 import type { RankingWorkflowInput } from "../config/types.ts";
 import { displayLog } from "../middleware/LoggingRequests.ts";
+import { getDBClient } from "../db/connection.ts";
 
 export async function jobRankingController(req: Request, res: Response) {
   const res_id = req.params.id;
   const user_id = (req as any).user.sub;
+  const pg_client = getDBClient();
+  if (pg_client instanceof Error) {
+    res.status(500).json({ "message": "DB could not be gotten. Cannot verify resume ownership" });
+    return;
+  }
+
   if (!res_id) {
     res.status(400).json({ "message": "no resume specified" });
+    return;
+  }
+
+  const resumeCheck = await pg_client.query("SELECT id, user_id FROM resume WHERE user_id = $1 AND id = $2", [user_id, res_id]);
+  if (resumeCheck.rowCount == 0) {
+    res.status(400).json({ "message": "no such resume exists" });
     return;
   }
 

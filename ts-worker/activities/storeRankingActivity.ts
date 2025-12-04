@@ -23,8 +23,10 @@ export async function storeRankingActivity(jobsListWithResume: LLMOutput): Promi
       score: job.score,
       reasoning: job.reasoning,
       skill_matches: job.matching_skills || [],
-      skill_missses: job.missing_skills || []
+      skill_misses: job.missing_skills || []
     })));
+
+    console.log(payload);
 
     const query = `
     INSERT INTO recommendation (
@@ -35,8 +37,8 @@ export async function storeRankingActivity(jobsListWithResume: LLMOutput): Promi
           job_id int, 
           score int, 
           reasoning text, 
-          matching_skills text[],  
-          missing_skills text[]
+          skill_matches text[],  
+          skill_misses text[]
       )
       ON CONFLICT (res_id, job_id) 
       DO UPDATE SET 

@@ -28,7 +28,6 @@ select_permissions:
         - score
         - analysis_date
         - reasoning
-        - rank
         - skill_matches
         - skill_misses
       filter:

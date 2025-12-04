@@ -1,0 +1,25 @@
+meta {
+  name: registerUser
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseURL}}user/register
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "username": "alexMerc",
+    "email": "alex.mercer@mercer.com",
+    "password": "abcde1234",
+    "name": "Alex Mercer"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

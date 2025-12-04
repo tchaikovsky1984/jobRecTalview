@@ -19,7 +19,8 @@ export async function registrationController(req: Request<{}, {}, RegisterReques
     return;
   }
   if (!email.match(emailRegex)) {
-    res.status(400).json({ "error": "invalid email" })
+    res.status(400).json({ "error": "invalid email" });
+    return;
   }
   if (!password || password.length < 1) {
     res.status(400).json({ "error": "password not provided" });
@@ -27,9 +28,11 @@ export async function registrationController(req: Request<{}, {}, RegisterReques
   }
   if (!name || name.length < 1) {
     res.status(400).json({ "error": "name not provided" });
+    return;
   }
   if (password.length < 8 || password.length > 20) {
     res.status(400).json({ "error": `invalid password ${password.length < 8 ? "(at least 8 chars)" : "(at most 20 chars)"}` });
+    return;
   }
 
   try {
