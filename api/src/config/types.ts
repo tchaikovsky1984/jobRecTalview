@@ -43,3 +43,6 @@ export type RankingWorkflowInput = {
   location?: string;
 };
 
+export type InterviewPrepWorkflowInput = {
+  recId: number;
+};

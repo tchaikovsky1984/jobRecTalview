@@ -13,6 +13,7 @@ import { upload } from "./middleware/UploadMiddleware.ts";
 import { authenticateToken } from "./middleware/AuthenticateToken.ts";
 import { resumeAnalysisController } from "./controllers/resumeAnalysisContoller.ts";
 import { jobRankingController } from "./controllers/jobRankingController.ts";
+import { recommendationPrepController } from "./controllers/recommendationPrepController.ts";
 
 export const app = express();
 export let HTTPServer: ReturnType<typeof http.createServer>;
@@ -48,6 +49,8 @@ export const main = async () => {
   app.post("/resume/analyse/:id", authenticateToken, resumeAnalysisController);
 
   app.get("/resume/rank/:id", authenticateToken, jobRankingController);
+
+  app.get("/recommendation/prep/:id", authenticateToken, recommendationPrepController);
 
   HTTPServer = http.createServer(app);
   HTTPServer.listen(SERVER.PORT, () => {

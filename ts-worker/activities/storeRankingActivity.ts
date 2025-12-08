@@ -1,14 +1,14 @@
 import { getDBClient } from "../config/db";
-import { LLMOutput, LLMOutputSingleton, RankingWorkflowInput } from "../config/types";
+import type { LLMJobOutput, LLMJobOutputSingleton, RankingWorkflowInput } from "../config/types.ts";
 
-export async function storeRankingActivity(jobsListWithResume: LLMOutput): Promise<boolean> {
+export async function storeRankingActivity(jobsListWithResume: LLMJobOutput): Promise<boolean> {
   const client = getDBClient();
   if (client instanceof Error) {
     console.log("could not get DB");
     throw client;
   }
 
-  const jobsList: LLMOutputSingleton[] = jobsListWithResume.llmOuput;
+  const jobsList: LLMJobOutputSingleton[] = jobsListWithResume.llmOuput;
   const resumeObject: RankingWorkflowInput = jobsListWithResume.resume;
 
   if (jobsList.length === 0) {

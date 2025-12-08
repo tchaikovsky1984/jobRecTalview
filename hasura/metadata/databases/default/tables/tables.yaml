@@ -2,3 +2,4 @@
 - "!include public_recommendation.yaml"
 - "!include public_resume.yaml"
 - "!include public_user.yaml"
+- "!include public_interview_prep.yaml"

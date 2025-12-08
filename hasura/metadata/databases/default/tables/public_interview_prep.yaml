@@ -1,0 +1,27 @@
+table:
+  name: interview_prep
+  schema: public
+object_relationships:
+  - name: prep_for
+    using:
+      manual_configuration:
+        remote_table:
+          name: recommendation
+          schema: public
+        column_mapping:
+          recommendation_id: id
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - id
+        - recommendation_id
+        - questions
+        - topics
+        - tips
+        - created_at
+      filter:
+        prep_for:
+          resume:
+            user_id:  
+              _eq: X-Hasura-User-Id

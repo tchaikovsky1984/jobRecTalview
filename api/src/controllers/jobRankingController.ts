@@ -50,7 +50,7 @@ export async function jobRankingController(req: Request, res: Response) {
 
 }
 
-async function startJobRankingWorkflow(workflowInput: RankingWorkflowInput) {
+async function startJobRankingWorkflow(workflowInput: RankingWorkflowInput): Promise<{ status: boolean, id?: string }> {
   try {
     const con = await Connection.connect({ address: "localhost:7233" });
     const temporalClient = new Client({ con });

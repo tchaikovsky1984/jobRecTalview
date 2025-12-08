@@ -1,12 +1,12 @@
 import { GoogleGenAI } from "@google/genai";
 
 import { GEMINI_API_KEY } from "../config/config";
-import { LLMInput, LLMOutputSingleton } from "../config/types";
-import { LLMOutput } from "../config/types.ts";
+import { LLMJobInput, LLMJobOutputSingleton } from "../config/types";
+import { LLMJobOutput } from "../config/types.ts";
 
 const genai = new GoogleGenAI({ apiKey: GEMINI_API_KEY });
 
-export async function llmRankingActivity(llmInput: LLMInput): Promise<LLMOutput> {
+export async function llmRankingActivity(llmInput: LLMJobInput): Promise<LLMJobOutput> {
   const batchLimit = 10;
   const jobs = llmInput.job.map(job => ({
     id: job.id,
@@ -23,7 +23,7 @@ export async function llmRankingActivity(llmInput: LLMInput): Promise<LLMOutput>
     batchedJobs.push(jobs.slice(i, i + batchLimit));
   }
 
-  let llmAccumulated: LLMOutputSingleton[] = [];
+  let llmAccumulated: LLMJobOutputSingleton[] = [];
 
   for (let i = 0; i < batchedJobs.length; i++) {
 
@@ -82,7 +82,7 @@ export async function llmRankingActivity(llmInput: LLMInput): Promise<LLMOutput>
       console.log("batch length: " + llmRawResult.length);
 
       if (Array.isArray(llmRawResult)) {
-        const mergedResult: LLMOutputSingleton[] = llmRawResult.map((scoredJob: any) => {
+        const mergedResult: LLMJobOutputSingleton[] = llmRawResult.map((scoredJob: any) => {
           const originalJobData = jobs.find(j => j.id === scoredJob.job_id);
           return {
             job_id: scoredJob.job_id,

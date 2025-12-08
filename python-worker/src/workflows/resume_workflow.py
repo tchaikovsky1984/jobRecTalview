@@ -36,7 +36,7 @@ class ResumeProcessingWorkflow:
                     text = resume_text, 
                     sum_type = SummaryType.RESUME
                     ), 
-                start_to_close_timeout = timedelta(seconds = 20), 
+                start_to_close_timeout = timedelta(seconds = 60), 
                 retry_policy = RetryPolicy(maximum_attempts = 2)
                 )
 

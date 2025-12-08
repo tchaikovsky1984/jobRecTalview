@@ -5,14 +5,13 @@ import * as gettingJobsActivities from "../activities/getJobsActivity";
 import * as matchingSkillsActivities from "../activities/matchSkillsActivity.ts";
 import * as llmActivities from "../activities/llmRankingActivity.ts";
 import * as storageActivities from "../activities/storeRankingActivity.ts";
-import { JobsWithSkills, LLMInput } from "../config/types.ts";
+import { JobsWithSkills, LLMJobInput } from "../config/types.ts";
 import { GetJobsOutput } from "../config/types.ts";
 import { matchSkillsInput } from "../config/types.ts"
 import { RankingWorkflowInput } from "../config/types";
-import { LLMOutput } from "../config/types.ts";
+import { LLMJobOutput } from "../config/types.ts";
 
 export async function RankingWorkflow(rankingInput: RankingWorkflowInput): Promise<boolean> {
-  // ensuring that persistent client is avaiable.
 
   const getJobsOptions: ActivityOptions = {
     startToCloseTimeout: '1 minute',
@@ -55,8 +54,8 @@ export async function RankingWorkflow(rankingInput: RankingWorkflowInput): Promi
   const matchingOutput: JobsWithSkills[] = await matchSkillsActivity(matchingInput);
   console.log(matchingOutput.length);
 
-  const llmInput: LLMInput = { job: matchingOutput, resume: rankingInput, summary: getJobsOutput.summary };
-  const llmOutput: LLMOutput = await llmRankingActivity(llmInput);
+  const llmInput: LLMJobInput = { job: matchingOutput, resume: rankingInput, summary: getJobsOutput.summary };
+  const llmOutput: LLMJobOutput = await llmRankingActivity(llmInput);
 
   console.log(llmOutput.llmOuput.length);
 

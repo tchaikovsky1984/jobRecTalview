@@ -45,13 +45,13 @@ export type JobsWithSkills = Jobs & {
   missing_skills: string[];
 };
 
-export type LLMInput = {
+export type LLMJobInput = {
   job: JobsWithSkills[];
   resume: RankingWorkflowInput;
   summary: string;
 }
 
-export type LLMOutputSingleton = {
+export type LLMJobOutputSingleton = {
   job_id: number;
   score: number;
   reasoning: string;
@@ -59,7 +59,53 @@ export type LLMOutputSingleton = {
   missing_skills: string[];
 }
 
-export type LLMOutput = {
-  llmOuput: LLMOutputSingleton[];
+export type LLMJobOutput = {
+  llmOuput: LLMJobOutputSingleton[];
   resume: RankingWorkflowInput;
 }
+
+export type InterviewPrepWorkflowInput = {
+  recId: number;
+}
+
+export type RecJob = {
+  title: string;
+  company: string;
+  description: string;
+  skills: string[];
+  location: string;
+};
+
+export type RecResume = {
+  extracted_skills: string[];
+  summary: string;
+}
+
+export type Recommendation = {
+  id: number;
+  res_id: number;
+  job_id: number;
+  job: RecJob;
+  resume: RecResume;
+  score: number;
+  reasoning: string;
+  skill_matches: string[];
+  skill_misses: string[];
+}
+
+export type QuesAns = {
+  question: string;
+  answer: string;
+  topic: string;
+};
+
+export type LLMPrepOutput = {
+  questions: QuesAns[];
+  tips: string[];
+  topics: string[];
+};
+
+export type StoringPrepInput = {
+  prep: LLMPrepOutput;
+  recommendation_id: number;
+};
