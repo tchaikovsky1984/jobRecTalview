@@ -19,15 +19,18 @@ export async function recommendationPrepController(req: Request, res: Response):
 
   if (!user_id) {
     res.status(400).json({ "message": "user not provided" });
+    return;
   }
 
   if (!rec_id) {
     res.status(400).json({ "message": "recommendation not provided" });
+    return;
   }
 
   const recomCheck = `SELECT r.* FROM recommendation r
                       JOIN resume res ON r.res_id = res.id
                       WHERE r.id = $1 AND res.user_id = $2;`
+
   const recomResult = await pg_client.query(recomCheck, [rec_id, user_id]);
   if (recomResult.rows.length <= 0) {
     res.status(400).json({ "message": "recommendation does not exist" });
