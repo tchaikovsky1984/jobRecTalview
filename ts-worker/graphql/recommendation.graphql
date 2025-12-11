@@ -1,0 +1,30 @@
+
+# getting recs
+query SelectRecommendationWithId($id: Int!){
+  recommendation(where: {id: {_eq: $id}}){
+    id
+    res_id 
+    job_id 
+    score 
+    reasoning 
+    skill_matches 
+    skill_misses
+  }
+}
+
+mutation BulkInsertRecommendation($objects: [recommendation_insert_input!]!){
+  insert_recommendation(
+    objects: $objects, 
+    on_conflict: {
+      constraint: recommendation_res_id_job_id_key,
+      update_columns: [score, reasoning, skill_matches, skill_misses]
+                }
+  )
+  {
+    affected_rows
+    returning
+    {
+      id
+    }
+  }
+}

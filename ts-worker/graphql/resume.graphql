@@ -1,0 +1,32 @@
+
+# selecting resume embedding, skills, and summary
+query SelectResumeEmbSkillSum($id: Int!, $user_id: Int!){
+  resume(where: {_and: [ {id: {_eq: $id}}, {user_id: {_eq: $user_id}} ] }){
+    embedding
+    summary
+    extracted_skills
+  }
+}
+
+query SelectJobsWithSimilarity($embedding: vector!, $limit: Int!){
+  search_jobs(args: {query_vector: $embedding, limit_count: $limit }){
+    id
+    title
+    company
+    description
+    skills
+    location
+    embedding
+    url
+    search_title  
+    search_pref_country 
+    search_pref_area
+  }
+}
+
+query SelectResumeSkillSum($id: Int!){
+  resume(where: {id: {_eq: $id} }){
+    summary
+    extracted_skills
+  }
+}

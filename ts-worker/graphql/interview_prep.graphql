@@ -1,0 +1,24 @@
+
+# upserting prep
+mutation UpsertPrepForRec(
+  $rec_id: Int!, 
+  $questions: jsonb,
+  $tips: _text, 
+  $topics: _text){
+
+  insert_interview_prep_one(
+    object: {
+      recommendation_id: $rec_id, 
+      questions: $questions, 
+      tips: $tips, 
+      topics: $topics
+            },
+    on_conflict:{
+      constraint: interview_prep_recommendation_id_key,
+      update_columns: [questions, tips, topics]
+                }
+  )
+  {
+    id
+  }
+}

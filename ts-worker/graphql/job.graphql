@@ -1,0 +1,10 @@
+
+query SelectJobById($id: Int!){
+  job(where: { id: {_eq: $id}}){
+    title 
+    company 
+    description 
+    skills 
+    location
+  }
+}

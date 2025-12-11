@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "codegen": "graphql-codegen --config codegen.ts"
   },
   "keywords": [],
   "author": "",
@@ -18,9 +19,15 @@
     "@temporalio/worker": "^1.13.2",
     "@temporalio/workflow": "^1.13.2",
     "dotenv": "^17.2.3",
+    "graphql": "^16.12.0",
+    "graphql-request": "^7.3.5",
     "pg": "^8.16.3"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^6.1.0",
+    "@graphql-codegen/typescript": "^5.0.6",
+    "@graphql-codegen/typescript-graphql-request": "^6.3.0",
+    "@graphql-codegen/typescript-operations": "^5.0.6",
     "@types/node": "^24.10.1",
     "@types/pg": "^8.15.6",
     "ts-node": "^10.9.2",

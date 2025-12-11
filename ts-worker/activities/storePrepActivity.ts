@@ -1,19 +1,17 @@
-import { getDBClient } from "../config/db";
 import { StoringPrepInput } from "../config/types";
+import { gqlSdk } from "../config/graphqlClient";
+import { toPgArray } from "./storeRankingActivity";
 
-export async function storePrepActivity(prep: StoringPrepInput): Promise<boolean> {
-  const client = getDBClient();
-  if (client instanceof Error) {
-    console.log("Could not get DB");
-    throw client;
+export async function storePrepActivity(prep: StoringPrepInput): Promise<number> {
+  try {
+    const storeResult = await gqlSdk.UpsertPrepForRec({ rec_id: prep.recommendation_id, questions: prep.prep.questions, tips: toPgArray(prep.prep.tips), topics: toPgArray(prep.prep.topics) });
+    if (!storeResult.insert_interview_prep_one?.id) {
+      throw new Error("Could not store")
+    }
+    return storeResult.insert_interview_prep_one.id;
   }
-
-  const storeQuery = `INSERT INTO interview_prep(recommendation_id, questions, tips, topics)
-                      VALUES ( $1, $2, $3, $4)
-                      ON CONFLICT (recommendation_id) DO UPDATE
-                      SET questions = EXCLUDED.questions, tips = EXCLUDED.tips, topics = EXCLUDED.topics;`;
-
-  await client.query(storeQuery, [prep.recommendation_id, JSON.stringify(prep.prep.questions), prep.prep.tips, prep.prep.topics]);
-
-  return true;
+  catch (e) {
+    console.log(e);
+    throw e;
+  }
 }
