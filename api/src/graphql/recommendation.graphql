@@ -1,0 +1,7 @@
+
+# recommendation and ownership check
+query CheckRecommendationOwnershipAndExistence($rec_id: Int!, $user_id: Int!) {
+  recommendation(where: {_and: [{id: {_eq: $rec_id}}, {resume: {user_id: {_eq: $user_id}}}]}) {
+    id
+  }
+}

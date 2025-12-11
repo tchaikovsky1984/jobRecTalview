@@ -2,31 +2,26 @@ import type { Request, Response } from "express";
 import { Connection, Client } from "@temporalio/client";
 import { v4 as uuidv4 } from "uuid";
 
+import { gqlSdk } from "../config/graphqlClient.ts";
 import type { RankingWorkflowInput } from "../config/types.ts";
 import { displayLog } from "../middleware/LoggingRequests.ts";
-import { getDBClient } from "../db/connection.ts";
+
 
 export async function jobRankingController(req: Request, res: Response) {
   const res_id = req.params.id;
   const user_id = (req as any).user.sub;
-  const pg_client = getDBClient();
-  if (pg_client instanceof Error) {
-    res.status(500).json({ "message": "DB could not be gotten. Cannot verify resume ownership" });
-    return;
-  }
 
   if (!res_id) {
     res.status(400).json({ "message": "no resume specified" });
     return;
   }
 
-  const resumeCheck = await pg_client.query("SELECT id, user_id FROM resume WHERE user_id = $1 AND id = $2", [user_id, res_id]);
-  if (resumeCheck.rowCount == 0) {
-    res.status(400).json({ "message": "no such resume exists" });
-    return;
-  }
-
   try {
+    const resumeCheck = await gqlSdk.CheckResumeOwnership({ id: Number(res_id), user_id: Number(user_id) })
+    if (resumeCheck.resume.length === 0) {
+      res.status(400).json({ "message": "no such resume exists" });
+    }
+
     const workflowStarted = await startJobRankingWorkflow({
       resume_id: Number(res_id),
       user_id: Number(user_id),
@@ -37,17 +32,13 @@ export async function jobRankingController(req: Request, res: Response) {
     } else {
       res.status(500).json({ message: "Failed to start workflow" });
     }
+    return;
   }
   catch (e) {
     displayLog(String(e), "ERR");
     res.status(500).json({ message: "Internal Server Error" });
     return;
   }
-
-  return
-
-
-
 }
 
 async function startJobRankingWorkflow(workflowInput: RankingWorkflowInput): Promise<{ status: boolean, id?: string }> {

@@ -2,7 +2,7 @@ import type { Request, Response, NextFunction } from "express";
 import bcrypt from "bcrypt";
 
 import type { RegisterRequestBody } from "../config/types.ts"
-import { getDBClient } from "../db/connection.ts";
+import { gqlSdk } from "../config/graphqlClient.ts";
 
 export async function registrationController(req: Request<{}, {}, RegisterRequestBody>, res: Response): Promise<void> {
 
@@ -38,29 +38,20 @@ export async function registrationController(req: Request<{}, {}, RegisterReques
   try {
     const hashed_pwd: string = await bcrypt.hash(password, saltRounds);
 
-    const client = getDBClient();
-    if (client instanceof Error) {
-      res.status(500).json({ "message": "couldnt get DB" });
-      return;
-    }
+    const sameUser = await gqlSdk.CheckUserAlreadyExists({ username: username, email: email })
 
-    const sameUser = await client.query("SELECT * FROM \"user\" WHERE username = $1 OR email = $2", [username, email]);
-
-    if (sameUser.rows.length > 0) {
+    if (sameUser.user.length > 0) {
       res.status(400).json({ "message": "user exists with username or email" });
       console.log(sameUser);
       return;
     }
 
-    const insertUserQuery = `
-            INSERT INTO "user" (username, email, name, password_hash)
-            VALUES ($1, $2, $3, $4)
-            RETURNING id; 
-            `;
+    const result = await gqlSdk.CreateUser({ username: username, email: email, name: name, password_hash: hashed_pwd });
 
-    const result = await client.query(insertUserQuery, [username, email, name, hashed_pwd]);
-
-    const newUserId = result.rows[0].id; // The ID of the newly inserted user
+    const newUserId = result.insert_user_one?.id; // The ID of the newly inserted user
+    if (!newUserId) {
+      res.status(500).json({ "message": "could not be registered" });
+    }
 
     res.status(200).json({
       "message": "Registration successful",

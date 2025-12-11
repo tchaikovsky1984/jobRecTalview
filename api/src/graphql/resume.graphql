@@ -1,0 +1,15 @@
+
+# checking resume ownership
+query CheckResumeOwnership($id: Int!, $user_id: Int!) {
+  resume(where: {_and: [{id: {_eq: $id}}, {user_id: {_eq: $user_id}}]}){
+    id
+    user_id
+    filepath
+  }
+}
+
+mutation InsertResume($user_id: Int!, $filepath: String!){
+  insert_resume_one(object: {user_id: $user_id, filepath: $filepath}){
+    id
+  }
+}

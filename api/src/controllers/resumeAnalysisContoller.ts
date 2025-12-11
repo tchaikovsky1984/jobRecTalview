@@ -5,7 +5,7 @@ import type { RequestHandler } from "express";
 
 import type { ResumeAnalysisParam } from "../config/types.ts";
 import type { ResumeWorkflowInput } from "../config/types.ts";
-import { getDBClient } from "../db/connection.ts";
+import { gqlSdk } from "../config/graphqlClient.ts";
 import { displayLog } from "../middleware/LoggingRequests.ts";
 
 export const resumeAnalysisController: RequestHandler<ResumeAnalysisParam> = async (req, res) => {
@@ -14,26 +14,18 @@ export const resumeAnalysisController: RequestHandler<ResumeAnalysisParam> = asy
   const userId: number = (req as any).user.sub;
 
   try {
-    const client = getDBClient();
-    if (client instanceof Error) {
-      res.status(500).json({ "message": "could not get DB" });
-      return;
-    }
 
-    const validationQuery = `
-    SELECT *
-      FROM "resume"
-    WHERE id = $1
-    AND user_id =$2
-    `;
-
-    const result = await client.query(validationQuery, [id, userId]);
-    if (result.rowCount == 0) {
+    const result = await gqlSdk.CheckResumeOwnership({ id: Number(id), user_id: Number(userId) });
+    if (result.resume.length == 0) {
       res.status(402).json({ "message": "resume does not exist" });
       return;
     }
 
-    const resumePath = result.rows[0].filepath; // Get path from DB result
+    const resumePath = result.resume[0]?.filepath; // Get path from DB result
+    if (!resumePath) {
+      res.status(500).json({ "message": "filepath not available" });
+      return;
+    }
 
     const workflowStarted = await startResumeWorkflow({
       res_id: id,      // Match Python snake_case

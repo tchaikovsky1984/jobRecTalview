@@ -2,20 +2,13 @@ import { Connection, Client } from "@temporalio/client";
 import { v4 as uuidv4 } from "uuid";
 
 import type { Request, Response } from "express";
-import { getDBClient } from "../db/connection.ts";
+import { gqlSdk } from "../config/graphqlClient.ts";
 import { displayLog } from "../middleware/LoggingRequests.ts";
 import type { InterviewPrepWorkflowInput } from "../config/types.ts";
 
 export async function recommendationPrepController(req: Request, res: Response): Promise<void> {
   const rec_id = Number(req.params.id);
   const user_id = (req as any).user.sub;
-  const pg_client = getDBClient();
-
-  if (pg_client instanceof Error) {
-    displayLog("DB Could not be gotten", "ERR");
-    res.status(500).json({ "message": "DB could not be gotten" });
-    return;
-  }
 
   if (!user_id) {
     res.status(400).json({ "message": "user not provided" });
@@ -27,12 +20,8 @@ export async function recommendationPrepController(req: Request, res: Response):
     return;
   }
 
-  const recomCheck = `SELECT r.* FROM recommendation r
-                      JOIN resume res ON r.res_id = res.id
-                      WHERE r.id = $1 AND res.user_id = $2;`
-
-  const recomResult = await pg_client.query(recomCheck, [rec_id, user_id]);
-  if (recomResult.rows.length <= 0) {
+  const recomResult = await gqlSdk.CheckRecommendationOwnershipAndExistence({ rec_id: Number(rec_id), user_id: Number(user_id) });
+  if (recomResult.recommendation.length != 1) {
     res.status(400).json({ "message": "recommendation does not exist" });
   }
 

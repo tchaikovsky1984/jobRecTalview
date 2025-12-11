@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 
 import type { LoginRequestBody, LoginResponseBody } from "../config/types.ts";
 import { displayLog } from "../middleware/LoggingRequests.ts";
-import { getDBClient } from "../db/connection.ts";
+import { gqlSdk } from "../config/graphqlClient.ts";
 import { JWT_SECRET } from "../config/config.ts";
 
 export async function loginController(req: Request<{}, {}, LoginRequestBody>, res: Response<LoginResponseBody, {}>, next: NextFunction): Promise<void> {
@@ -14,21 +14,19 @@ export async function loginController(req: Request<{}, {}, LoginRequestBody>, re
   displayLog(JWT_SECRET, "LOG");
 
   try {
-    const client = getDBClient();
-    if (client instanceof Error) {
-      res.status(500).json({ "access_token": "", "user_id": "", "message": "couldnt not get DB" });
-      return;
-    }
-    const res_saved_hashed_pwd = await client.query("SELECT id, password_hash FROM \"user\" WHERE username = $1", [username]);
-    if (res_saved_hashed_pwd.rows.length == 0) {
+
+    const res_saved_hashed_pwd = await gqlSdk.SelectUserAndPassword({ username: username })
+
+    if (res_saved_hashed_pwd.user.length == 0 || !res_saved_hashed_pwd.user[0]) {
       res.status(400).json({ "access_token": "", "user_id": "", "message": "no such user exists" });
       return
     }
-    const saved_hashed_pwd = res_saved_hashed_pwd.rows[0]["password_hash"];
+
+    const saved_hashed_pwd = res_saved_hashed_pwd.user[0].password_hash;
     const passwordCondition: boolean = await bcrypt.compare(password, saved_hashed_pwd);
 
     if (passwordCondition) {
-      const user_id = res_saved_hashed_pwd.rows[0]["id"].toString();
+      const user_id = res_saved_hashed_pwd.user[0].id.toString();
       const HASURA_CLAIMS_NAMESPACE = "https://hasura.io/jwt/claims";
 
       const hasuraClaims = {
