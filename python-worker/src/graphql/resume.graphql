@@ -1,0 +1,27 @@
+
+mutation StoreProcessedResume($id: Int!, $user_id: Int!, $embedding: vector!, $summary: String!, $skills: _text!){
+  update_resume(
+    where: {
+      _and: [ 
+        {id: 
+          {_eq: $id}
+        }, 
+        {user_id: 
+          {_eq: $user_id}
+        } 
+      ]
+    }, 
+    _set: {
+      embedding: $embedding, 
+      summary: $summary,
+      extracted_skills: $skills
+    }
+  )
+  {
+    affected_rows
+    returning
+    {
+      id
+    }
+  }
+}

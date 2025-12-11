@@ -1,0 +1,17 @@
+
+mutation InsertScrapedJobs($objects: [job_insert_input!]!){
+  insert_job(
+    objects: $objects
+    on_conflict: {
+      constraint: job_url_key
+      update_columns: []
+    }
+  )
+  {
+     affected_rows
+     returning
+     {
+       id
+     }
+  }
+}

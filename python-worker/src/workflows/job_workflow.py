@@ -22,7 +22,7 @@ class ScrapingJobsWorkflow:
         job_criteria = JobSearchCriteria(
                 title="Backend Developer", 
                 pref_country="India", 
-                num=10
+                num=1
                 )
 
         file_path = await workflow.execute_activity(
