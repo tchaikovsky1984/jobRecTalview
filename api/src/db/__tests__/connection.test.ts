@@ -7,7 +7,7 @@ beforeEach(() => {
   jest.resetModules();
 });
 
-jest.unstable_mockModule("../../middleware/LoggingRequests.ts", () => ({
+jest.unstable_mockModule("../../middleware/logger.ts", () => ({
   displayLog: jest.fn()
 }));
 // mocking pg so we dont goof the db 
@@ -33,7 +33,7 @@ const dummyDB: DatabaseConfig = {
 describe("connectDB tests", () => {
 
   test("returns client on success", async () => {
-    const { displayLog } = await import('../../middleware/LoggingRequests.ts');
+    const { displayLog } = await import('../../middleware/logger.ts');
     const { connectDB } = await import('../connection.ts');
 
     const db_client = await connectDB(dummyDB);
@@ -46,7 +46,7 @@ describe("connectDB tests", () => {
   });
 
   test("returns null on client.connect() fails with Aggregate Error", async () => {
-    const { displayLog } = await import('../../middleware/LoggingRequests.ts');
+    const { displayLog } = await import('../../middleware/logger.ts');
     const { Client } = await import("pg");
     const { connectDB } = await import("../connection.ts");
 
@@ -65,7 +65,7 @@ describe("connectDB tests", () => {
   });
 
   test("returns null on client.connect() fails with Error", async () => {
-    const { displayLog } = await import('../../middleware/LoggingRequests.ts');
+    const { displayLog } = await import('../../middleware/logger.ts');
     const { Client } = await import("pg");
     const { connectDB } = await import("../connection.ts");
 
@@ -92,7 +92,7 @@ error.message = "TESTERROR1"
 describe("handleDatabaseError tests", () => {
 
   test("testing error handling", async () => {
-    const { displayLog } = await import("../../middleware/LoggingRequests.ts");
+    const { displayLog } = await import("../../middleware/logger.ts");
     const { handleDatabaseError } = await import("../connection.ts");
 
     handleDatabaseError(error);

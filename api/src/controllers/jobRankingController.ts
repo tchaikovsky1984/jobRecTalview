@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 
 import { gqlSdk } from "../config/graphqlClient.ts";
 import type { RankingWorkflowInput } from "../config/types.ts";
-import { displayLog } from "../middleware/LoggingRequests.ts";
+import { displayLog } from "../middleware/logger.ts";
 
 
 export async function jobRankingController(req: Request, res: Response) {

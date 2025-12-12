@@ -1,7 +1,7 @@
 import { Client } from 'pg';
 
 import type { DatabaseConfig } from "../config/types.ts";
-import { displayLog } from "../middleware/LoggingRequests.ts"
+import { displayLog } from "../middleware/logger.ts"
 
 let persistentClient: Client;
 

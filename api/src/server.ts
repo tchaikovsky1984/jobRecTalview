@@ -2,7 +2,7 @@ import express from "express";
 import http from "http";
 
 import handleLogging from "./middleware/LoggingRequests.ts";
-import { displayLog } from "./middleware/LoggingRequests.ts";
+import { displayLog } from "./middleware/logger.ts";
 import CORSHandler from "./middleware/CORSHandler.ts";
 import { SERVER, PG, HASURA } from "./config/config.ts";
 import { connectDB, handleDatabaseError } from "./db/connection.ts";

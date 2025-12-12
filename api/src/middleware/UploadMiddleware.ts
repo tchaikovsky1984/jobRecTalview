@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import path from "path";
 import fs from "fs";
 
-import { displayLog } from "./LoggingRequests.ts";
+import { displayLog } from "./logger.ts";
 
 function isRealPath(filepath: string): boolean {
   if (!fs.existsSync(filepath)) {

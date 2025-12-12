@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 
 import type { Request, Response } from "express";
 import { gqlSdk } from "../config/graphqlClient.ts";
-import { displayLog } from "../middleware/LoggingRequests.ts";
+import { displayLog } from "../middleware/logger.ts";
 import type { InterviewPrepWorkflowInput } from "../config/types.ts";
 
 export async function recommendationPrepController(req: Request, res: Response): Promise<void> {

@@ -3,7 +3,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 import type { LoginRequestBody, LoginResponseBody } from "../config/types.ts";
-import { displayLog } from "../middleware/LoggingRequests.ts";
+import { displayLog } from "../middleware/logger.ts";
 import { gqlSdk } from "../config/graphqlClient.ts";
 import { JWT_SECRET } from "../config/config.ts";
 

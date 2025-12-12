@@ -6,7 +6,7 @@ import type { RequestHandler } from "express";
 import type { ResumeAnalysisParam } from "../config/types.ts";
 import type { ResumeWorkflowInput } from "../config/types.ts";
 import { gqlSdk } from "../config/graphqlClient.ts";
-import { displayLog } from "../middleware/LoggingRequests.ts";
+import { displayLog } from "../middleware/logger.ts";
 
 export const resumeAnalysisController: RequestHandler<ResumeAnalysisParam> = async (req, res) => {
 
