@@ -3,19 +3,10 @@ import { v4 as uuidv4 } from "uuid";
 import path from "path";
 import fs from "fs";
 
-import { displayLog } from "./logger.ts";
-
-function isRealPath(filepath: string): boolean {
-  if (!fs.existsSync(filepath)) {
-    displayLog("Path does not exist.", "ERR");
-    return false;
-  }
-  return true;
-}
 
 const upload_dir = path.join(import.meta.dirname, "../../../samples/uploads/");
 if (!fs.existsSync(upload_dir)) {
-  fs.mkdirSync(upload_dir);
+  fs.mkdirSync(upload_dir, { recursive: true });
 }
 
 const storage = multer.diskStorage({
