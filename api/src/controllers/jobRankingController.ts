@@ -9,10 +9,13 @@ import { displayLog } from "../middleware/logger.ts";
 
 export async function jobRankingController(req: Request, res: Response) {
   const res_id = req.params.id;
-  const user_id = (req as any).user.sub;
-
+  const user_id = (req as any).user?.sub;
   if (!res_id) {
     res.status(400).json({ "message": "no resume specified" });
+    return;
+  }
+  if (!user_id) {
+    res.status(403).json({ "message": "decoded jwt not provided" });
     return;
   }
 
@@ -20,6 +23,7 @@ export async function jobRankingController(req: Request, res: Response) {
     const resumeCheck = await gqlSdk.CheckResumeOwnership({ id: Number(res_id), user_id: Number(user_id) })
     if (resumeCheck.resume.length === 0) {
       res.status(400).json({ "message": "no such resume exists" });
+      return;
     }
 
     const workflowStarted = await startJobRankingWorkflow({
@@ -41,7 +45,7 @@ export async function jobRankingController(req: Request, res: Response) {
   }
 }
 
-async function startJobRankingWorkflow(workflowInput: RankingWorkflowInput): Promise<{ status: boolean, id?: string }> {
+export async function startJobRankingWorkflow(workflowInput: RankingWorkflowInput): Promise<{ status: boolean, id?: string }> {
   try {
     const con = await Connection.connect({ address: "localhost:7233" });
     const temporalClient = new Client({ con });
