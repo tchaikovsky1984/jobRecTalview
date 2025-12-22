@@ -15,7 +15,7 @@ export const createMockResponse = (overrides?: Partial<any>): Response => {
   const res = {} as Response;
   res.statusCode = 0;
   res.status = jest.fn((code: number) => { res.statusCode = code; return res; });
-  res.json = jest.fn((obj: any) => { (res as any).message = obj.message; return res; });
+  res.json = jest.fn((obj: any) => { (res as any).body = obj; return res; });
   return res;
 };
 

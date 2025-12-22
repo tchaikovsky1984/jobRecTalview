@@ -1,4 +1,4 @@
-import type { Response, Request, NextFunction } from "express";
+import type { Response, Request } from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
@@ -7,17 +7,14 @@ import { displayLog } from "../middleware/logger.ts";
 import { gqlSdk } from "../config/graphqlClient.ts";
 import { JWT_SECRET } from "../config/config.ts";
 
-export async function loginController(req: Request<{}, {}, LoginRequestBody>, res: Response<LoginResponseBody, {}>, next: NextFunction): Promise<void> {
-
-  const { username, password } = req.body;
-
-  displayLog(JWT_SECRET, "LOG");
+export async function loginController(req: Request<{}, {}, LoginRequestBody>, res: Response<LoginResponseBody, {}>): Promise<void> {
 
   try {
+    const { username, password } = req.body;
 
     const res_saved_hashed_pwd = await gqlSdk.SelectUserAndPassword({ username: username })
 
-    if (res_saved_hashed_pwd.user.length == 0 || !res_saved_hashed_pwd.user[0]) {
+    if (res_saved_hashed_pwd.user.length == 0 || !res_saved_hashed_pwd.user[0] || !res_saved_hashed_pwd.user[0].id || !res_saved_hashed_pwd.user[0].username || !res_saved_hashed_pwd.user[0].password_hash) {
       res.status(400).json({ "access_token": "", "user_id": "", "message": "no such user exists" });
       return
     }
@@ -65,12 +62,11 @@ export async function loginController(req: Request<{}, {}, LoginRequestBody>, re
 
   }
   catch (err: any) {
-    displayLog(err, "ERR");
+    displayLog(err.toString(), "ERR");
     res.status(500).json({
       "access_token": "",
       "user_id": "",
-      "message": "Internal Server Error during login."
-
+      "message": err.message
     });
   }
 }

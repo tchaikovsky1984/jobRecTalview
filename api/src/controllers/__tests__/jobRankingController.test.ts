@@ -50,8 +50,9 @@ describe("jobRankingController", () => {
 
     expect(mockRes).toHaveProperty("statusCode");
     expect((mockRes as any).statusCode).toBe(400);
-    expect(mockRes).toHaveProperty("message");
-    expect((mockRes as any).message).toBe("no resume specified");
+    expect(mockRes).toHaveProperty("body");
+    expect((mockRes as any).body).toHaveProperty("message");
+    expect((mockRes as any).body.message).toBe("no resume specified");
     expect(mockCRO).not.toHaveBeenCalled();
   });
 
@@ -69,8 +70,9 @@ describe("jobRankingController", () => {
 
     expect(mockRes).toHaveProperty("statusCode");
     expect((mockRes as any).statusCode).toBe(403);
-    expect(mockRes).toHaveProperty("message");
-    expect((mockRes as any).message).toBe("decoded jwt not provided");
+    expect(mockRes).toHaveProperty("body");
+    expect((mockRes as any).body).toHaveProperty("message");
+    expect((mockRes as any).body.message).toBe("decoded jwt not provided");
     expect(mockCRO).not.toHaveBeenCalled();
   });
 
@@ -99,8 +101,9 @@ describe("jobRankingController", () => {
     expect(mockCRO).toHaveBeenCalledWith({ id: 1, user_id: 1 });
     expect(mockRes).toHaveProperty("statusCode");
     expect((mockRes as any).statusCode).toBe(400);
-    expect(mockRes).toHaveProperty("message");
-    expect((mockRes as any).message).toBe("no such resume exists");
+    expect(mockRes).toHaveProperty("body");
+    expect((mockRes as any).body).toHaveProperty("message");
+    expect((mockRes as any).body.message).toBe("no such resume exists");
   });
 
   // ==========================================================================
@@ -135,8 +138,9 @@ describe("jobRankingController", () => {
 
     expect(mockRes).toHaveProperty("statusCode");
     expect((mockRes as any).statusCode).toBe(200);
-    expect(mockRes).toHaveProperty("message");
-    expect((mockRes as any).message).toBe("Ranking started successfully");
+    expect(mockRes).toHaveProperty("body");
+    expect((mockRes as any).body).toHaveProperty("message");
+    expect((mockRes as any).body.message).toBe("Ranking started successfully");
     expect(mockCRO).toHaveBeenCalledTimes(1);
     expect(mockCRO).toHaveBeenCalledWith({ id: 1, user_id: 1 });
     expect(mockConnect).toHaveBeenCalledTimes(1);
@@ -186,8 +190,9 @@ describe("jobRankingController", () => {
 
     expect(mockRes).toHaveProperty("statusCode");
     expect((mockRes as any).statusCode).toBe(500);
-    expect(mockRes).toHaveProperty("message");
-    expect((mockRes as any).message).toBe("Failed to start workflow");
+    expect(mockRes).toHaveProperty("body");
+    expect((mockRes as any).body).toHaveProperty("message");
+    expect((mockRes as any).body.message).toBe("Failed to start workflow");
     expect(mockCRO).toHaveBeenCalledTimes(1);
     expect(mockCRO).toHaveBeenCalledWith({ id: 1, user_id: 1 });
     expect(mockConnect).toHaveBeenCalledTimes(1);
