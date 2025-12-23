@@ -10,8 +10,16 @@ import { displayLog } from "../middleware/logger.ts";
 
 export const resumeAnalysisController: RequestHandler<ResumeAnalysisParam> = async (req, res) => {
 
-  const id: number = req.params.id;
-  const userId: number = (req as any).user.sub;
+  const id: number = Number(req.params.id);
+  const userId: number = Number((req as any).user.sub);
+  if (!id) {
+    res.status(400).json({ "message": "resume not provided" });
+    return;
+  }
+  if (!userId) {
+    res.status(400).json({ "message": "user not provided" });
+    return;
+  }
 
   try {
 
@@ -40,12 +48,12 @@ export const resumeAnalysisController: RequestHandler<ResumeAnalysisParam> = asy
     }
   }
   catch (e) {
-    displayLog(String(e), "ERR");
+    displayLog((e as Error).message, "ERR");
     res.status(500).json({ message: "Internal Server Error" });
     return;
   }
 
-  return
+  return;
 
 }
 
@@ -66,7 +74,7 @@ async function startResumeWorkflow(resInfo: ResumeWorkflowInput): Promise<{ stat
     return { status: true, id: handle.workflowId };
   }
   catch (e) {
-    displayLog(String(e), "ERR");
+    displayLog((e as Error).message, "ERR");
     return { status: false };
   }
 }

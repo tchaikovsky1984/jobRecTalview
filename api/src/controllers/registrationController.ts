@@ -1,4 +1,4 @@
-import type { Request, Response, NextFunction } from "express";
+import type { Request, Response } from "express";
 import bcrypt from "bcrypt";
 
 import type { RegisterRequestBody } from "../config/types.ts"
@@ -42,7 +42,6 @@ export async function registrationController(req: Request<{}, {}, RegisterReques
 
     if (sameUser.user.length > 0) {
       res.status(400).json({ "message": "user exists with username or email" });
-      console.log(sameUser);
       return;
     }
 
@@ -51,6 +50,7 @@ export async function registrationController(req: Request<{}, {}, RegisterReques
     const newUserId = result.insert_user_one?.id; // The ID of the newly inserted user
     if (!newUserId) {
       res.status(500).json({ "message": "could not be registered" });
+      return;
     }
 
     res.status(200).json({

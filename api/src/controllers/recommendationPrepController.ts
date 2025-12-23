@@ -23,6 +23,7 @@ export async function recommendationPrepController(req: Request, res: Response):
   const recomResult = await gqlSdk.CheckRecommendationOwnershipAndExistence({ rec_id: Number(rec_id), user_id: Number(user_id) });
   if (recomResult.recommendation.length != 1) {
     res.status(400).json({ "message": "recommendation does not exist" });
+    return;
   }
 
   try {
