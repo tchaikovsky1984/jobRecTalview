@@ -106,7 +106,7 @@ export async function llmRankingActivity(llmInput: LLMJobInput): Promise<LLMJobO
 
   }
 
-  if (!llmAccumulated) {
+  if (llmAccumulated.length === 0) {
     throw new Error("LLM did not return a resposne" + "\n");
   }
 
