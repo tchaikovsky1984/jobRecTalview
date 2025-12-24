@@ -43,7 +43,7 @@ export default function ResumeCard({ resume }: ResumeCardProps) {
         </div>
 
         <p className="text-sm text-gray-500 line-clamp-2 leading-relaxed min-h-[2.5em]">
-          {resume.summary.substring(0, 72) + "..." || "No summary available."}
+          {resume.summary.substring(0, 500) + "..." || "No summary available."}
         </p>
       </div>
       <div className="shrink-0 pt-1">

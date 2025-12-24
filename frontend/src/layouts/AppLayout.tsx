@@ -27,7 +27,7 @@ function AppLayout(props: AppLayoutProps) {
 
   return (
     <div className="flex flex-row m-0 p-0 h-screen w-screen overflow-hidden" id="wrapper">
-      <div className="flex flex-col justify-start items-start m-0 min-w-[280px] w-[20%] max-w-[300px] min-h-screen bg-gradient-to-b from-[#787878] to-[#9a9a9a] drop-shadow-2xl text-white p-4 border-gray-800 border-r-2 shrink-0 z-10" id="sidebar">
+      <div className="flex flex-col justify-start items-start m-0 min-w-70 w-[20%] max-w-75 min-h-screen bg-gradient-to-b from-[#787878] to-[#9a9a9a] drop-shadow-2xl text-white p-4 border-gray-800 border-r-2 shrink-0 z-10" id="sidebar">
 
         <div className="flex flex-col justify-center items-center w-full mb-8 mt-4 border-b-2 pb-2 border-black" id="title">
           <h1 className="text-4xl text-black font-mono font-extrabold text-center"><i>OkComputer</i></h1>
@@ -50,7 +50,6 @@ function AppLayout(props: AppLayoutProps) {
         {props.sidebarChildren}
       </div>
 
-      {/* CHANGED: Removed justify-center/items-center. Added overflow-hidden to handle inner scrolling. */}
       <div className="grow h-full bg-gradient-to-b from-[#bdbdbd] to-[#9a9a9a] flex flex-col p-4 overflow-hidden relative" id="main">
         <div className="w-full h-full border-gray-800 border-2 rounded-3xl bg-[#dddddd] overflow-hidden relative shadow-inner">
           <Outlet />
