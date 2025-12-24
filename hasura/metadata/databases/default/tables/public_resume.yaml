@@ -9,19 +9,20 @@ array_relationships:
   - name: recommendations
     using:
       foreign_key_constraint_on:
-        column: res_id 
+        column: res_id
         table:
-          schema: public
           name: recommendation
+          schema: public
 select_permissions:
   - role: user
     permission:
       columns:
-        - id
-        - user_id
-        - embedding
         - extracted_skills
         - filepath
+        - id
+        - summary
+        - user_id
       filter:
         user_id:
           _eq: X-Hasura-User-Id
+      allow_aggregations: true

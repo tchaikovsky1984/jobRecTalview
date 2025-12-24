@@ -2,22 +2,24 @@ table:
   name: recommendation
   schema: public
 object_relationships:
-  - name: resume 
+  - name: job
     using:
       manual_configuration:
-        remote_table:
-          schema: public
-          name: resume
-        column_mapping:
-          res_id: id
-  - name: job 
-    using:
-      manual_configuration:
-        remote_table:
-          schema: public
-          name: job
         column_mapping:
           job_id: id
+        insertion_order: null
+        remote_table:
+          name: job
+          schema: public
+  - name: resume
+    using:
+      manual_configuration:
+        column_mapping:
+          res_id: id
+        insertion_order: null
+        remote_table:
+          name: resume
+          schema: public
 array_relationships:
   - name: prep
     using:
@@ -42,3 +44,4 @@ select_permissions:
         resume:
           user_id:
             _eq: X-Hasura-User-Id
+      allow_aggregations: true
