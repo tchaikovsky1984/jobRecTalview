@@ -24,7 +24,10 @@ async function apiFetch<T>(REST: boolean = true, endpoint: string, options: Requ
 
     const contentType = response.headers.get("content-type")
     if (contentType && contentType.includes("application/json")) {
-      return response.json() as Promise<T>;
+      const data = await response.json();
+      if ((data as any).errors)
+        throw new Error((data as any).errors[0].message);
+      return data;
     }
 
     return {} as T;

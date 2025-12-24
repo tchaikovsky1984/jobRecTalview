@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import type { LoginResponseBody } from "../types/types";
+import type { AppUser, LoginResponseBody, UserDetailResponseBody } from "../types/types";
+import { GET_USER_PROFILE_QUERY } from "../graphql/user";
+import AppLayout from "../layouts/AppLayout";
 
 import { api } from "../services/api";
 
 interface LoginPageProps {
-  user: LoginResponseBody;
+  user: AppUser;
   setUser: any;
 }
 
@@ -31,9 +33,18 @@ function LoginPage(props: LoginPageProps) {
 
     setLoading(true);
     try {
-      const response = await api.post<LoginResponseBody>(true, "/user/login", formData, {});
-      props.setUser(response);
-      navigate("/app/resumes");
+      const loginresponse = await api.post<LoginResponseBody>(true, "/user/login", formData, {});
+      const userresponse = await api.post<UserDetailResponseBody>(false, "",
+        {
+          query: GET_USER_PROFILE_QUERY,
+          variables: {
+            id: Number(loginresponse.user_id)
+          }
+        },
+        { Authorization: "Bearer " + loginresponse.access_token }
+      );
+      props.setUser({ ...loginresponse, ...userresponse.data.user[0] });
+      navigate("/");
     }
     catch (e) {
       alert((e as Error).message);
@@ -45,24 +56,33 @@ function LoginPage(props: LoginPageProps) {
   };
 
   return (
-    <div className="flex m-0 min-w-screen min-h-screen bg-[#bdbdbd] justify-center items-center">
-      <div className="bg-[#ffffcf] min-h-60 min-w-60 sm:min-h-100 sm:min-w-100 md:min-h-120 md:min-w-120 grow-0 shrink-0 rounded-2xl shadow-2xl flex flex-col items-center justify-around">
+    <div className="fixed inset-0 m-0 p-0 overflow-hidden bg-[#bdbdbd]">
 
-        <div className="flex flex-col items-center justify-around">
-          <h1 className="text-xl sm:text-2xl md:text-4xl font-extrabold font-mono mb-5">Log In</h1>
-          <p>to OkComputer</p>
+      <div className="absolute inset-0 z-0 filter blur-sm pointer-events-none">
+        <AppLayout user={props.user} />
+      </div>
+
+      <div className="absolute inset-0 z-0 bg-black/50 pointer-events-none" />
+
+      <div className="absolute inset-0 z-10 flex justify-center items-center">
+        <div className="bg-[#ffffcf] min-h-60 min-w-60 sm:min-h-100 sm:min-w-100 md:min-h-120 md:min-w-120 grow-0 shrink-0 rounded-2xl shadow-2xl flex flex-col items-center justify-around">
+
+          <div className="flex flex-col items-center justify-around pt-10">
+            <h1 className="text-xl sm:text-2xl md:text-4xl font-extrabold font-mono mb-5">Log In</h1>
+            <p className="text-md sm:text-l md:text-xl font-mono">to OkComputer</p>
+          </div>
+
+          <form onSubmit={handleFormSubmit} className="flex flex-col items-start justify-evenly">
+            <label className="mt-3 text-xl text-l font-mono font-bold">username</label>
+            <input type="text" value={formData.username} onChange={handleFormChange} id="usr-field" className="min-h-8 shrink shadow-xl border-b-2 border-black font-mono font-bold pt-2 pl-2 pr-2" />
+
+            <label className="mt-3 text-xl text-l font-mono font-bold">password</label>
+            <input type="password" value={formData.password} onChange={handleFormChange} id="pwd-field" className="min-h-8 shrink shadow-xl border-b-2 border-black font-mono font-bold pt-2 pl-2 pr-2" />
+
+            <button type="submit" className="m-3 text-xl text-l min-h-15 min-w-30 border borded-2 bg-black rounded-2xl text-white">{isLoading ? "Logging in..." : "Submit"}</button>
+          </form>
+
         </div>
-
-        <form onSubmit={handleFormSubmit} className="flex flex-col items-center justify-evenly">
-          <label className="m-3 text-xl text-l">username</label>
-          <input type="text" value={formData.username} onChange={handleFormChange} id="usr-field" className="min-h-8 shrink border border-[#888888] rounded-md" />
-
-          <label className="m-3 text-xl text-l">password</label>
-          <input type="password" value={formData.password} onChange={handleFormChange} id="pwd-field" className="min-h-8 shrink border border-[#888888] rounde-md" />
-
-          <button type="submit" className="m-3 text-xl text-l min-h-15 min-w-30 border borded-2 bg-black rounded-2xl text-white">{isLoading ? "Logging in..." : "Submit"}</button>
-        </form>
-
       </div>
     </div >
   );

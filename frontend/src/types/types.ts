@@ -26,6 +26,16 @@ export type LoginResponseBody = {
   message: string;
 };
 
+export type UserDetailResponseBody = {
+  data: {
+    user: {
+      username: string;
+      name: string;
+      email: string;
+    }[]
+  }
+}
+
 export type ResumeAnalysisParam = {
   id: number;
 };
@@ -45,4 +55,32 @@ export type RankingWorkflowInput = {
 
 export type InterviewPrepWorkflowInput = {
   recId: number;
+};
+
+interface AuthData {
+  access_token: string;
+  user_id: string;
+  message: string;
+}
+
+interface UserProfile {
+  username: string;
+  name: string;
+  email: string;
+}
+
+export interface AppUser extends AuthData, UserProfile { }
+
+export type ResumeDetailResponseBody = {
+  data: {
+    resume: {
+      id: number;
+      summary: string;
+      aggregate: {
+        avg: {
+          score: number | null
+        }
+      }
+    }[]
+  }
 };
