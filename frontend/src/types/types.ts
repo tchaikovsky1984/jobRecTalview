@@ -84,3 +84,16 @@ export type ResumeDetailResponseBody = {
     }[]
   }
 };
+
+export type ResumeUploadResponse = {
+  message: string;
+  resumeId?: number;
+  detail?: string;
+};
+
+export type ResumeDataResponse = {
+  id: number;
+  summary: string;
+  extracted_skills: string[];
+  filepath: string;
+};

@@ -49,6 +49,23 @@ export const api = {
     headers: headers
   }),
 
+  upload: async <T>(endpoint: string, formData: FormData, token: string): Promise<T> => {
+    const response = await fetch(`${REST_BASE_URL}${endpoint}`, {
+      method: "POST",
+      body: formData,
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    });
+
+    if (!response.ok) {
+      const errorBody = await response.json().catch(() => { });
+      throw new Error(errorBody?.message || `Upload failed: ${response.status}`);
+    }
+
+    return response.json();
+  },
+
   put: <T>(REST: boolean, endpoint: string, body: any, headers?: any) => apiFetch<T>(REST, endpoint, {
     method: "PUT",
     body: JSON.stringify(body),

@@ -1,7 +1,6 @@
 import { jest, describe, test, expect } from "@jest/globals";
 
 import { createMockRequest, createMockResponse } from "../__mocks__/factories.ts";
-import { create } from "domain";
 
 const mockHash = jest.fn();
 const mockCUAE = jest.fn();
@@ -44,6 +43,9 @@ describe("registrationController", () => {
     expect(mockRes).toHaveProperty("statusCode");
     expect((mockRes as any).statusCode).toBe(400);
     expect(mockRes).toHaveProperty("body");
+    /*expect((mockRes as any).body).toBe({
+      error: "username not provided"
+    });*/
     expect((mockRes as any).body).toHaveProperty("error");
     expect((mockRes as any).body.error).toBe("username not provided");
   });

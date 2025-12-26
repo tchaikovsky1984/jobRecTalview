@@ -3,7 +3,7 @@ interface SkillPillProps {
   variant?: 'neutral' | 'match' | 'miss';
 }
 
-export function SkillPill({ name, variant = 'neutral' }: SkillPillProps) {
+export default function SkillPill({ name, variant = 'neutral' }: SkillPillProps) {
   const styles = {
     neutral: "bg-gray-200 text-gray-800 border-gray-300 border rounded-xl",
     match: "bg-green-100 text-green-800 border-green-200 rounded-xl",

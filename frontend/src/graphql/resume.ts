@@ -13,3 +13,14 @@ export const GET_RESUME_BRIEF_QUERY = `
     } 
   }
 `;
+
+export const GET_RESUME_DATA = `
+  query GetResumeData($resId: Int!){
+    resume_by_pk(id: $resId){
+      id
+      summary
+      extracted_skills
+      filepath
+    }
+  }
+`;
