@@ -21,8 +21,8 @@ function ResumePrepPage(props: ResumePrepPageProps) {
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [isRecommending, setIsRecommending] = useState(false);
 
-  const analysisIntervalRef = useRef<number | null>(null);
-  const recsIntervalRef = useRef<number | null>(null);
+  const analysisIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const recsIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const fetchResumeData = async (resumeId: number) => {
     return api.post<any>(false, "", {
@@ -70,12 +70,11 @@ function ResumePrepPage(props: ResumePrepPageProps) {
   }, []);
 
 
-
   const pollForAnalysis = () => {
     let attempts = 0;
     const maxAttempts = 30;
 
-    analysisIntervalRef.current = window.setInterval(async () => {
+    analysisIntervalRef.current = setInterval(async () => {
       attempts++;
       try {
         const res = await fetchResumeData(ids);
@@ -95,14 +94,14 @@ function ResumePrepPage(props: ResumePrepPageProps) {
       } catch (err) {
         console.error("Polling error", err);
       }
-    }, 2000);
+    }, 5000);
   };
 
   const pollForRecs = () => {
     let attempts = 0;
     const maxAttempts = 30;
 
-    recsIntervalRef.current = window.setInterval(async () => {
+    recsIntervalRef.current = setInterval(async () => {
       attempts++;
       try {
         const res = await fetchRecs(ids);
@@ -115,11 +114,12 @@ function ResumePrepPage(props: ResumePrepPageProps) {
         } else if (attempts >= maxAttempts) {
           setIsRecommending(false);
           if (recsIntervalRef.current) clearInterval(recsIntervalRef.current);
+          alert("Recommendation timed out. Please try refreshing the page later.");
         }
       } catch (err) {
         console.error("Polling recs error", err);
       }
-    }, 2000);
+    }, 5000);
   };
 
 
@@ -157,12 +157,12 @@ function ResumePrepPage(props: ResumePrepPageProps) {
   const safeRecs = useMemo(() => {
     return recData.map(rec => ({
       ...rec,
-      resume: rec.resume || { id: ids }
+      resume: { id: ids }
     }));
   }, [recData, ids]);
 
   const skillsList = resData?.extracted_skills || [];
-  const isAnalysed = !!(resData?.summary || (skillsList.length > 0));
+  const isAnalysed = (resData?.summary || (skillsList.length > 0));
 
 
   if (loading && !resData) {
@@ -210,9 +210,10 @@ function ResumePrepPage(props: ResumePrepPageProps) {
           </div>
 
           {!isAnalysed ? (
+
             <div className="bg-blue-50/50 rounded-lg p-6 border border-blue-100 flex flex-col items-center justify-center gap-3 text-center transition-all">
               <p className="text-gray-600 text-sm">
-                {isAnalyzing ? "Processing resume details..." : "This resume has not been processed by our AI engine yet."}
+                {isAnalyzing ? "Processing resume details..." : "This resume has not been processed yet."}
               </p>
               <button
                 onClick={handleAnalyzeResume}
@@ -232,7 +233,15 @@ function ResumePrepPage(props: ResumePrepPageProps) {
                 {isAnalyzing ? "Analyzing (this may take a moment)..." : "Analyze Resume with AI"}
               </button>
             </div>
+
+            //either or
+            // if not analysed yet
+
           ) : (
+
+            //either or
+            // if analysed
+
             <>
               <div className="bg-gray-50 rounded-lg p-4 border border-gray-100 relative">
                 <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 flex items-center gap-2">
@@ -254,6 +263,7 @@ function ResumePrepPage(props: ResumePrepPageProps) {
                   ))}
                 </div>
               )}
+
             </>
           )}
         </div>

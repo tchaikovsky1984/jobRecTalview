@@ -18,7 +18,7 @@ export default function JobPrepPage({ user }: JobPrepPageProps) {
   const [generating, setGenerating] = useState(false);
   const [data, setData] = useState<any>(null);
 
-  const pollInterval = useRef<NodeJS.Timeout | null>(null);
+  const pollInterval = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const fetchFromHasura = () => {
     return api.post<any>(false, "", {
@@ -80,7 +80,8 @@ export default function JobPrepPage({ user }: JobPrepPageProps) {
         }
       }, 2000);
 
-    } catch (e) {
+    }
+    catch (e) {
       setGenerating(false);
       alert("Failed to start generation workflow");
       console.error(e);
