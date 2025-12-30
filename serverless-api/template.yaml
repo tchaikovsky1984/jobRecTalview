@@ -1,0 +1,105 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  serverless-api
+
+  Sample SAM Template for serverless-api
+  
+Globals:
+  Function:
+    Timeout: 30
+    Architectures: 
+      - x86_64
+    Environment:
+      Variables:
+        POWERTOOLS_SERVICE_NAME: jobRecApi
+        S3_BUCKET_NAME: !Ref ResumeBucket
+        S3_ENDPOINT: http://minio:9000
+        AWS_REGION_NAME: us-east-1
+        HASURA_GRAPHQL_URL: http://host.docker.internal:8080/v1/graphql
+        HASURA_ADMIN_SECRET: myadminsecretkey
+    Runtime: nodejs20.x
+
+Resources:
+  AuthFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./
+      Handler: auth.handler
+      Environment:
+        Variables:
+          JWT_SECRET: placeholder
+    Metadata: 
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: "es2020"
+        Sourcemap: true
+        EntryPoints: 
+        - src/auth.ts
+
+  RegisterFunction:
+    Type: AWS::Serverless::Function 
+    Properties:
+      CodeUri: ./
+      Handler: registrationController.controller
+      Events:
+        RegisterRequest:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /user/register
+            Method: post
+            RestApiId: !Ref JobRecApi
+    Metadata: 
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: "es2020"
+        Sourcemap: true
+        EntryPoints: 
+        - src/registrationController.ts
+
+  ResumeUploadFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./
+      Handler: resumeUploadController.controller
+      Events:
+        UploadRequest:
+          Type: Api
+          Properties:
+            Path: /resume/upload
+            Method: post
+            RestApiId: !Ref JobRecApi
+            Auth:
+              Authorizer: LambdaRequestAuth
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref ResumeBucket
+    Metadata: 
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: "es2020"
+        Sourcemap: true
+        EntryPoints: 
+        - src/resumeUploadController.ts
+
+  ResumeBucket:
+    Type: AWS::S3::Bucket
+
+  JobRecApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: dev
+      Cors:
+        AllowMethods: "'*'"
+        AllowHeaders: "'*'"
+        AllowOrigin: "'*'"
+      Auth:
+        Authorizers:
+          LambdaRequestAuth:
+            FunctionArn: !GetAtt AuthFunction.Arn
+      BinaryMediaTypes:
+        - multipart/form-data
+        - application/pdf
