@@ -1,6 +1,6 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
 import { gqlSdk } from "./config/graphqlClient.ts";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 
 export async function controller(event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> {
 
@@ -46,9 +46,12 @@ export async function controller(event: APIGatewayProxyEvent): Promise<APIGatewa
   }
 
   try {
+    console.log("reached inside try");
     const hashed_pwd: string = await bcrypt.hash(password, saltRounds);
+    console.log(hashed_pwd);
 
     const sameUser = await gqlSdk.CheckUserAlreadyExists({ username: username, email: email })
+    console.log(sameUser);
 
     if (sameUser.user.length > 0)
       return {
