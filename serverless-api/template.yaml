@@ -4,6 +4,12 @@ Description: >
   serverless-api
 
   Sample SAM Template for serverless-api
+
+Parameters:
+  JWTSecret:
+    Type: String
+    Description: JWT Secret Key
+    NoEcho: true
   
 Globals:
   Function:
@@ -13,12 +19,15 @@ Globals:
       - x86_64
     Environment:
       Variables:
-        POWERTOOLS_SERVICE_NAME: jobRecApi
-        S3_BUCKET_NAME: !Ref ResumeBucket
-        S3_ENDPOINT: http://minio:9000
+        S3_BUCKET_NAME: !Ref resumes 
+        MINIO_ENDPOINT: 172.17.0.1
+        MINIO_PORT: 9000
+        MINIO_ACCESS_KEY: minioadmin
+        MINIO_SECRET_KEY: minioadmin
         AWS_REGION_NAME: us-east-1
         HASURA_GRAPHQL_URL: http://172.17.0.1:8080/v1/graphql
         HASURA_ADMIN_SECRET: myadminsecretkey
+        JWT_SECRET: !Ref JWTSecret
     Runtime: nodejs20.x
 
 Resources:
@@ -26,10 +35,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: ./
-      Handler: auth.handler
-      Environment:
-        Variables:
-          JWT_SECRET: placeholder
+      Handler: auth.authenticateToken
     Metadata: 
       BuildMethod: esbuild
       BuildProperties:
@@ -59,6 +65,28 @@ Resources:
         Sourcemap: true
         EntryPoints: 
         - src/registrationController.ts
+
+  LoginFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./
+      Handler: loginController.controller
+      Events:
+        LoginRequest:
+          Type: Api
+          Properties:
+            Path: /user/login
+            Method: post
+            RestApiId: !Ref JobRecApi
+    Metadata:
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: "es2020"
+        Sourcemap: true
+        EntryPoints:
+        - src/loginController.ts
+
 
   ResumeUploadFunction:
     Type: AWS::Serverless::Function
@@ -100,7 +128,12 @@ Resources:
       Auth:
         Authorizers:
           LambdaRequestAuth:
+            FunctionPayloadType: TOKEN
             FunctionArn: !GetAtt AuthFunction.Arn
+            Identity:
+              Header: Authorization
+              ValidationExpression: ^Bearer .*$
+              ReauthorizeEvery: 1800
       BinaryMediaTypes:
         - multipart/form-data
         - application/pdf

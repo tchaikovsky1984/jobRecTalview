@@ -5,13 +5,13 @@ meta {
 }
 
 post {
-  url: {{baseURL}}resume/upload
+  url: {{awsUrl}}resume/upload
   body: multipartForm
   auth: inherit
 }
 
 body:multipart-form {
-  resume: @file(/home/anshul/downloads/alexMercerResume.pdf)
+  resume: @file()
 }
 
 settings {
