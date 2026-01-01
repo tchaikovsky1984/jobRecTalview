@@ -32,3 +32,15 @@ run-build: build
 # Clean build artifacts
 clean:
 	rm -rf serverless-api/.aws-sam 
+
+rest-run:
+	cd api/ && nodemon
+
+temporal:
+	temporal server start-dev --ip 0.0.0.0 --ui-port 7777
+
+pworker:
+	cd python-worker && source venv/bin/activate && python3 -m src.worker
+
+tworker:
+	cd ts-worker && ts-node worker.ts
