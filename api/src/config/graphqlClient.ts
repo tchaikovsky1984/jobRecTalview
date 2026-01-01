@@ -4,7 +4,7 @@ import * as dotenv from 'dotenv';
 
 dotenv.config();
 
-const endpoint = process.env.HASURA_GRAPHQL_URL ? process.env.HASURA_GRAPHQL_URL + "v1/graphql" : 'http://localhost:8080/v1/graphql';
+const endpoint = process.env.HASURA_GRAPHQL_URL ? process.env.HASURA_GRAPHQL_URL : 'http://localhost:8080/v1/graphql';
 const secret = process.env.HASURA_ADMIN_SECRET || '';
 
 const client = new GraphQLClient(endpoint, {

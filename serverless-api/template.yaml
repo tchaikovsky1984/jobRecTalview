@@ -10,6 +10,39 @@ Parameters:
     Type: String
     Description: JWT Secret Key
     NoEcho: true
+  Minio_Endpoint:
+    Type: String
+    Description: IP for Minio instance
+    Default: 172.17.0.1
+    NoEcho: false
+  Minio_Port:
+    Type: String
+    Description: Port for Minio instance
+    Default: 9000
+    NoEcho: false
+  MinioPublic:
+    Type: String
+    Description: Minio Username 
+    NoEcho: true
+  MinioPrivate:
+    Type: String
+    Description: Minio Password 
+    NoEcho: true
+  GraphQL_Endpoint:
+    Type: String
+    Description: Specific address for graphql instance
+    Default: http://172.17.0.1:8080/v1/graphql
+    NoEcho: false
+  HasuraSecret:
+    Type: String
+    Description: Hasura Admin Password 
+    NoEcho: true
+  Temporal_Endpoint:
+    Type: String
+    Description: Specific address for temporal instance
+    Default: 172.17.0.1:7233
+    NoEcho: false
+
   
 Globals:
   Function:
@@ -20,15 +53,15 @@ Globals:
     Environment:
       Variables:
         S3_BUCKET_NAME: !Ref resumes 
-        MINIO_ENDPOINT: 172.17.0.1
-        MINIO_PORT: 9000
-        MINIO_ACCESS_KEY: minioadmin
-        MINIO_SECRET_KEY: minioadmin
+        MINIO_ENDPOINT: !Ref Minio_Endpoint
+        MINIO_PORT: !Ref Minio_Port 
+        MINIO_ACCESS_KEY: !Ref MinioPublic
+        MINIO_SECRET_KEY: !Ref MinioPrivate 
         AWS_REGION_NAME: us-east-1
-        HASURA_GRAPHQL_URL: http://172.17.0.1:8080/v1/graphql
-        HASURA_ADMIN_SECRET: myadminsecretkey
+        HASURA_GRAPHQL_URL: !Ref GraphQL_Endpoint
+        HASURA_ADMIN_SECRET: !Ref HasuraSecret
         JWT_SECRET: !Ref JWTSecret
-        TEMPORAL_ADDRESS: 172.17.0.1:7233
+        TEMPORAL_ADDRESS: !Ref Temporal_Endpoint
     Runtime: nodejs20.x
 
 Resources:

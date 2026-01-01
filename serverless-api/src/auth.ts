@@ -17,6 +17,22 @@ function _generatePolicy(action: any, effect: any, resource: any) {
 }
 
 export async function authenticateToken(event: APIGatewayTokenAuthorizerEvent): Promise<APIGatewayAuthorizerResult> {
+
+  const env = {
+    S3_BUKETNAME: process.env.S3_BUCKET_NAME,
+    MINIO_ENDPOINT: process.env.MINIO_ENDPOINT,
+    MINIO_PORT: process.env.MINIO_PORT,
+    MINIO_ACCESS_KEY: process.env.MINIO_ACCESS_KEY,
+    MINIO_SECRET_KEY: process.env.MINIO_SECRET_KEY,
+    AWS_REGION_NAME: process.env.AWS_REGION_NAME,
+    HASURA_GRAPHQL_URL: process.env.HASURA_GRAPHQL_URL,
+    HASURA_ADMIN_SECRET: process.env.HASURA_ADMIN_SECRET,
+    JWT_SECRET: process.env.JWT_SECRET,
+    TEMPORAL_ADDRESS: process.env.TEMPORAL_ADDRESS
+  }
+
+  console.log(env);
+
   const auth_header = event.authorizationToken;
   const method_arn = event.methodArn;
   if (!auth_header) {

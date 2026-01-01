@@ -6,6 +6,14 @@ const accessKey = process.env.MINIO_ACCESS_KEY || 'minioadmin';
 const secretKey = process.env.MINIO_SECRET_KEY || 'minioadmin';
 const bucketName = process.env.S3_BUCKET_NAME || 'resumes';
 
+console.log({
+  endPoint: endPoint,
+  port: port,
+  useSSL: false,
+  accessKey: accessKey,
+  secretKey: secretKey
+});
+
 export const minioClient = new Minio.Client({
   endPoint: endPoint,
   port: port,
