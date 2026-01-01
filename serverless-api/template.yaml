@@ -28,6 +28,7 @@ Globals:
         HASURA_GRAPHQL_URL: http://172.17.0.1:8080/v1/graphql
         HASURA_ADMIN_SECRET: myadminsecretkey
         JWT_SECRET: !Ref JWTSecret
+        TEMPORAL_ADDRESS: 172.17.0.1:7233
     Runtime: nodejs20.x
 
 Resources:
@@ -113,6 +114,84 @@ Resources:
         Sourcemap: true
         EntryPoints: 
         - src/resumeUploadController.ts
+
+  ResumeAnalysisFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./
+      Handler: resumeAnalysisController.controller
+      Events:
+        UploadRequest:
+          Type: Api
+          Properties:
+            Path: /resume/analyse/{id}
+            Method: post
+            RestApiId: !Ref JobRecApi
+            Auth:
+              Authorizer: LambdaRequestAuth
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref ResumeBucket
+    Metadata: 
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: "es2020"
+        Sourcemap: true
+        EntryPoints: 
+        - src/resumeAnalysisController.ts
+
+  JobRankingFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./
+      Handler: jobRankingController.controller
+      Events:
+        UploadRequest:
+          Type: Api
+          Properties:
+            Path: /resume/rank/{id}
+            Method: get 
+            RestApiId: !Ref JobRecApi
+            Auth:
+              Authorizer: LambdaRequestAuth
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref ResumeBucket
+    Metadata: 
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: "es2020"
+        Sourcemap: true
+        EntryPoints: 
+        - src/resumeAnalysisController.ts
+  
+  RecommendationPrepFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./
+      Handler: recommendationPrepController.controller
+      Events:
+        UploadRequest:
+          Type: Api
+          Properties:
+            Path: /recommendation/prep/{id}
+            Method: get 
+            RestApiId: !Ref JobRecApi
+            Auth:
+              Authorizer: LambdaRequestAuth
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref ResumeBucket
+    Metadata: 
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: "es2020"
+        Sourcemap: true
+        EntryPoints: 
+        - src/resumeAnalysisController.ts
 
   ResumeBucket:
     Type: AWS::S3::Bucket
