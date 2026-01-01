@@ -44,3 +44,6 @@ pworker:
 
 tworker:
 	cd ts-worker && ts-node worker.ts
+
+frontend:
+	cd frontend/ && npm run dev
