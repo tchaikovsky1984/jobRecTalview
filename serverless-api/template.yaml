@@ -217,6 +217,29 @@ Resources:
         EntryPoints: 
         - src/recommendationPrepController.ts
 
+  JobSearchFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./
+      Handler: jobSearchController.controller
+      Events:
+        SearchRequest:
+          Type: Api
+          Properties:
+            Path: /search
+            Method: post
+            RestApiId: !Ref JobRecApi
+            Auth:
+              Authorizer: LambdaRequestAuth
+    Metadata: 
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: "es2020"
+        Sourcemap: true
+        EntryPoints: 
+        - src/jobSearchController.ts
+
   ResumeBucket:
     Type: AWS::S3::Bucket
 

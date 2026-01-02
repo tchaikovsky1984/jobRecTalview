@@ -46,3 +46,9 @@ export type RankingWorkflowInput = {
 export type InterviewPrepWorkflowInput = {
   recId: number;
 };
+
+export type JobSearchWorkflowInput = {
+  title: string;
+  pref_country?: string;
+  pref_area?: string;
+};

@@ -1,0 +1,15 @@
+meta {
+  name: search_job
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{awsUrl}}search
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+}

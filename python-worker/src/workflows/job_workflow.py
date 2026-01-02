@@ -17,13 +17,7 @@ from src.shared import SummaryType
 class ScrapingJobsWorkflow:
 
     @workflow.run
-    async def findJobs(self) -> bool: 
-
-        job_criteria = JobSearchCriteria(
-                title="Backend Developer", 
-                pref_country="India", 
-                num=1
-                )
+    async def findJobs(self, job_criteria: JobSearchCriteria) -> bool: 
 
         file_path = await workflow.execute_activity(
                 scraper,
