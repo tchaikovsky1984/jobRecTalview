@@ -8,7 +8,8 @@ import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
 
 export async function controller(event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> {
   try {
-    const { username, password } = JSON.parse(event.body || "{}") as LoginRequestBody;
+    const eventbody = JSON.parse(event.body || "{}");
+    const { username, password } = (eventbody.input as LoginRequestBody || eventbody);
 
     if (!username || !password) {
       return {
@@ -76,8 +77,6 @@ export async function controller(event: APIGatewayProxyEvent): Promise<APIGatewa
     return {
       statusCode: 500,
       body: JSON.stringify({
-        "access_token": "",
-        "user_id": "",
         "message": err.message
       })
     };

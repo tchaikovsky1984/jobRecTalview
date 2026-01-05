@@ -18,6 +18,7 @@ build:
 # Run API Locally with Parameter Overrides
 run:
 	cd serverless-api/ && sam local start-api \
+		--host 172.17.0.1 \
 		-t .aws-sam/build/template.yaml \
 		--parameter-overrides \
 			ParameterKey=Minio_Endpoint,ParameterValue=$(MINIO_URL) ParameterKey=Minio_Port,ParameterValue=$(MINIO_PORT) ParameterKey=MinioPublic,ParameterValue=$(MINIO_USR) ParameterKey=MinioPrivate,ParameterValue=$(MINIO_PWD) ParameterKey=GraphQL_Endpoint,ParameterValue=$(HASURA_URL_AWS) ParameterKey=HasuraSecret,ParameterValue=$(HASURA_ADMIN_SECRET) ParameterKey=Temporal_Endpoint,ParameterValue=$(TEMPORAL_URL) ParameterKey=JWTSecret,ParameterValue=$(JWT_SECRET)
@@ -26,6 +27,7 @@ run:
 run-build: build
 	cd serverless-api/ && sam local start-api \
 		-t .aws-sam/build/template.yaml \
+		--host 172.17.0.1 \
 		--parameter-overrides \
 			ParameterKey=Minio_Endpoint,ParameterValue=$(MINIO_URL) ParameterKey=Minio_Port,ParameterValue=$(MINIO_PORT) ParameterKey=MinioPublic,ParameterValue=$(MINIO_USR) ParameterKey=MinioPrivate,ParameterValue=$(MINIO_PWD) ParameterKey=GraphQL_Endpoint,ParameterValue=$(HASURA_URL_AWS) ParameterKey=HasuraSecret,ParameterValue=$(HASURA_ADMIN_SECRET) ParameterKey=Temporal_Endpoint,ParameterValue=$(TEMPORAL_URL) ParameterKey=JWTSecret,ParameterValue=$(JWT_SECRET)
 

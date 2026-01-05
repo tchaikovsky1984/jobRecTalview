@@ -6,10 +6,18 @@ meta {
 
 post {
   url: {{awsUrl}}search
-  body: none
+  body: json
   auth: inherit
+}
+
+body:json {
+  {
+    "title": "UI Designer",
+    "pref_country": "India"
+  }
 }
 
 settings {
   encodeUrl: true
+  timeout: 0
 }

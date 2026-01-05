@@ -1,6 +1,21 @@
-actions: []
+actions:
+  - name: LoginUser
+    definition:
+      kind: synchronous
+      handler: http://172.17.0.1:3000/user/login
+    permissions:
+      - role: anonymous
+    comment: 'Login Action: Log in a user account with a username and password'
+  - name: RegisterUser
+    definition:
+      kind: synchronous
+      handler: http://172.17.0.1:3000/user/register
+    permissions:
+      - role: anonymous
 custom_types:
   enums: []
   input_objects: []
-  objects: []
+  objects:
+    - name: LoginOutput
+    - name: RegisterOutput
   scalars: []
