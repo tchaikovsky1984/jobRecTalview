@@ -51,7 +51,8 @@ export async function controller(event: APIGatewayProxyEvent): Promise<APIGatewa
         JWT_SECRET,
         {
           algorithm: 'HS256', // Must match the "type" in your docker-compose.yml
-          expiresIn: '24h'    // Token expiration
+          expiresIn: '24h',    // Token expiration
+          issuer: "my-chat-app"
         }
       );
 

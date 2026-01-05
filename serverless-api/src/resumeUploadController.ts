@@ -1,4 +1,3 @@
-import parser from "lambda-multipart-parser";
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
 import { minioClient, ensureBucketExists } from "./config/minioClient.ts";
 import { gqlSdk } from "./config/graphqlClient.ts";
@@ -6,46 +5,33 @@ import { v4 as uuidv4 } from "uuid";
 
 export async function controller(event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> {
 
-  const multipartData = event.body;
   try {
-    if (!multipartData) {
+    const eventbody = JSON.parse(event.body || "{}");
+    const userId = eventbody.session_variables['x-hasura-user-id'];
+    const { mimetype, file64, filename } = eventbody.input || {};
+
+    if (!filename || !file64) {
       return {
         statusCode: 400,
         body: JSON.stringify({ "message": "No data provided" })
       };
     }
 
-    console.log(event.headers["Authorization"]);
-    const parsedEvent = await parser.parse(event);
-    console.log(parsedEvent);
-
-    if (!parsedEvent.files || parsedEvent.files.length === 0) {
+    if (file64.length === 0) {
       return {
         statusCode: 400,
-        body: JSON.stringify({ "message": "No file provided" })
+        body: JSON.stringify({ "message": "Empty file provided" })
       };
     }
 
-    if (parsedEvent.files[0].fieldname !== "resume") {
-      return {
-        statusCode: 400,
-        body: JSON.stringify({ "message": "Formdata fielname incorrect" })
-      };
-    }
-
-    console.log(event.requestContext);
-    const userId = Number(event.requestContext.authorizer?.userId);
     if (!userId) {
       return {
-        statusCode: 400,
+        statusCode: 401,
         body: JSON.stringify({ "message": "User not provided" })
       };
     }
 
-    const file = parsedEvent.files[0];
-    const fileBuffer = file.content;
-    const filename = file.filename;
-    const mimeType = file.contentType;
+    const fileBuffer = Buffer.from(file64, 'base64');
 
     const objectName = `${userId}/${Date.now()}_${uuidv4()}.${filename.split(".").at(-1)}`;
     const bucketName = "resumes";
@@ -56,7 +42,7 @@ export async function controller(event: APIGatewayProxyEvent): Promise<APIGatewa
       objectName,
       fileBuffer,
       fileBuffer.length,
-      { "Content-Type": mimeType }
+      { "Content-Type": mimetype }
     );
 
     const result = await gqlSdk.InsertResume({ user_id: userId, filepath: objectName });

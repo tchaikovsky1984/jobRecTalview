@@ -7,8 +7,9 @@ import { getTemporalClient } from "./config/temporalClient.ts";
 
 
 export async function controller(event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> {
-  const res_id = Number(event.pathParameters?.id);
-  const user_id: number = Number(event.requestContext.authorizer?.userId);
+  const eventbody = JSON.parse(event.body || "{}");
+  const { res_id } = (eventbody.input || eventbody);
+  const user_id: number = eventbody.session_variables["x-hasura-user-id"];
   if (!res_id) {
     return {
       statusCode: 400,

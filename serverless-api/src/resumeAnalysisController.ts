@@ -1,14 +1,15 @@
 import { v4 as uuidv4 } from "uuid";
 
-import type { ResumeAnalysisParam, ResumeWorkflowInput } from "./config/types.ts";
+import type { ResumeWorkflowInput } from "./config/types.ts";
 import { getTemporalClient } from "./config/temporalClient.ts"
 import { gqlSdk } from "./config/graphqlClient.ts";
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 
 export async function controller(event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> {
 
-  const id: number = Number(event.pathParameters?.id);
-  const userId: number = Number(event.requestContext.authorizer?.userId);
+  const eventbody = JSON.parse(event.body || "{}");
+  const { id } = eventbody.input || eventbody;
+  const userId = eventbody.session_variables['x-hasura-user-id'];
   console.log(id);
   console.log(userId);
 

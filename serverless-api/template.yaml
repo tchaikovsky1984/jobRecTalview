@@ -134,8 +134,6 @@ Resources:
             Path: /resume/upload
             Method: post
             RestApiId: !Ref JobRecApi
-            Auth:
-              Authorizer: LambdaRequestAuth
       Policies:
         - S3CrudPolicy:
             BucketName: !Ref ResumeBucket
@@ -157,11 +155,9 @@ Resources:
         AnalysisRequest:
           Type: Api
           Properties:
-            Path: /resume/analyse/{id}
+            Path: /resume/analyse
             Method: post
             RestApiId: !Ref JobRecApi
-            Auth:
-              Authorizer: LambdaRequestAuth
     Metadata: 
       BuildMethod: esbuild
       BuildProperties:
@@ -180,11 +176,9 @@ Resources:
         RankRequest:
           Type: Api
           Properties:
-            Path: /resume/rank/{id}
-            Method: get 
+            Path: /resume/rank
+            Method: post 
             RestApiId: !Ref JobRecApi
-            Auth:
-              Authorizer: LambdaRequestAuth
     Metadata: 
       BuildMethod: esbuild
       BuildProperties:
@@ -203,11 +197,9 @@ Resources:
         PrepRequest:
           Type: Api
           Properties:
-            Path: /recommendation/prep/{id}
-            Method: get 
+            Path: /recommendation/prep
+            Method: post 
             RestApiId: !Ref JobRecApi
-            Auth:
-              Authorizer: LambdaRequestAuth
     Metadata: 
       BuildMethod: esbuild
       BuildProperties:

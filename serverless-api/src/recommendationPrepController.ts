@@ -6,8 +6,9 @@ import type { InterviewPrepWorkflowInput } from "./config/types.ts";
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
 
 export async function controller(event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> {
-  const rec_id = Number(event.pathParameters?.id);
-  const user_id: number = Number(event.requestContext.authorizer?.userId);
+  const eventbody = JSON.parse(event.body || "{}");
+  const { rec_id } = (eventbody.input || eventbody);
+  const user_id = eventbody.session_variables["x-hasura-user-id"];
 
   if (!user_id) {
     return {
@@ -39,7 +40,7 @@ export async function controller(event: APIGatewayProxyEvent): Promise<APIGatewa
     if (workflowHandle.status) {
       return {
         statusCode: 200,
-        body: JSON.stringify({ "message": `workflow started sucessfully with the workflow id: ${workflowHandle.id}` })
+        body: JSON.stringify({ "message": `workflow started sucessfully with the workflow id: ${workflowHandle.id}`, workflowId: workflowHandle.id })
       }
     }
 
