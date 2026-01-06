@@ -243,15 +243,6 @@ Resources:
         AllowMethods: "'*'"
         AllowHeaders: "'*'"
         AllowOrigin: "'*'"
-      Auth:
-        Authorizers:
-          LambdaRequestAuth:
-            FunctionPayloadType: TOKEN
-            FunctionArn: !GetAtt AuthFunction.Arn
-            Identity:
-              Header: Authorization
-              ValidationExpression: ^Bearer .*$
-              ReauthorizeEvery: 1800
       BinaryMediaTypes:
         - multipart/form-data
         - application/pdf
