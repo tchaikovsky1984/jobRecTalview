@@ -62,6 +62,10 @@ function ResumePage(props: ResumePageProps) {
     console.log(props.user.access_token);
     try {
       const mimetype: string = file.type;
+      if (mimetype !== "application/pdf") {
+        alert("Only PDFs allowed.");
+        return;
+      }
       const filename: string = file.name;
 
       const file64 = await fileToBase64(file);
