@@ -1,4 +1,3 @@
-// src/components/ResumeCard.tsx
 import { useNavigate } from "react-router-dom";
 import ScoreRing from "./ScoreRing.tsx";
 
