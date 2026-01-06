@@ -7,3 +7,13 @@ export const GET_USER_PROFILE_QUERY = `
     }
   }
 `
+
+export const USER_LOGIN_QUERY = `
+mutation UserLogin($pwd:String!, $usr: String!){
+  LoginUser(password: $pwd, username: $usr){
+    user_id
+    access_token
+    message
+  }
+}
+`;

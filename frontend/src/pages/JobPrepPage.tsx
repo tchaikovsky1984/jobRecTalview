@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { api } from "../services/api";
-import { GET_RECOMMENDATION_WITH_PREP } from "../graphql/recommendation.ts";
+import { GET_RECOMMENDATION_WITH_PREP, PREPARE_RECOMMENDATION } from "../graphql/recommendation.ts";
 import ScoreRing from "../components/ScoreRing";
 import SkillPill from "../components/SkillPill";
 import type { AppUser } from "../types/types";
@@ -53,7 +53,12 @@ export default function JobPrepPage({ user }: JobPrepPageProps) {
     setGenerating(true);
 
     try {
-      await api.get(true, `/recommendation/prep/${id}`, {
+      await api.post(false, "", {
+        query: PREPARE_RECOMMENDATION,
+        variables: {
+          rec_id: id
+        }
+      }, {
         "Authorization": "Bearer " + user.access_token
       });
 

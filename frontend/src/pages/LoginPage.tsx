@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import type { AppUser, LoginResponseBody, UserDetailResponseBody } from "../types/types";
-import { GET_USER_PROFILE_QUERY } from "../graphql/user";
+import { GET_USER_PROFILE_QUERY, USER_LOGIN_QUERY } from "../graphql/user";
 import AppLayout from "../layouts/AppLayout";
 
 import { api } from "../services/api";
@@ -33,17 +33,23 @@ function LoginPage(props: LoginPageProps) {
 
     setLoading(true);
     try {
-      const loginresponse = await api.post<LoginResponseBody>(true, "/user/login", formData, {});
-      const userresponse = await api.post<UserDetailResponseBody>(false, "",
+      const loginresponse = await api.post(false, "", {
+        query: USER_LOGIN_QUERY,
+        variables: {
+          pwd: formData.password,
+          usr: formData.username
+        }
+      }, {}) as any;
+      const userresponse = await api.post(false, "",
         {
           query: GET_USER_PROFILE_QUERY,
           variables: {
-            id: Number(loginresponse.user_id)
+            id: Number(loginresponse.data.LoginUser.user_id)
           }
         },
-        { Authorization: "Bearer " + loginresponse.access_token }
-      );
-      props.setUser({ ...loginresponse, ...userresponse.data.user[0] });
+        { Authorization: "Bearer " + loginresponse.data.LoginUser.access_token }
+      ) as any;
+      props.setUser({ ...loginresponse.data.LoginUser, ...userresponse.data.user[0] });
       navigate("/");
     }
     catch (e) {

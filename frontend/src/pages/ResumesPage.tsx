@@ -4,7 +4,7 @@ import { api } from "../services/api";
 import ResumeCard from "../components/ResumeCard.tsx";
 import AddResumeCard from "../components/AddResumeCard.tsx";
 import type { AppUser, ResumeDetailResponseBody, ResumeUploadResponse } from "../types/types";
-import { GET_RESUME_BRIEF_QUERY } from "../graphql/resume";
+import { GET_RESUME_BRIEF_QUERY, UPLOAD_RESUME } from "../graphql/resume";
 
 interface ResumePageProps {
   user: AppUser;
@@ -40,26 +40,49 @@ function ResumePage(props: ResumePageProps) {
     loadResumes();
   }, []);
 
-  const handleUpload = (file: File) => {
+  const fileToBase64 = (file: File): Promise<string | null> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        const raw64 = (reader.result as string).split(',')[1];
+        resolve(raw64);
+      };
+
+      reader.onerror = (error) => {
+        reject(error);
+      };
+
+      reader.readAsDataURL(file);
+    });
+  };
+
+  const handleUpload = async (file: File) => {
     console.log(`file selected: ${file.name}`);
+    console.log(props.user.access_token);
+    try {
+      const mimetype: string = file.type;
+      const filename: string = file.name;
 
-    const formdata = new FormData();
-    formdata.append("resume", file);
+      const file64 = await fileToBase64(file);
+      if (!file64 || typeof file64 !== "string") {
+        console.log("could not be encoded");
+        throw new Error("file could not be encoded");
+      }
 
-    api.upload<ResumeUploadResponse>("/resume/upload", formdata, props.user.access_token)
-      .then((res) => {
-        if (res.resumeId) {
-          console.log("Resume uploaded")
-          loadResumes();
-        }
-        else {
-          console.log("could not upload");
-          alert("could not upload");
-        }
-      })
-      .catch((rej) => {
-        console.log(rej);
-      })
+      await api.post<ResumeUploadResponse>(false, "", {
+        query: UPLOAD_RESUME,
+        variables: { filety: mimetype, name: filename, filedata: file64 }
+      }, {
+        "Authorization": "Bearer " + props.user.access_token
+      });
+      console.log("resume uploaded");
+      loadResumes();
+      console.log("resumes loaded");
+    }
+    catch (e) {
+      console.log("could not upload");
+    }
   }
 
   if (isLoading) {

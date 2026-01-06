@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect, useMemo, useRef } from "react";
 import type { AppUser, ResumeDataResponse } from "../types/types";
-import { GET_RECOMMENDATION_ON_RESUME } from "../graphql/recommendation.ts";
-import { GET_RESUME_DATA } from "../graphql/resume.ts";
+import { GENERATE_RECCOMENDATIONS, GET_RECOMMENDATION_ON_RESUME } from "../graphql/recommendation.ts";
 import { api } from "../services/api.ts";
 import JobRow from "../components/JobRow";
+import { GET_RESUME_DATA, ANALYSE_RESUME_QUERY } from "../graphql/resume.ts";
 
 interface ResumePrepPageProps {
   user: AppUser;
@@ -127,7 +127,12 @@ function ResumePrepPage(props: ResumePrepPageProps) {
   const handleAnalyzeResume = async () => {
     setIsAnalyzing(true);
     try {
-      await api.post(true, "/resume/analyse/" + ids, {}, {
+      await api.post(false, "", {
+        query: ANALYSE_RESUME_QUERY,
+        variables: {
+          res_id: ids + ""
+        }
+      }, {
         "Authorization": "Bearer " + props.user.access_token
       });
 
@@ -142,7 +147,12 @@ function ResumePrepPage(props: ResumePrepPageProps) {
   const handleGenerateRecs = async () => {
     setIsRecommending(true);
     try {
-      await api.get(true, "/resume/rank/" + ids, {
+      await api.post(false, "", {
+        query: GENERATE_RECCOMENDATIONS,
+        variables: {
+          res_id: ids + ""
+        }
+      }, {
         "Authorization": "Bearer " + props.user.access_token
       });
 
