@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import type { AppUser, LoginResponseBody, UserDetailResponseBody } from "../types/types";
+import type { AppUser, LoginResponse, UserResponse } from "../types/types";
 import { GET_USER_PROFILE_QUERY, USER_LOGIN_QUERY } from "../graphql/user";
 import AppLayout from "../layouts/AppLayout";
 
@@ -33,14 +33,14 @@ function LoginPage(props: LoginPageProps) {
 
     setLoading(true);
     try {
-      const loginresponse = await api.post(false, "", {
+      const loginresponse = await api.post<LoginResponse>(false, "", {
         query: USER_LOGIN_QUERY,
         variables: {
           pwd: formData.password,
           usr: formData.username
         }
       }, {}) as any;
-      const userresponse = await api.post(false, "",
+      const userresponse = await api.post<UserResponse>(false, "",
         {
           query: GET_USER_PROFILE_QUERY,
           variables: {

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { api } from "../services/api";
 import { GET_ALL_RECOMMENDATIONS } from "../graphql/recommendation.ts";
 import JobRow from "../components/JobRow";
-import type { AppUser } from "../types/types";
+import type { AllRecommendationsResponse, AllRecommendations, AppUser } from "../types/types";
 
 interface JobsPageProps {
   user: AppUser;
@@ -16,7 +16,7 @@ export default function JobsPage({ user }: JobsPageProps) {
 
   useEffect(() => {
     setLoading(true);
-    api.post<any>(false, "", {
+    api.post<AllRecommendationsResponse>(false, "", {
       query: GET_ALL_RECOMMENDATIONS,
       variables: { userId: Number(user.user_id) }
     }, { "Authorization": "Bearer " + user.access_token })
@@ -29,7 +29,7 @@ export default function JobsPage({ user }: JobsPageProps) {
       .finally(() => setLoading(false));
   }, []);
 
-  const calculateInsights = (data: any[]) => {
+  const calculateInsights = (data: AllRecommendations) => {
     if (data.length === 0) return;
 
     const total = data.length;
