@@ -14,26 +14,41 @@ const dirname = typeof __dirname !== 'undefined' ? __dirname : path.dirname(file
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   test: {
-    projects: [{
-      extends: true,
-      plugins: [
-      // The plugin will run tests for the stories defined in your Storybook config
-      // See options at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon#storybooktest
-      storybookTest({
-        configDir: path.join(dirname, '.storybook')
-      })],
-      test: {
-        name: 'storybook',
-        browser: {
-          enabled: true,
-          headless: true,
-          provider: playwright({}),
-          instances: [{
-            browser: 'chromium'
-          }]
-        },
-        setupFiles: ['.storybook/vitest.setup.ts']
+    projects: [
+      // PROJECT 1: Storybook Interaction Tests (Existing)
+      {
+        extends: true,
+        plugins: [
+          storybookTest({
+            configDir: path.join(dirname, '.storybook')
+          })
+        ],
+        test: {
+          name: 'storybook',
+          browser: {
+            enabled: true,
+            headless: true,
+            provider: playwright({}),
+            instances: [{ browser: 'chromium' }]
+          },
+          setupFiles: ['.storybook/vitest.setup.ts']
+        }
+      },
+
+      // PROJECT 2: Functional / Unit Tests (NEW)
+      // This runs your standard *.test.tsx files in JSDOM
+      {
+        extends: true,
+        test: {
+          name: 'unit',
+          environment: 'jsdom',
+          // Only look for .test files, ignore stories
+          include: ['src/**/*.test.{ts,tsx}'],
+          exclude: ['src/**/*.stories.{ts,tsx}', 'node_modules'],
+          globals: true, // Optional: if you want to use 'describe' without importing
+          setupFiles: ['./src/test/setup.ts'] // We need to create this
+        }
       }
-    }]
+    ]
   }
 });

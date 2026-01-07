@@ -5,7 +5,6 @@ import { GET_USER_PROFILE_QUERY, USER_LOGIN_QUERY, USER_REGISTER_QUERY } from ".
 import AppLayout from "../layouts/AppLayout";
 
 import { api } from "../services/api";
-import { AllVariants } from "../stories/SkillPill.stories";
 
 interface LoginPageProps {
   user: AppUser;
@@ -117,26 +116,26 @@ function LoginPage(props: LoginPageProps) {
             (!form.current) ?
               <form onSubmit={handleFormSubmit} className="flex flex-col items-start justify-evenly">
                 <label className="mt-3 text-xl text-l font-mono font-bold">username</label>
-                <input type="text" value={registerFormData.username} name="username" onChange={handleFormChange} id="usr-field" className="min-h-8 shrink shadow-xl border-b-2 border-black font-mono font-bold pt-2 pl-2 pr-2" />
+                <input aria-label="username" type="text" value={registerFormData.username} name="username" onChange={handleFormChange} id="usr-field" className="min-h-8 shrink shadow-xl border-b-2 border-black font-mono font-bold pt-2 pl-2 pr-2" />
 
                 <label className="mt-3 text-xl text-l font-mono font-bold">email</label>
-                <input type="text" value={registerFormData.email} name="email" onChange={handleFormChange} id="usr-field" className="min-h-8 shrink shadow-xl border-b-2 border-black font-mono font-bold pt-2 pl-2 pr-2" />
+                <input aria-label="email" type="text" value={registerFormData.email} name="email" onChange={handleFormChange} id="email-field" className="min-h-8 shrink shadow-xl border-b-2 border-black font-mono font-bold pt-2 pl-2 pr-2" />
 
                 <label className="mt-3 text-xl text-l font-mono font-bold">name</label>
-                <input type="text" value={registerFormData.name} name="name" onChange={handleFormChange} id="usr-field" className="min-h-8 shrink shadow-xl border-b-2 border-black font-mono font-bold pt-2 pl-2 pr-2" />
+                <input aria-label="name" type="text" value={registerFormData.name} name="name" onChange={handleFormChange} id="name-field" className="min-h-8 shrink shadow-xl border-b-2 border-black font-mono font-bold pt-2 pl-2 pr-2" />
 
                 <label className="mt-3 text-xl text-l font-mono font-bold">password</label>
-                <input type="password" value={registerFormData.password} name="password" onChange={handleFormChange} id="pwd-field" className="min-h-8 shrink shadow-xl border-b-2 border-black font-mono font-bold pt-2 pl-2 pr-2" />
+                <input aria-label="password" type="password" value={registerFormData.password} name="password" onChange={handleFormChange} id="pwd-field" className="min-h-8 shrink shadow-xl border-b-2 border-black font-mono font-bold pt-2 pl-2 pr-2" />
 
                 <button type="submit" className="m-3 text-xl text-l min-h-15 min-w-30 border borded-2 bg-black rounded-2xl text-white">{isLoading ? "Registering..." : "Submit"}</button>
               </form>
               :
               <form onSubmit={handleFormSubmit} className="flex flex-col items-start justify-evenly">
                 <label className="mt-3 text-xl text-l font-mono font-bold">username</label>
-                <input type="text" value={loginFormData.username} name="username" onChange={handleFormChange} id="usr-field" className="min-h-8 shrink shadow-xl border-b-2 border-black font-mono font-bold pt-2 pl-2 pr-2" />
+                <input aria-label="username" type="text" value={loginFormData.username} name="username" onChange={handleFormChange} id="usr-field" className="min-h-8 shrink shadow-xl border-b-2 border-black font-mono font-bold pt-2 pl-2 pr-2" />
 
                 <label className="mt-3 text-xl text-l font-mono font-bold">password</label>
-                <input type="password" value={loginFormData.password} name="password" onChange={handleFormChange} id="pwd-field" className="min-h-8 shrink shadow-xl border-b-2 border-black font-mono font-bold pt-2 pl-2 pr-2" />
+                <input aria-label="password" type="password" value={loginFormData.password} name="password" onChange={handleFormChange} id="pwd-field" className="min-h-8 shrink shadow-xl border-b-2 border-black font-mono font-bold pt-2 pl-2 pr-2" />
 
                 <button type="submit" className="m-3 text-xl text-l min-h-15 min-w-30 border borded-2 bg-black rounded-2xl text-white">{isLoading ? "Logging in..." : "Submit"}</button>
               </form>
