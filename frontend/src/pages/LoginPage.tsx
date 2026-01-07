@@ -21,10 +21,6 @@ function LoginPage(props: LoginPageProps) {
   const [registerFormData, setRegisterFormData] = useState({ username: "", password: "", name: "", email: "" });
   const [isLoading, setLoading] = useState(false);
 
-  console.log(form.current);
-  console.log(loginFormData);
-  console.log(registerFormData);
-
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     if (form.current)
@@ -38,7 +34,6 @@ function LoginPage(props: LoginPageProps) {
   const handleFormSubmit = async (e: any) => {
     e.preventDefault();
     e.stopPropagation();
-    console.log(form);
     if (form.current) {
       setLoading(true);
       try {
