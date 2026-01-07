@@ -204,3 +204,11 @@ export type GenerateRecsResponse = {
   };
 };
 
+export type RegisterResponse = {
+  data: {
+    RegisterUser: {
+      message: string;
+      userId: number
+    }
+  }
+};

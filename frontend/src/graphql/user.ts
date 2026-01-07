@@ -17,3 +17,12 @@ mutation UserLogin($pwd:String!, $usr: String!){
   }
 }
 `;
+
+export const USER_REGISTER_QUERY = `
+mutation UserRegister($pwd: String!, $usr: String!, $email: String!, $name: String!){
+  RegisterUser(username: $usr, email: $email, password: $pwd, name: $name){
+    message
+    userId
+  }
+}
+`;

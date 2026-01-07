@@ -1,28 +1,36 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import type { AppUser, LoginResponse, UserResponse } from "../types/types";
-import { GET_USER_PROFILE_QUERY, USER_LOGIN_QUERY } from "../graphql/user";
+import type { AppUser, LoginResponse, RegisterResponse, UserResponse } from "../types/types";
+import { GET_USER_PROFILE_QUERY, USER_LOGIN_QUERY, USER_REGISTER_QUERY } from "../graphql/user";
 import AppLayout from "../layouts/AppLayout";
 
 import { api } from "../services/api";
+import { AllVariants } from "../stories/SkillPill.stories";
 
 interface LoginPageProps {
   user: AppUser;
-  setUser: any;
+  setUser: (newuser: AppUser) => void;
 }
 
 function LoginPage(props: LoginPageProps) {
-
-  const [formData, setFormData] = useState({ username: "", password: "" })
+  // form = true => login
+  // form = false => register
+  const form = useRef(true);
+  const [refChange, setRefChange] = useState(true);
+  const [loginFormData, setLoginFormData] = useState({ username: "", password: "" })
+  const [registerFormData, setRegisterFormData] = useState({ username: "", password: "", name: "", email: "" });
   const [isLoading, setLoading] = useState(false);
 
+  console.log(form.current);
+  console.log(loginFormData);
+  console.log(registerFormData);
+
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if ((e.target as HTMLInputElement).id === "usr-field") {
-      setFormData({ ...formData, username: e.target.value });
-    }
-    else {
-      setFormData({ ...formData, password: e.target.value });
-    }
+    const { name, value } = e.target;
+    if (form.current)
+      setLoginFormData({ ...loginFormData, [name]: value });
+    else
+      setRegisterFormData({ ...registerFormData, [name]: value });
   };
 
   const navigate = useNavigate();
@@ -30,64 +38,115 @@ function LoginPage(props: LoginPageProps) {
   const handleFormSubmit = async (e: any) => {
     e.preventDefault();
     e.stopPropagation();
-
-    setLoading(true);
-    try {
-      const loginresponse = await api.post<LoginResponse>(false, "", {
-        query: USER_LOGIN_QUERY,
-        variables: {
-          pwd: formData.password,
-          usr: formData.username
-        }
-      }, {}) as any;
-      const userresponse = await api.post<UserResponse>(false, "",
-        {
-          query: GET_USER_PROFILE_QUERY,
+    console.log(form);
+    if (form.current) {
+      setLoading(true);
+      try {
+        const loginresponse = await api.post<LoginResponse>(false, "", {
+          query: USER_LOGIN_QUERY,
           variables: {
-            id: Number(loginresponse.data.LoginUser.user_id)
+            pwd: loginFormData.password,
+            usr: loginFormData.username
           }
-        },
-        { Authorization: "Bearer " + loginresponse.data.LoginUser.access_token }
-      ) as any;
-      props.setUser({ ...loginresponse.data.LoginUser, ...userresponse.data.user[0] });
-      navigate("/");
+        }, {});
+        const userresponse = await api.post<UserResponse>(false, "",
+          {
+            query: GET_USER_PROFILE_QUERY,
+            variables: {
+              id: Number(loginresponse.data.LoginUser.user_id)
+            }
+          },
+          { Authorization: "Bearer " + loginresponse.data.LoginUser.access_token }
+        ) as any;
+        props.setUser({ ...loginresponse.data.LoginUser, ...userresponse.data.user[0] });
+        navigate("/");
+      }
+      catch (e) {
+        alert((e as Error).message);
+      }
+      finally {
+        setLoading(false);
+      }
     }
-    catch (e) {
-      alert((e as Error).message);
+    else {
+      setLoading(true);
+      try {
+        const registerresponse = await api.post<RegisterResponse>(false, "", {
+          query: USER_REGISTER_QUERY,
+          variables: {
+            email: registerFormData.email,
+            name: registerFormData.name,
+            pwd: registerFormData.password,
+            usr: registerFormData.username
+          }
+        }, {});
+        navigate("/");
+      }
+      catch (e) {
+        alert((e as Error).message);
+      }
+      finally {
+        setLoading(false);
+      }
     }
-    finally {
-      setLoading(false);
-    }
-
   };
+
+  const handleFormToggle = () => {
+    form.current = !form.current;
+    setRefChange(!refChange);
+  }
 
   return (
     <div className="fixed inset-0 m-0 p-0 overflow-hidden bg-[#bdbdbd]">
 
       <div className="absolute inset-0 z-0 filter blur-sm pointer-events-none">
-        <AppLayout user={props.user} />
+        <AppLayout user={props.user} setUser={props.setUser} />
       </div>
 
       <div className="absolute inset-0 z-0 bg-black/50 pointer-events-none" />
 
       <div className="absolute inset-0 z-10 flex justify-center items-center">
-        <div className="bg-[#ffffcf] min-h-60 min-w-60 sm:min-h-100 sm:min-w-100 md:min-h-120 md:min-w-120 grow-0 shrink-0 rounded-2xl shadow-2xl flex flex-col items-center justify-around">
+        <div className="bg-[#ffffcf] min-h-100 min-w-100 sm:min-h-160 sm:min-w-100 md:min-h-180 md:min-w-120 grow-0 shrink-0 rounded-2xl shadow-2xl flex flex-col items-center justify-around">
 
           <div className="flex flex-col items-center justify-around pt-10">
-            <h1 className="text-xl sm:text-2xl md:text-4xl font-extrabold font-mono mb-5">Log In</h1>
-            <p className="text-md sm:text-l md:text-xl font-mono">to OkComputer</p>
+            <h1 className="text-xl sm:text-2xl md:text-4xl font-extrabold font-mono mb-5">{(form.current) ? "Log In" : "Register"}</h1>
+            <p className="text-md sm:text-l md:text-xl font-mono">{((form.current) ? "to" : "into") + " OkComputer"}</p>
           </div>
 
-          <form onSubmit={handleFormSubmit} className="flex flex-col items-start justify-evenly">
-            <label className="mt-3 text-xl text-l font-mono font-bold">username</label>
-            <input type="text" value={formData.username} onChange={handleFormChange} id="usr-field" className="min-h-8 shrink shadow-xl border-b-2 border-black font-mono font-bold pt-2 pl-2 pr-2" />
+          <div className="w-full flex flex-row justify-center align-center">
+            <button className={(form.current) ? "bg-black text-white p-4 rounded-xl" : "p-4"} onClick={handleFormToggle} >Login</button>
+            <button className={(!form.current) ? "bg-black text-white p-4 rounded-xl" : "p-4"} onClick={handleFormToggle} >Register</button>
+          </div>
 
-            <label className="mt-3 text-xl text-l font-mono font-bold">password</label>
-            <input type="password" value={formData.password} onChange={handleFormChange} id="pwd-field" className="min-h-8 shrink shadow-xl border-b-2 border-black font-mono font-bold pt-2 pl-2 pr-2" />
+          {
+            (!form.current) ?
+              <form onSubmit={handleFormSubmit} className="flex flex-col items-start justify-evenly">
+                <label className="mt-3 text-xl text-l font-mono font-bold">username</label>
+                <input type="text" value={registerFormData.username} name="username" onChange={handleFormChange} id="usr-field" className="min-h-8 shrink shadow-xl border-b-2 border-black font-mono font-bold pt-2 pl-2 pr-2" />
 
-            <button type="submit" className="m-3 text-xl text-l min-h-15 min-w-30 border borded-2 bg-black rounded-2xl text-white">{isLoading ? "Logging in..." : "Submit"}</button>
-          </form>
+                <label className="mt-3 text-xl text-l font-mono font-bold">email</label>
+                <input type="text" value={registerFormData.email} name="email" onChange={handleFormChange} id="usr-field" className="min-h-8 shrink shadow-xl border-b-2 border-black font-mono font-bold pt-2 pl-2 pr-2" />
 
+                <label className="mt-3 text-xl text-l font-mono font-bold">name</label>
+                <input type="text" value={registerFormData.name} name="name" onChange={handleFormChange} id="usr-field" className="min-h-8 shrink shadow-xl border-b-2 border-black font-mono font-bold pt-2 pl-2 pr-2" />
+
+                <label className="mt-3 text-xl text-l font-mono font-bold">password</label>
+                <input type="password" value={registerFormData.password} name="password" onChange={handleFormChange} id="pwd-field" className="min-h-8 shrink shadow-xl border-b-2 border-black font-mono font-bold pt-2 pl-2 pr-2" />
+
+                <button type="submit" className="m-3 text-xl text-l min-h-15 min-w-30 border borded-2 bg-black rounded-2xl text-white">{isLoading ? "Registering..." : "Submit"}</button>
+              </form>
+              :
+              <form onSubmit={handleFormSubmit} className="flex flex-col items-start justify-evenly">
+                <label className="mt-3 text-xl text-l font-mono font-bold">username</label>
+                <input type="text" value={loginFormData.username} name="username" onChange={handleFormChange} id="usr-field" className="min-h-8 shrink shadow-xl border-b-2 border-black font-mono font-bold pt-2 pl-2 pr-2" />
+
+                <label className="mt-3 text-xl text-l font-mono font-bold">password</label>
+                <input type="password" value={loginFormData.password} name="password" onChange={handleFormChange} id="pwd-field" className="min-h-8 shrink shadow-xl border-b-2 border-black font-mono font-bold pt-2 pl-2 pr-2" />
+
+                <button type="submit" className="m-3 text-xl text-l min-h-15 min-w-30 border borded-2 bg-black rounded-2xl text-white">{isLoading ? "Logging in..." : "Submit"}</button>
+              </form>
+
+          }
         </div>
       </div>
     </div >
