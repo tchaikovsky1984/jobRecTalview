@@ -1,11 +1,6 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
 
-import * as Sentry from "@sentry/aws-serverless";
-
-Sentry.init({
-  dsn: process.env.SENTRY_DSN,
-  tracesSampleRate: 1.0
-})
+import { addSentry } from "./config/sentry";
 
 async function rawcontroller(event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> {
   throw new Error("demo error");
@@ -17,4 +12,4 @@ async function rawcontroller(event: APIGatewayProxyEvent): Promise<APIGatewayPro
   }
 }
 
-export const controller = Sentry.wrapHandler(rawcontroller);
+export const controller = addSentry(rawcontroller);
