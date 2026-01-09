@@ -14,13 +14,19 @@ export function addSentry(handler: ApiHandler): Handler<APIGatewayProxyEvent, AP
 
   const interceptReq = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
     const eventbody = JSON.parse(event.body || "{}");
-    const user_id = eventbody.session_variables["x-hasura-user-id"];
-
-    if (user_id) {
-      Sentry.setUser({ user_id: user_id });
-    }
+    const ip = event.requestContext.identity.sourceIp;
 
     Sentry.setTag("route", event.path);
+
+    Sentry.addBreadcrumb({
+      category: "lambda",
+      message: "lambda execution started for " + event.path,
+      level: "info",
+      data: {
+        queryParams: event.queryStringParameters,
+        body: eventbody
+      }
+    })
 
     return await handler(event);
   };

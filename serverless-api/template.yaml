@@ -48,7 +48,7 @@ Globals:
   Function:
     Timeout: 40
     MemorySize: 512
-    marchitectures: 
+    Architectures: 
       - x86_64
     Environment:
       Variables:
