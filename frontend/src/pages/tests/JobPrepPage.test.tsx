@@ -49,8 +49,6 @@ const mockPrepData = {
   ]
 };
 
-// --- 3. Test Suite ---
-
 describe('JobPrepPage', () => {
   const postMock = vi.mocked(api.post);
 

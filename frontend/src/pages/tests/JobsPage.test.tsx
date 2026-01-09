@@ -64,7 +64,6 @@ describe('JobsPage', () => {
   });
 
   it('renders loading state initially', async () => {
-    // Mock a pending promise that doesn't resolve immediately
     postMock.mockImplementation(() => new Promise(() => { }));
 
     renderComponent();
@@ -79,18 +78,14 @@ describe('JobsPage', () => {
 
     renderComponent();
 
-    // Wait for loading to finish
     await waitFor(() => {
       expect(screen.queryByText(/Analysing Market/i)).not.toBeInTheDocument();
     });
 
-    // Check Stats (Should be 0 / N/A)
     expect(screen.getByText('Total Opportunities').nextSibling).toHaveTextContent('0');
     expect(screen.getByText('Average Match Score').nextSibling).toHaveTextContent('0%');
-    // Depending on logic, it might be "N/A" or "None". The code says: ... || "None"
     expect(screen.getByText('Top Matched Skill').nextSibling).toHaveTextContent('N/A');
 
-    // Check Empty Message
     expect(screen.getByText(/No recommendations yet/i)).toBeInTheDocument();
   });
 
@@ -101,10 +96,8 @@ describe('JobsPage', () => {
 
     renderComponent();
 
-    // Wait for data to load
     await screen.findByText('Total Opportunities');
 
-    // 1. Verify Total (3)
     const totalEl = screen.getByText('Total Opportunities').nextSibling;
     expect(totalEl).toHaveTextContent('3');
 
@@ -157,12 +150,10 @@ describe('JobsPage', () => {
 
     renderComponent();
 
-    // Should eventually stop loading
     await waitFor(() => {
       expect(screen.queryByText(/Analysing Market/i)).not.toBeInTheDocument();
     });
 
-    // Since data defaults to [], it should show empty state
     expect(screen.getByText(/No recommendations yet/i)).toBeInTheDocument();
 
     // Verify error was logged
@@ -182,10 +173,8 @@ describe('JobsPage', () => {
 
     await screen.findByText('Top Matched Skill');
 
-    // Top skill should be "None" if map is empty
     expect(screen.getByText('Top Matched Skill').nextSibling).toHaveTextContent('None');
 
-    // Avg score should be 50
     expect(screen.getByText('Average Match Score').nextSibling).toHaveTextContent('50%');
   });
 
