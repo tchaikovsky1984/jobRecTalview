@@ -1,0 +1,16 @@
+meta {
+  name: sentrydemo
+  type: http
+  seq: 9
+}
+
+get {
+  url: 172.17.0.1:3000/error
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

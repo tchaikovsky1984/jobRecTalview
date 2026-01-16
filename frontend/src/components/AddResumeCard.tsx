@@ -58,7 +58,7 @@ export default function AddResumeCard({ onFileSelect, isLoading = false }: AddRe
             </svg>
           </div>
           <span className="font-mono font-bold text-gray-600 group-hover:text-black">Upload Resume</span>
-          <span className="text-xs text-gray-400 mt-1 font-sans">PDF or DOCX</span>
+          <span className="text-xs text-gray-400 mt-1 font-sans">PDF</span>
         </div>
       )}
     </div>

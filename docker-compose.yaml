@@ -34,5 +34,18 @@ services:
       HASURA_GRAPHQL_ENABLE_CONSOLE: "true"
       HASURA_GRAPHQL_JWT_SECRET: '{ "type": "HS256", "key": "pEdoXw44SkzMnZ+D7B0PRY9sqI6t1bgDPY87OickAgg=", "issuer": "my-chat-app" }'
 
+  minio:
+    image: quay.io/minio/minio
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    command: server /data --console-address ":9001"
+    volumes:
+      - minio_data:/data  
+
 volumes:
   db_data:
+  minio_data:

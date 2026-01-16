@@ -1,10 +1,10 @@
 import { useEffect, useState, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { api } from "../services/api";
-import { GET_RECOMMENDATION_WITH_PREP } from "../graphql/recommendation.ts";
+import { GET_RECOMMENDATION_WITH_PREP, PREPARE_RECOMMENDATION } from "../graphql/recommendation.ts";
 import ScoreRing from "../components/ScoreRing";
 import SkillPill from "../components/SkillPill";
-import type { AppUser } from "../types/types";
+import type { AppUser, PrepareRecResponse, RecommedationData, RecommendationDataResponse } from "../types/types";
 
 interface JobPrepPageProps {
   user: AppUser;
@@ -16,12 +16,12 @@ export default function JobPrepPage({ user }: JobPrepPageProps) {
 
   const [loading, setLoading] = useState(true);
   const [generating, setGenerating] = useState(false);
-  const [data, setData] = useState<any>(null);
+  const [data, setData] = useState<RecommedationData>();
 
   const pollInterval = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const fetchFromHasura = () => {
-    return api.post<any>(false, "", {
+    return api.post<RecommendationDataResponse>(false, "", {
       query: GET_RECOMMENDATION_WITH_PREP,
       variables: { id: Number(id) }
     }, { "Authorization": "Bearer " + user.access_token });
@@ -33,7 +33,8 @@ export default function JobPrepPage({ user }: JobPrepPageProps) {
       .then(res => {
         if (res.data?.recommendation_by_pk) {
           setData(res.data.recommendation_by_pk);
-        } else {
+        }
+        else {
           alert("Recommendation not found");
           navigate("/app/jobs");
         }
@@ -53,7 +54,12 @@ export default function JobPrepPage({ user }: JobPrepPageProps) {
     setGenerating(true);
 
     try {
-      await api.get(true, `/recommendation/prep/${id}`, {
+      await api.post<PrepareRecResponse>(false, "", {
+        query: PREPARE_RECOMMENDATION,
+        variables: {
+          rec_id: id
+        }
+      }, {
         "Authorization": "Bearer " + user.access_token
       });
 

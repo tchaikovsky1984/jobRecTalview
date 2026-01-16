@@ -1,0 +1,272 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  serverless-api
+
+  Sample SAM Template for serverless-api
+
+Parameters:
+  JWTSecret:
+    Type: String
+    Description: JWT Secret Key
+    NoEcho: true
+  Minio_Endpoint:
+    Type: String
+    Description: IP for Minio instance
+    Default: 172.17.0.1
+    NoEcho: false
+  Minio_Port:
+    Type: String
+    Description: Port for Minio instance
+    Default: 9000
+    NoEcho: false
+  MinioPublic:
+    Type: String
+    Description: Minio Username 
+    NoEcho: true
+  MinioPrivate:
+    Type: String
+    Description: Minio Password 
+    NoEcho: true
+  GraphQL_Endpoint:
+    Type: String
+    Description: Specific address for graphql instance
+    Default: http://172.17.0.1:8080/v1/graphql
+    NoEcho: false
+  HasuraSecret:
+    Type: String
+    Description: Hasura Admin Password 
+    NoEcho: true
+  Temporal_Endpoint:
+    Type: String
+    Description: Specific address for temporal instance
+    Default: 172.17.0.1:7233
+    NoEcho: false
+
+  
+Globals:
+  Function:
+    Timeout: 40
+    MemorySize: 512
+    Architectures: 
+      - x86_64
+    Environment:
+      Variables:
+        S3_BUCKET_NAME: !Ref resumes 
+        MINIO_ENDPOINT: !Ref Minio_Endpoint
+        MINIO_PORT: !Ref Minio_Port 
+        MINIO_ACCESS_KEY: !Ref MinioPublic
+        MINIO_SECRET_KEY: !Ref MinioPrivate 
+        AWS_REGION_NAME: us-east-1
+        HASURA_GRAPHQL_URL: !Ref GraphQL_Endpoint
+        HASURA_ADMIN_SECRET: !Ref HasuraSecret
+        JWT_SECRET: !Ref JWTSecret
+        TEMPORAL_ADDRESS: !Ref Temporal_Endpoint
+        NODE_OPTIONS: "--import @sentry/aws-serverless/awslambda-auto"
+        SENTRY_DSN: "https://5463013f94e2dac429831b0158fbdff4@o4510668590284800.ingest.de.sentry.io/4510678613229649"
+    Runtime: nodejs20.x
+
+Resources:
+  AuthFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./
+      Handler: auth.authenticateToken
+    Metadata: 
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: "es2020"
+        Sourcemap: true
+        EntryPoints: 
+        - src/auth.ts
+
+  RegisterFunction:
+    Type: AWS::Serverless::Function 
+    Properties:
+      CodeUri: ./
+      Handler: registrationController.controller
+      Events:
+        RegisterRequest:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /user/register
+            Method: post
+            RestApiId: !Ref JobRecApi
+    Metadata: 
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: "es2020"
+        Sourcemap: true
+        EntryPoints: 
+        - src/registrationController.ts
+
+  LoginFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./
+      Handler: loginController.controller
+      Events:
+        LoginRequest:
+          Type: Api
+          Properties:
+            Path: /user/login
+            Method: post
+            RestApiId: !Ref JobRecApi
+    Metadata:
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: "es2020"
+        Sourcemap: true
+        EntryPoints:
+        - src/loginController.ts
+
+
+  ResumeUploadFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./
+      Handler: resumeUploadController.controller
+      Events:
+        UploadRequest:
+          Type: Api
+          Properties:
+            Path: /resume/upload
+            Method: post
+            RestApiId: !Ref JobRecApi
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref ResumeBucket
+    Metadata: 
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: "es2020"
+        Sourcemap: true
+        EntryPoints: 
+        - src/resumeUploadController.ts
+
+  ResumeAnalysisFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./
+      Handler: resumeAnalysisController.controller
+      Events:
+        AnalysisRequest:
+          Type: Api
+          Properties:
+            Path: /resume/analyse
+            Method: post
+            RestApiId: !Ref JobRecApi
+    Metadata: 
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: "es2020"
+        Sourcemap: true
+        EntryPoints: 
+        - src/resumeAnalysisController.ts
+
+  JobRankingFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./
+      Handler: jobRankingController.controller
+      Events:
+        RankRequest:
+          Type: Api
+          Properties:
+            Path: /resume/rank
+            Method: post 
+            RestApiId: !Ref JobRecApi
+    Metadata: 
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: "es2020"
+        Sourcemap: true
+        EntryPoints: 
+        - src/jobRankingController.ts
+  
+  RecommendationPrepFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./
+      Handler: recommendationPrepController.controller
+      Events:
+        PrepRequest:
+          Type: Api
+          Properties:
+            Path: /recommendation/prep
+            Method: post 
+            RestApiId: !Ref JobRecApi
+    Metadata: 
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: "es2020"
+        Sourcemap: true
+        EntryPoints: 
+        - src/recommendationPrepController.ts
+
+  JobSearchFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./
+      Handler: jobSearchController.controller
+      Events:
+        SearchRequest:
+          Type: Api
+          Properties:
+            Path: /search
+            Method: post
+            RestApiId: !Ref JobRecApi
+            Auth:
+              Authorizer: LambdaRequestAuth
+    Metadata: 
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: "es2020"
+        Sourcemap: true
+        EntryPoints: 
+        - src/jobSearchController.ts
+
+  
+  SentryLoggingDemoFunction:
+    Type: AWS::Serverless::Function 
+    Properties:
+      CodeUri: ./
+      Handler: sentryDemo.controller
+      Events:
+        RegisterRequest:
+          Type: Api 
+          Properties:
+            Path: /error
+            Method: get
+            RestApiId: !Ref JobRecApi
+    Metadata: 
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: "es2020"
+        Sourcemap: true
+        EntryPoints: 
+        - src/sentryDemo.ts
+
+  ResumeBucket:
+    Type: AWS::S3::Bucket
+
+  JobRecApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: dev
+      Cors:
+        AllowMethods: "'*'"
+        AllowHeaders: "'*'"
+        AllowOrigin: "'*'"
+      BinaryMediaTypes:
+        - multipart/form-data
+        - application/pdf

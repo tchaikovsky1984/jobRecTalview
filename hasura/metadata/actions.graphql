@@ -1,0 +1,78 @@
+type Mutation {
+  AnalyseResume(
+    id: String!
+  ): ResumeAnalysisOutput
+}
+
+type Mutation {
+  LoginUser(
+    username: String!
+    password: String!
+  ): LoginOutput
+}
+
+type Mutation {
+  PrepRec(
+    rec_id: String!
+  ): PrepRecOutput
+}
+
+type Mutation {
+  RankJobs(
+    res_id: String!
+  ): RankJobsOutput
+}
+
+type Mutation {
+  RegisterUser(
+    username: String!
+    password: String!
+    name: String!
+    email: String!
+  ): RegisterOutput
+}
+
+type Mutation {
+  UploadResume(
+    mimetype: String!
+    filename: String!
+    file64: String!
+  ): ResumeUploadOutput
+}
+
+type LoginOutput {
+  access_token: String!
+  user_id: String!
+  message: String!
+}
+
+type RegisterOutput {
+  message: String!
+  userId: String!
+}
+
+type RankJobsOuput {
+  message: String!
+  workflowId: String!
+}
+
+type ResumeUploadOutput {
+  message: String!
+  resumeId: String!
+}
+
+type ResumeAnalysisOutput {
+  message: String!
+  workflowID: String!
+}
+
+type RankJobsOutput {
+  message: String!
+  workflowId: String!
+}
+
+type PrepRecOutput {
+  message: String!
+  workflowId: String!
+}
+

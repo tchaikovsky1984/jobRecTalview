@@ -74,3 +74,21 @@ export const GET_RECOMMENDATION_ON_RESUME = `
     }
   }
 `;
+
+export const GENERATE_RECCOMENDATIONS = `
+  mutation JobRanking($res_id:String!){
+    RankJobs(res_id: $res_id){
+      message
+      workflowId
+    }
+  }
+`;
+
+export const PREPARE_RECOMMENDATION = `
+  mutation PrepareRec($rec_id:String!){
+    PrepRec(rec_id:$rec_id){
+      message
+      workflowId
+    }
+  }
+`;

@@ -24,3 +24,21 @@ export const GET_RESUME_DATA = `
     }
   }
 `;
+
+export const UPLOAD_RESUME = `
+  mutation UploadResume($filedata: String!, $name: String!, $filety: String!){
+    UploadResume(file64: $filedata, filename: $name, mimetype: $filety){
+      message
+      resumeId
+    }
+  }
+`;
+
+export const ANALYSE_RESUME_QUERY = `
+  mutation ResumeAnalysis($res_id: String!) {
+    AnalyseResume(id: $res_id){
+      message
+      workflowID
+    }
+  }
+`;

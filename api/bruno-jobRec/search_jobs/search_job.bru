@@ -1,0 +1,23 @@
+meta {
+  name: search_job
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{awsUrl}}search
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "title": "UI Designer",
+    "pref_country": "India"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
