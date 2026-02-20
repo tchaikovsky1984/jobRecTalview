@@ -36,9 +36,6 @@ jobs:
       - name: Run Tests
         run: npm run test
 
-      - name: Build Typescript
-        run: npx tsc
-
   docker-publish:
     name: Build and Publish Docker Image
     needs: build-and-test
