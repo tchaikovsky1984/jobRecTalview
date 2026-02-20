@@ -63,4 +63,4 @@ jobs:
           context: ./api
           file: ./api/Dockerfile
           push: true
-          tags: ghcr.io/${{ github.repository }}/jobrec-api:latest
+          tags: ghcr.io/${{ github.actor }}/jobrec-api:latest
