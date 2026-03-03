@@ -2,38 +2,38 @@ actions:
   - name: AnalyseResume
     definition:
       kind: synchronous
-      handler: http://172.17.0.1:7171/resume/analyse
+      handler: http://172.17.0.1:3000/resume/analyse
     permissions:
       - role: user
   - name: LoginUser
     definition:
       kind: synchronous
-      handler: http://172.17.0.1:7171/user/login
+      handler: http://172.17.0.1:3000/user/login
     permissions:
       - role: anonymous
     comment: 'Login Action: Log in a user account with a username and password'
   - name: PrepRec
     definition:
       kind: synchronous
-      handler: http://172.17.0.1:7171/recommendation/prep
+      handler: http://172.17.0.1:3000/recommendation/prep
     permissions:
       - role: user
   - name: RankJobs
     definition:
       kind: synchronous
-      handler: http://172.17.0.1:7171/resume/rank
+      handler: http://172.17.0.1:3000/resume/rank
     permissions:
       - role: user
   - name: RegisterUser
     definition:
       kind: synchronous
-      handler: http://172.17.0.1:7171/user/register
+      handler: http://172.17.0.1:3000/user/register
     permissions:
       - role: anonymous
   - name: UploadResume
     definition:
       kind: synchronous
-      handler: http://172.17.0.1:7171/resume/upload
+      handler: http://172.17.0.1:3000/resume/upload
     permissions:
       - role: user
 custom_types:
