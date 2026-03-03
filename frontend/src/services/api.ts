@@ -1,5 +1,5 @@
 const REST_BASE_URL = "http://localhost:7171";
-const AWS_BASE_URL = "http://localhost:3000";
+const AWS_BASE_URL = "http://localhost:7171";
 const GQL_BASE_URL = "http://localhost:8080/v1/graphql";
 
 export async function apiFetch<T>(REST: boolean = true, endpoint: string, options: RequestInit = {}): Promise<T> {
